@@ -1,0 +1,19 @@
+<h1>POSTS index</h1>
+<table>
+	<div class="row clearfix">
+		<% @posts.each do |post| %>
+		<%= link_to user_post_path(post) do %>
+			<%= post.post_title %>
+		<% end %>
+			<a><%= post.link %></a>
+			<%= current_user.name %>
+
+		<% end %>
+	</div>
+</table>
+
+
+
+
+<%= link_to '新規投稿', new_user_post_path %>
+<%= link_to "ログアウト", destroy_user_session_path, method: "delete" %>

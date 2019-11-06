@@ -1,0 +1,20 @@
+<h1>記事の新規投稿</h1>
+
+<%= form_for @post, url: user_posts_path, method: :post do |f| %>
+
+	<p>タイトル</p>
+	<%= f.text_field :post_title %>
+	<p>URL</p>
+	<%= f.text_field :link %>
+	<p>記事の内容</p>
+	<%= f.text_area :post_body %>
+	<p>プロフィール画像</p>
+
+	<%= f.submit '投稿する' %>
+<% end %>
+
+
+
+
+<%= link_to 'トップページ', user_root_path %>
+<%= link_to "ログアウト", destroy_user_session_path, method: "delete" %>
