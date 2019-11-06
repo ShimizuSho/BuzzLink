@@ -1,0 +1,16 @@
+<h1>記事の編集</h1>
+<%= form_for @post, url: user_post_path do |f| %>
+	<h2>タイトル</h2>
+	<%= f.text_field :post_title %>
+	<h2>URL</h2>
+	<%= f.text_field :link %>
+	<h2>記事の内容</h2>
+	<%= f.text_area :post_body %>
+	<%= f.submit '編集' %>
+<% end %>
+<%= @post.user.name %>
+
+<%= link_to '新規投稿', new_user_post_path %>
+<%= link_to 'トップページ', user_root_path %>
+<%= link_to 'ログアウト', destroy_user_session_path, method: 'delete' %>
+

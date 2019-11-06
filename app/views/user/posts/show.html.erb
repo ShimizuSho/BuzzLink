@@ -1,0 +1,13 @@
+<h1>記事の詳細</h1>
+<h2><%= @post.post_title %></h2>
+<h3><%= @post.link %></h3>
+<h3><%= @post.user.name %></h3>
+<h4><%= @post.post_body %></h4>
+
+<%= link_to '記事編集', edit_user_post_path %>
+<%= link_to 'トップページ', user_root_path %>
+<%= link_to '新規投稿', new_user_post_path %>
+<%= link_to "ログアウト", destroy_user_session_path, method: "delete" %>
+
+
+
