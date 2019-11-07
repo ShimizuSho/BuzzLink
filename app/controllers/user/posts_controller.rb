@@ -17,6 +17,8 @@ class User::PostsController < ApplicationController
 
 	def show
 		@post = Post.find(params[:id])
+		@post_comment = Comment.new
+		@post_comments = Comment.all
 	end
 
 	def edit
@@ -27,6 +29,13 @@ class User::PostsController < ApplicationController
 		@post = Post.find(params[:id])
 		@post.update(post_params)
 		redirect_to user_post_path(@post.id)
+	end
+
+	def destroy
+		@post = post.find(params[:id])
+		@post.destroy
+		redirect_to user_post_path(post.id)
+
 	end
 
 

@@ -4,10 +4,25 @@
 <h3><%= @post.user.name %></h3>
 <h4><%= @post.post_body %></h4>
 
-<%= link_to '記事編集', edit_user_post_path %>
-<%= link_to 'トップページ', user_root_path %>
-<%= link_to '新規投稿', new_user_post_path %>
-<%= link_to "ログアウト", destroy_user_session_path, method: "delete" %>
+<%= form_for [@post, @post_comment], url: user_post_comments_path(@post.id) do |f| %>
+	<%= f.text_area :comment_body %>
+	<%= f.submit %>
+<% end %>
+
+<% @post_comments.each do |post_comment| %>
+	<p>
+		<%= post_comment.created_at.strftime('%Y/%m/%d') %>
+		<%= post_comment.user.name %>
+		<%= post_comment.comment_body %>
+	</p>
+<% end %>
+<p><%= link_to '記事編集', edit_user_post_path %></p>
+<p><%= link_to 'トップページ', user_root_path %></p>
+<p><%= link_to '新規投稿', new_user_post_path %></p>
+<p><%= link_to 'お問い合わせ', new_user_contact_path %></p>
+<p><%= link_to '質問一覧', user_questions_path %></p>
+<p><%= link_to '新規質問', new_user_question_path %></p>
+<p><%= link_to "ログアウト", destroy_user_session_path, method: "delete" %></p>
 
 
 

@@ -5,12 +5,14 @@
 	<h2>URL</h2>
 	<%= f.text_field :link %>
 	<h2>記事の内容</h2>
-	<%= f.text_area :post_body %>
+	<%= f.text_area :post_body, size: "100x10", class: "form-control" %>
 	<%= f.submit '編集' %>
 <% end %>
 <%= @post.user.name %>
 
-<%= link_to '新規投稿', new_user_post_path %>
-<%= link_to 'トップページ', user_root_path %>
-<%= link_to 'ログアウト', destroy_user_session_path, method: 'delete' %>
+<p><%= link_to '記事詳細', user_post_path(@post.id) %></p>
+<p><%= link_to 'トップページ', user_root_path %></p>
+<p><%= link_to '新規投稿', new_user_post_path %></p>
+<p><%= link_to 'お問い合わせ', new_user_contact_path %></p>
+<p><%= link_to "ログアウト", destroy_user_session_path, method: "delete" %></p>
 

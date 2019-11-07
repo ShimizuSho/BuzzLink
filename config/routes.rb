@@ -2,12 +2,14 @@ Rails.application.routes.draw do
 
   namespace :user do
   	root to: "posts#index"
+    get 'contacts/:user_id/contact_completed' => 'contacts#contact_completed', as: 'contact_completed'
 
     resources :users
   	resources :users, only: [:create, :deestroy]
-  	resources :posts, only: [:new,:create, :show, :edit, :update, :deestroy]
-  	resources :comments
-  	resources :favorites, only: [:create, :deestroy]
+  	resources :posts, only: [:new, :create, :show, :edit, :update, :deestroy] do
+  	 resources :comments, only: [:new, :create, :edit, :update, :deestroy]
+  	end
+    resources :favorites, only: [:create, :deestroy]
   	resources :questions
   	resources :contacts
   	resources :folders, only: [:new, :create, :deestroy]
