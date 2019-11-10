@@ -21,6 +21,12 @@ class User::QuestionsController < ApplicationController
 		redirect_to user_questions_path
 	end
 
+	def destroy
+		@question = Question.find(params[:id])
+		@question.delete
+		redirect_to user_questions_path
+	end
+
 private
 	def question_params
 		params.require(:question).permit(:question_title, :question_body)

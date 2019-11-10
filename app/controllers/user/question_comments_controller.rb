@@ -2,7 +2,7 @@ class User::QuestionCommentsController < ApplicationController
 
 	def create
 		@question = Question.find(params[:question_id])
-		@question_comment = current_user.comments.new(question_comment_params)
+		@question_comment = @question.user.comments.new(question_comment_params)
 		@question_comment.question_id = @question.id
 		@question_comment.save
 		redirect_to user_question_path(@question.id)

@@ -10,8 +10,6 @@ class User::ContactsController < ApplicationController
 		redirect_to user_contact_completed_path(current_user.id)
 	end
 
-
-
 private
 	def contact_params
 		params.require(:contact).permit(:name, :email, :contact_body)
