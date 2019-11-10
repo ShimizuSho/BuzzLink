@@ -1,2 +1,27 @@
 <h1>質問詳細</h1>
+<%= link_to user_user_path(@question.user.id) do %>
+	<%= attachment_image_tag @question.user, :profile_image, :fill, 180, 180, fallback: "no_image.jpg", size:'180x180' %>
+<% end %>
+<p>
+	<%= @question.user.name %>
+	<%= @question.question_title %>
+</p>
+<p><%= @question_body %></p>
+
+<%= form_for @comment, url: user_question_question_comments_path(@question.id) do |f| %>
+	<p>コメント内容</p>
+	<p><%= f.text_area :comment_body, size: "50x5", class: "form-control" %></p>
+	<%= f.submit 'コメントする' %>
+<% end %>
+
+<% @comments.each do |comment| %>
+	<%= comment.user.name %>
+	<%= comment.comment_body %>
+<% end %>
+
+<p><%= link_to 'トップページ', user_root_path %></p>
+<p><%= link_to '新規投稿', new_user_post_path %></p>
+<p><%= link_to 'お問い合わせ', new_user_contact_path %></p>
+<p><%= link_to '新規質問', new_user_question_path %></p>
+<p><%= link_to "ログアウト", destroy_user_session_path, method: "delete" %></p>
 

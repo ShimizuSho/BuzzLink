@@ -1,8 +1,12 @@
 <h1>記事の詳細</h1>
+<%= link_to user_user_path(@post.user.id) do %>
+	<%= attachment_image_tag @user, :profile_image, :fill, 180, 180, fallback: "no_image.jpg", size:'180x180' %>
+<% end %>
 <h2><%= @post.post_title %></h2>
 <h3><%= @post.link %></h3>
 <h3><%= @post.user.name %></h3>
 <h4><%= @post.post_body %></h4>
+<%= link_to '記事削除', user_post_path(@post.id), method: :delete %>
 
 <%= form_for [@post, @post_comment], url: user_post_comments_path(@post.id) do |f| %>
 	<%= f.text_area :comment_body %>
@@ -14,6 +18,7 @@
 		<%= post_comment.created_at.strftime('%Y/%m/%d') %>
 		<%= post_comment.user.name %>
 		<%= post_comment.comment_body %>
+		<%= link_to '削除', user_post_comment_path(@post, post_comment.id), method: :delete %>
 	</p>
 <% end %>
 <p><%= link_to '記事編集', edit_user_post_path %></p>

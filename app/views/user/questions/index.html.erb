@@ -1,8 +1,13 @@
 <h1>質問一覧</h1>
 
-<%= @questions.each do |questions| %>
-	<%= questions.user.name %>
-	<%= @questions.question_body %>
+<% @questions.each do |question| %>
+	<%= link_to user_user_path(question.user.id) do %>
+		<%= attachment_image_tag question.user, :profile_image, :fill, 180, 180, fallback: "no_image.jpg", size:'180x180' %>
+	<% end %>
+	<p><%= question.user.name %></p>
+	<%= link_to user_question_path(question.id) do %>
+	<p><%= question.question_body %></p>
+	<% end %>
 <% end %>
 
 <p><%= link_to 'トップページ', user_root_path %></p>

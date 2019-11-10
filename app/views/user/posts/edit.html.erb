@@ -1,4 +1,7 @@
 <h1>記事の編集</h1>
+<%= link_to user_user_path(@post.user.id) do %>
+	<%= attachment_image_tag @user, :profile_image, :fill, 180, 180, fallback: "no_image.jpg", size:'180x180' %>
+<% end %>
 <%= form_for @post, url: user_post_path do |f| %>
 	<h2>タイトル</h2>
 	<%= f.text_field :post_title %>
@@ -15,4 +18,5 @@
 <p><%= link_to '新規投稿', new_user_post_path %></p>
 <p><%= link_to 'お問い合わせ', new_user_contact_path %></p>
 <p><%= link_to "ログアウト", destroy_user_session_path, method: "delete" %></p>
+
 

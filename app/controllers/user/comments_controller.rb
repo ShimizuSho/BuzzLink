@@ -8,6 +8,16 @@ class User::CommentsController < ApplicationController
 		redirect_to user_post_path(@post.id)
 	end
 
+	def destroy
+		@post = Post.find(params[:post_id])
+		@comment = Comment.find(params[:id])
+		@comment.destroy
+		redirect_to user_post_path(@post.id)
+	end
+
+
+
+
 
 
 
@@ -16,7 +26,8 @@ private
 		params.require(:comment).permit(:comment_body)
 	end
 
+
+
+
 end
-
-
 

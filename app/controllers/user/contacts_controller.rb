@@ -17,7 +17,6 @@ private
 		params.require(:contact).permit(:name, :email, :contact_body)
 	end
 
+
 end
-
-
 

@@ -1,20 +1,29 @@
 <h1>POSTS index</h1>
 <table>
 	<div class="row clearfix">
-		<% @posts.each do |post| %>
-		<%= link_to user_post_path(post) do %>
-			<%= post.post_title %>
-		<% end %>
-			<a><%= post.link %></a>
-			<%= current_user.name %>
-
+		<p>
+			<% @posts.each do |post| %>
+			<%= link_to user_user_path(post.user.id) do %>
+				<%= attachment_image_tag post.user, :profile_image, :fill, 180, 180, fallback: "no_image.jpg", size:'180x180' %>
+			<% end %>
+		</p>
+		<p>
+			<%= link_to user_post_path(post) do %>
+				<%= post.post_title %>
+			<% end %>
+		</p>
+				<a><%= post.link %></a>
+			<p>
+				<%= link_to user_user_path(post.user.id) do %>
+					<%= current_user.name %>
+				<% end %>
+			</p>
 		<% end %>
 	</div>
 </table>
 
 
-
-
 <p><%= link_to '新規投稿', new_user_post_path %></p>
 <p><%= link_to 'お問い合わせ', new_user_contact_path %></p>
-<%= link_to "ログアウト", destroy_user_session_path, method: "delete" %>
+<p><%= link_to '質問一覧', user_questions_path %></p>
+<p><%= link_to "ログアウト", destroy_user_session_path, method: "delete" %></p>
