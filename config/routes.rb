@@ -14,7 +14,7 @@ Rails.application.routes.draw do
       resources :question_comments, only: [:new, :create, :edit, :update, :deestroy]
     end
   	resources :contacts
-  	resources :folders, only: [:new, :create, :deestroy]
+  	resources :folders, only: [:index, :new, :create, :update, :deestroy]
   	resources :memos
   end
 

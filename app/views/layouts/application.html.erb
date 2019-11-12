@@ -10,6 +10,45 @@
   </head>
 
   <body>
+  <header>
+    <% if request.path_info.include?('user') %>
+     <div class="user-header">
+        <%= link_to 'BuzzLink絆', user_root_path, :style=>"color:#ffff28; font-size: 50px; text-decoration: none; position: absolute; top: 20px; left: 20px; font-family: cursive; " %>
+     <nav>
+      <% if user_signed_in? %>
+         <ul class="nav-list">
+            <li class="nav-list-item">
+              <%= link_to "ログアウト", destroy_user_session_path, method: :delete, :style=>"color:white;" %>
+            </li>
+            <li class="nav-list-item">
+                 <%= link_to "お問い合わせ",  new_user_contact_path, :style=>"color:white;" %>
+            </li>
+         </ul>
+
+
+     </div>
+
+    <% else %>
+
+             <ul class="nav-list">
+
+               <li class="nav-list-item">
+                 <%= link_to "ログイン", new_user_session_path, :style=>"color:#fff; position: relative; bottom: 10px; " %>
+               </li>
+               <li class="nav-list-item">
+                 <%= link_to "新規会員登録", new_user_registration_path, :style=>"color:#fff; position: relative; bottom: 10px; " %>
+               </li>
+               <li class="nav-list-item">
+                <%= link_to "お問い合わせ", new_user_contact_path, :style=>"color:#fff; position: relative; bottom: 10px; " %>
+               </li>
+            </ul>
+
+      <% end %>
+      </nav>
+      </div>
+    <% end %>
+<div class = "container">
     <%= yield %>
+</div>
   </body>
 </html>

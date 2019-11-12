@@ -1,0 +1,12 @@
+<div class="folder<%= i %>">
+		<h4 class= "folder_name name<%= i %>"><%= folder.folder_name %></h4>
+		<div class="folder_name_form<%= i %> hidden">
+			<%= form_for folder, url: user_folder_path(folder.id), remote: true, method: :patch do |f|%>
+				<% f.text_field :folder_name %>
+			<% end %>
+		</div>
+		<div class= "folder_name_edit<%= i %>">
+			<span class= "glyphicon glyphicon glyphicon glyphicon-pencil" aria-hidden="true"></span>
+		</div>
+		<span class= "glyphicon glyphicon glyphicon glyphicon-trash" aria-hidden="true"></span>
+</div>

@@ -2,6 +2,7 @@ class User::PostsController < ApplicationController
 
 	def index
 		@posts = Post.all
+		@folders = current_user.folders
 	end
 
 	def new

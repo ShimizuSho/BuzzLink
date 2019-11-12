@@ -1,0 +1,9 @@
+<h1>マイページ編集</h1>
+<%= form_for @user, url: user_user_path(@user.id), method: :patch do |f| %>
+	<p>プロフィール画像<%= f.attachment_field :profile_image %></p>
+	<p>年齢<%= f.number_field :age, min:0, max:100 %></p>
+	<p>性別<%= f.radio_button :gender, "男性" %>男性 <%= f.radio_button :gender, "女性" %>女性</p>
+	<p>誕生日<%= f.date_select :birthday %></p>
+	<p>自己紹介<%= f.text_area :introduction %></p>
+	<%= f.submit '登録する' %>
+<% end %>

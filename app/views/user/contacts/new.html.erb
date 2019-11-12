@@ -12,7 +12,7 @@
   <h4 class="registrations-headline">お問い合わせ内容</h4>
 	<div class="row">
 		<div class="col-lg-2"></div>
-			<div class="col-lg-6"><%= f.text_area :contact_body, size: "100x10", class: "form-control" %></div>
+			<div class="col-lg-6"><%= f.text_area :contact_body, size: "50x10", class: "form-control" %></div>
 	</div>
 	     <h1 class="contact_new_btn"><%= f.submit '送信', class:"btn  btn-lg btn-primary" %></h1>
 <% end %>
@@ -21,4 +21,6 @@
 <p><%= link_to '新規投稿', new_user_post_path %></p>
 <p><%= link_to 'お問い合わせ', new_user_contact_path %></p>
 <p><%= link_to "ログアウト", destroy_user_session_path, method: "delete" %></p>
+
+
 

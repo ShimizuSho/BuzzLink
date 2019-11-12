@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_10_093248) do
+ActiveRecord::Schema.define(version: 2019_11_10_114753) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -102,16 +102,16 @@ ActiveRecord::Schema.define(version: 2019_11_10_093248) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.string "gender"
-    t.integer "birthday"
-    t.string "degree"
+    t.string "gender", default: "未設定"
+    t.datetime "birthday"
+    t.string "degree", default: "未設定"
     t.integer "point"
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.text "profile_image_id"
-    t.integer "age"
-    t.text "introduction"
+    t.integer "age", default: 0
+    t.text "introduction", default: "未設定"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
