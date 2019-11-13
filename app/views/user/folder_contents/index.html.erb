@@ -1,0 +1,15 @@
+<h1>フォルダーの内容</h1>
+<div class="row clearfix">
+	<div class="col-lg-3">
+		<%= render 'user/folders/template', folders: @folders %>
+	</div>
+
+	<div class="col-lg-9">
+		<p><%= @folder_contents.each do |folder_content| %></p>
+			<p><%= folder_content.folder.user.profile_image %></p>
+			<p><%= folder_content.post.post_title %></p>
+			<p><%= folder_content.post.link %></p>
+			<p><%= folder_content.folder.user.name %></p>
+		<% end %>
+	</div>
+</div>

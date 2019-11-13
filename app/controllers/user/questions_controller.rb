@@ -2,6 +2,7 @@ class User::QuestionsController < ApplicationController
 
 	def index
 		@questions = Question.all
+		@folders = current_user.folders
 	end
 
 	def new

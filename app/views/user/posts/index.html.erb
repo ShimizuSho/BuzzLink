@@ -1,7 +1,10 @@
+
 <h1>POSTS index</h1>
-<%= render 'user/folders/template', folders: @folders %>
-<table>
-	<div class="row clearfix">
+<div class="row clearfix">
+	<div class="col-lg-3">
+		<%= render 'user/folders/template', folders: @folders %>
+	</div>
+	<div class="col-lg-9">
 		<p>
 			<% @posts.each do |post| %>
 			<%= link_to user_user_path(post.user.id) do %>
@@ -22,8 +25,7 @@
 			</p>
 		<% end %>
 	</div>
-</table>
-
+</div>
 
 <p><%= link_to '新規投稿', new_user_post_path %></p>
 <p><%= link_to 'お問い合わせ', new_user_contact_path %></p>

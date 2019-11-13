@@ -3,9 +3,11 @@
 <% folders.each do |folder| %>
 	<div class="folder folder<%= i %>">
 		<div class="folder<%= i %>_content">
-			<h4 class= "folder_name name<%= i %>"><%= folder.folder_name %></h4>
+			<%= link_to user_user_folder_folder_contents_path(current_user.id, folder.id) do %>
+				<h4 class= "folder_name name<%= i %>"><%= folder.folder_name %></h4>
+			<% end %>
 			<div class="folder_name_form<%= i %> hidden">
-				<%= form_for folder, url: user_folder_path(folder.id), remote: true, method: :patch do |f|%>
+				<%= form_for folder, url: user_user_folder_path(current_user.id, folder.id), remote: true, method: :patch do |f|%>
 					<%= f.text_field :folder_name %>
 					<%= f.submit 'update' %>
 				<% end %>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_10_114753) do
+ActiveRecord::Schema.define(version: 2019_11_13_071430) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -48,6 +48,22 @@ ActiveRecord::Schema.define(version: 2019_11_10_114753) do
     t.integer "post_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "folder_contants", force: :cascade do |t|
+    t.integer "post_id"
+    t.integer "folder_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "folder_contents", force: :cascade do |t|
+    t.integer "post_id"
+    t.integer "folder_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.text "memo"
+    t.string "folder_contents_title"
   end
 
   create_table "folders", force: :cascade do |t|

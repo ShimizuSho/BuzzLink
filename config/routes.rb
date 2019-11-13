@@ -4,8 +4,11 @@ Rails.application.routes.draw do
   	root to: "posts#index"
 
     get 'contacts/:user_id/contact_completed' => 'contacts#contact_completed', as: 'contact_completed'
-    resources :users
-  	resources :users, only: [:create, :deestroy]
+    resources :users do
+      resources :folders, only: [:index, :new, :create, :update, :destroy] do
+        resources :folder_contents, only: [:index, :new, :create, :update, :deestroy]
+      end
+    end
   	resources :posts, only: [:new, :create, :show, :edit, :update, :destroy] do
   	 resources :comments, only: [:new, :create, :edit, :update, :destroy]
   	end
@@ -14,8 +17,7 @@ Rails.application.routes.draw do
       resources :question_comments, only: [:new, :create, :edit, :update, :deestroy]
     end
   	resources :contacts
-  	resources :folders, only: [:index, :new, :create, :update, :deestroy]
-  	resources :memos
+    resources :memos
   end
 
   namespace :admin do

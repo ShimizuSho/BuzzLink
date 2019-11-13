@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class MemoTest < ActiveSupport::TestCase
+class User::FolderContentsControllerTest < ActionDispatch::IntegrationTest
   # test "the truth" do
   #   assert true
   # end

@@ -20,6 +20,7 @@ class User::PostsController < ApplicationController
 		@post = Post.find(params[:id])
 		@post_comment = Comment.new
 		@post_comments = Comment.all
+		@folders = current_user.folders
 	end
 
 	def edit
@@ -35,7 +36,7 @@ class User::PostsController < ApplicationController
 	def destroy
 		@post = Post.find(params[:id])
 		@post.destroy
-		redirect_to user_users_path
+		redirect_to user_root_path
 	end
 
 
