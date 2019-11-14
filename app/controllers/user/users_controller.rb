@@ -2,6 +2,7 @@ class User::UsersController < ApplicationController
 
 	def show
 		@user = User.find(params[:id])
+		@folders = current_user.folders
 	end
 
 	def edit

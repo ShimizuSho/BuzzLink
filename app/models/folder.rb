@@ -1,7 +1,7 @@
 class Folder < ApplicationRecord
 
 	belongs_to :user
-	has_many :posts
-	has_many :folder_contents
+	has_many :posts, dependent: :destroy
+	has_many :folder_contents, dependent: :destroy
 
 end

@@ -1,7 +1,6 @@
 class Question < ApplicationRecord
 
-	has_many :comments
-	has_many :question_comments
+	has_many :question_comments, dependent: :destroy
 	belongs_to :user
 
 end

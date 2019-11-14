@@ -5,8 +5,10 @@
 	</div>
 
 	<div class="col-lg-9">
-		<p><%= @folder_contents.each do |folder_content| %></p>
-			<p><%= folder_content.folder.user.profile_image %></p>
+		<p><% @folder_contents.each do |folder_content| %></p>
+			<%= link_to user_user_path(folder_content.post.user.id) do %>
+				<%= attachment_image_tag folder_content.post.user, :profile_image, :fill, 180, 180, fallback: "no_image.jpg", size:'180x180' %>
+			<% end %>
 			<p><%= folder_content.post.post_title %></p>
 			<p><%= folder_content.post.link %></p>
 			<p><%= folder_content.folder.user.name %></p>

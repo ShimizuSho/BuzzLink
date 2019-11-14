@@ -4,9 +4,11 @@ Rails.application.routes.draw do
   	root to: "posts#index"
 
     get 'contacts/:user_id/contact_completed' => 'contacts#contact_completed', as: 'contact_completed'
+    get 'folder_contents/:user_id/folder_contents_new/:post_id' => 'folder_contents#new', as: 'folder_contents_new'
+    post 'folder_contents/:user_id/folder_contents_create/:post_id' => 'folder_contents#create', as: 'folder_contents_create'
     resources :users do
       resources :folders, only: [:index, :new, :create, :update, :destroy] do
-        resources :folder_contents, only: [:index, :new, :create, :update, :deestroy]
+        resources :folder_contents, only: [:index, :update, :deestroy]
       end
     end
   	resources :posts, only: [:new, :create, :show, :edit, :update, :destroy] do
@@ -18,6 +20,7 @@ Rails.application.routes.draw do
     end
   	resources :contacts
     resources :memos
+    resources :relationships, only: [:create, :destroy]
   end
 
   namespace :admin do
