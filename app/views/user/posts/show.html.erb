@@ -12,7 +12,7 @@
 		<h3><%= @post.link %></h3>
 		<h3><%= @post.user.name %></h3>
 		<h4><%= @post.post_body %></h4>
-		<%= link_to 'ブックマーク', user_folder_contents_new_path(current_user.id, @post.id), class: 'bookmark btn ' %>
+		<%= link_to 'ブックマーク', user_folder_contents_new_path(@post.id), class: 'bookmark btn ' %>
 
 		<%= link_to '記事削除', user_post_path(@post.id), method: :delete %>
 		<%= form_for [@post, @post_comment], url: user_post_comments_path(@post.id) do |f| %>

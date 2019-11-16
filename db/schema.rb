@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_14_025556) do
+ActiveRecord::Schema.define(version: 2019_11_16_054830) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -50,13 +50,6 @@ ActiveRecord::Schema.define(version: 2019_11_14_025556) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "folder_contants", force: :cascade do |t|
-    t.integer "post_id"
-    t.integer "folder_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "folder_contents", force: :cascade do |t|
     t.integer "post_id"
     t.integer "folder_id"
@@ -69,12 +62,6 @@ ActiveRecord::Schema.define(version: 2019_11_14_025556) do
   create_table "folders", force: :cascade do |t|
     t.integer "user_id"
     t.string "folder_name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "followers", force: :cascade do |t|
-    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -113,6 +100,8 @@ ActiveRecord::Schema.define(version: 2019_11_14_025556) do
   end
 
   create_table "relationships", force: :cascade do |t|
+    t.integer "following_id"
+    t.integer "follower_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -7,7 +7,6 @@ class User::PostsController < ApplicationController
 
 	def new
 		@post = Post.new
-		@folder = Folder.find(params[:id])
 	end
 
 	def create

@@ -41,7 +41,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   protected
 
   def after_sign_up_path_for(resouce)
-    new_user_folder_path
+    user_folders_new_path
   end
 
   # If you have extra params to permit, append them to the sanitizer.

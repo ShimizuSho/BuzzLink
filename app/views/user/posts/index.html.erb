@@ -20,7 +20,7 @@
 				<a><%= post.link %></a>
 			<p>
 				<%= link_to user_user_path(post.user.id) do %>
-					<%= current_user.name %>
+					<%= post.user.name %>
 				<% end %>
 			</p>
 		<% end %>
