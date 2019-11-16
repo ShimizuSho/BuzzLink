@@ -3,6 +3,7 @@ class User::UsersController < ApplicationController
 	def show
 		@user = User.find(params[:id])
 		@folders = current_user.folders
+		@favorite_posts = @user.favorite_posts
 	end
 
 	def edit
