@@ -1,7 +1,7 @@
 class User::PostsController < ApplicationController
 
 	def index
-		@posts = Post.all
+		@posts = Post.search(params[:search])
 		@folders = current_user.folders
 	end
 

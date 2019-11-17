@@ -1,20 +1,20 @@
 <h1>記事の新規投稿</h1>
 
-<%= link_to user_user_path(current_user.id) do %>
-	<%= attachment_image_tag current_user, :profile_image, :fill, 180, 180, fallback: "no_image.jpg", size:'180x180' %>
-<% end %>
+<div class="post_info_box">
+	<div class= "profile_image">
+		<%= link_to user_user_path(current_user.id) do %>
+			<%= attachment_image_tag current_user, :profile_image, :fill, 180, 180, fallback: "no_image.jpg", size:'180x180' %>
+		<% end %>
+	</div>
 
-<%= form_for @post, url: user_posts_path, method: :post do |f| %>
+		<%= form_for @post, url: user_posts_path, method: :post do |f| %>
 
-	<p>タイトル</p>
-	<%= f.text_field :post_title %>
-	<p>URL</p>
-	<%= f.text_field :link %>
-	<p>記事の内容</p>
-	<%= f.text_area :post_body, size: "10x10", class: "form-control" %>
-	<%= f.submit '投稿する' %>
-<% end %>
-
-
-<%= link_to 'トップページ', user_root_path %>
-<%= link_to "ログアウト", destroy_user_session_path, method: "delete" %>
+			<h4>タイトル</h4>
+			<%= f.text_field :post_title %>
+			<h4>URL</h4>
+			<%= f.text_field :link %>
+			<h4>記事の内容</h4>
+			<%= f.text_area :post_body, size: "100x10" %>
+			<%= f.submit '投稿する' %>
+		<% end %>
+</div>

@@ -12,7 +12,7 @@ Rails.application.routes.draw do
       get :follows, on: :member
       get :followers, on: :member
       resources :folders, only: [:index, :new, :update, :destroy] do
-        resources :folder_contents, only: [:index, :new, :update, :deestroy]
+        resources :folder_contents, only: [:index, :new, :update, :destroy]
       end
     end
   	resources :posts, only: [:new, :create, :show, :edit, :update, :destroy] do

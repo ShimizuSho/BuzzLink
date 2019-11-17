@@ -31,6 +31,15 @@ class User::FolderContentsController < ApplicationController
 		render 'user/folder_contents/index'
 	end
 
+	def destroy
+		@folder_content = FolderContent.find(params[:id])
+		@folder_content.destroy
+		@folder = Folder.find(params[:folder_id])
+		@folder_contents = @folder.folder_contents
+		@folders = current_user.folders
+		render 'user/folder_contents/index'
+	end
+
 private
 	def folder_contents_params
 		params.require(:folder_content).permit(:folder_id, :folder_contents_title, :memo)

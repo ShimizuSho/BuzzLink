@@ -22,6 +22,7 @@ def update
 	@number = @folders.index(@folder) + 1
 end
 
+
 private
 	def folder_params
 		params.require(:folder).permit(:folder_name)

@@ -16,20 +16,32 @@
  @import "bootstrap-sprockets";
  @import "bootstrap";
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.clearfix::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
 .folder_name:hover {
 	background-color: #00f;
 	color: #fff;
 }
 
+.show {
+	display: block;
+}
 .hidden {
-	display: none;
+  display : none;
 }
 
-
-*{
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+.folder_move_list {
+  display: none;
 }
 
 .clearfix::after{
@@ -64,43 +76,10 @@
     padding-left: 15px;
 }
 
-.glyphicon-shopping-cart{
-}
-
-
-.nav-list-cart{
-  position: absolute;
-  right: 50px;
-  bottom: 0px;
-}
-
-.nav-list-cart p {
-  margin-bottom: 0px;
-}
-
 .header-search {
   position: absolute;
   bottom: 20px;
   left: 20px;
-}
-
-.btn-square {
-  display: inline-block;
-  padding: 0.5em 1em;
-  text-decoration: none;
-  background: #4169e1;/*ボタン色*/
-  color:white;
-  border-bottom: solid 4px #627295;
-  border-radius: 3px;
-  position: relative;
-  bottom: 25px;
-   background    : rgba(0, 0, 102, 0.60);
-}
-.btn-square:active {
-  /*ボタンを押したとき*/
-  -webkit-transform: translateY(4px);
-  transform: translateY(4px);/*下に動く*/
-  border-bottom: none;/*線を消す*/
 }
 
 .admin-nav-list-item {
@@ -121,60 +100,6 @@
 
 }
 
-
-.order-show-content{
-	float: left;
-	padding-right: 50px;
-}
-
-.disc_field {
-	margin-bottom: 20px;
-}
-
 .registrations-headline{
 	font-weight: bold;
-}
-
-.field {
-  margin-bottom: 30px;
-}
-
-.delivery-filed {
-  margin-bottom: 30px;
-}
-
-
-.links {
-  padding: 10px;
-}
-
-.remove {
-  padding: 10px;
-}
-
-
-.actions-user-edit {
-  margin: 10px 0px;
-}
-
-.form {
-  margin-bottom: 20px;
-}
-
-.admin-user-delivery-filed {
-  margin-bottom: 20px;
-}
-
-.no_item_message {
-  color: red;
-  margin-bottom: 30px;
-}
-
-.btn-lg  {
-  padding: 5px;
-}
-
-.treatment{
-  color: red;
-  margin-top: 35px;
 }

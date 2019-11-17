@@ -4,12 +4,12 @@
 	<div class="col-lg-3">
 		<%= render 'user/folders/template', folders: @folders %>
 	</div>
-	<div class="col-lg-9">
+	<div class="col-lg-9 clearfix">
 		<%= link_to user_user_path(@post.user.id) do %>
 			<%= attachment_image_tag @user, :profile_image, :fill, 180, 180, fallback: "no_image.jpg", size:'180x180' %>
 		<% end %>
 		<h2><%= @post.post_title %></h2>
-		<h3><%= @post.link %></h3>
+		<p><%= @post.link %></p>
 		<h3><%= @post.user.name %></h3>
 		<h4><%= @post.post_body %></h4>
 
@@ -29,7 +29,9 @@
 
 		<%= link_to 'ブックマーク', user_folder_contents_new_path(@post.id), class: 'bookmark btn ' %>
 
-		<%= link_to '記事削除', user_post_path(@post.id), method: :delete %>
+		<% if @post.user == current_user %>
+			<%= link_to '記事削除', user_post_path(@post.id), method: :delete %>
+		<% end %>
 		<%= form_for [@post, @post_comment], url: user_post_comments_path(@post.id) do |f| %>
 			<%= f.text_area :comment_body %>
 			<%= f.submit %>
@@ -42,7 +44,9 @@
 					<%= post_comment.user.name %>
 				<% end %>
 				<%= post_comment.comment_body %>
-				<%= link_to '削除', user_post_comment_path(@post, post_comment.id), method: :delete %>
+				<% if post_comment.user == current_user %>
+					<%= link_to '削除', user_post_comment_path(@post, post_comment.id), method: :delete %>
+				<% end %>
 			</p>
 		<% end %>
 	</div>
