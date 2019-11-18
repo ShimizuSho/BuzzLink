@@ -11,6 +11,8 @@ Rails.application.routes.draw do
       resource :relationships, only: [:create, :destroy]
       get :follows, on: :member
       get :followers, on: :member
+      resources :messages, only: [:create]
+      resources :rooms, only: [:create, :show, :index]
       resources :folders, only: [:index, :new, :update, :destroy] do
         resources :folder_contents, only: [:index, :new, :update, :destroy]
       end
@@ -26,6 +28,7 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
+    get 'home/top'
   	resources :users
   	resources :users, only: [:create, :deestroy]
   	resources :posts

@@ -25,6 +25,20 @@
 		<% end %>
 		<p>自己紹介　<%= @user.introduction %></p>
 
+		<% if @user.id != current_user.id %>
+
+	  		<% if @isRoom == true %>
+		    <%= link_to "チャットへ", user_user_room_path(current_user.id, @roomId), class:"btn btn-primary user-show-room" %>
+			<% else %>
+		    	<%= form_for @room, url: user_user_rooms_path(current_user.id), method: :post do |f| %>
+		      		<%= fields_for @entry do |e| %>
+		        		<%= e.hidden_field :user_id, value: @user.id %>
+		      		<% end %>
+		      		<%= f.submit "チャットを始める", class:"btn btn-primary btn-lg user-show-chat"%>
+		    	<% end %>
+		  	<% end %>
+		<% end %>
+
 		<p><%=link_to "フォロー", follows_user_user_path(@user.id) %></p>
 		<p><%=link_to "フォロワー", followers_user_user_path(@user.id) %></p>
 		<% if @user != current_user %>
