@@ -10,9 +10,11 @@ class User::PostsController < ApplicationController
 	end
 
 	def create
-		@post = Post.new(post_params)
-		@post.user_id = current_user.id
-		@post.save
+		post = Post.new(post_params)
+		post.user_id = current_user.id
+		post.save
+		new_point = post.user.point + 10
+		@post.user.update(point: new_point)
 		redirect_to user_root_path
 	end
 

@@ -13,3 +13,12 @@
 .post_info_1 {
   flex-grow: 1;
 }
+.folder.flex {
+	padding-right: 30px;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.folder_move{
+	float: left;
+}

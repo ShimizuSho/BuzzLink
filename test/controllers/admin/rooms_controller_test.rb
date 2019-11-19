@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class Admin::MemosControllerTest < ActionDispatch::IntegrationTest
+class Admin::RoomsControllerTest < ActionDispatch::IntegrationTest
   # test "the truth" do
   #   assert true
   # end

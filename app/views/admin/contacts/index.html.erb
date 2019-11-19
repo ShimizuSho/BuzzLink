@@ -1,0 +1,22 @@
+<h1>お問い合わせ一覧</h1>
+<div class="row">
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th>お名前</th>
+				<th>内容</th>
+			</tr>
+		</thead>
+		<tbody>
+			<% @contacts.each do |contact| %>
+				<tr>
+					<td>
+						<%= link_to user_user_path(contact.user.id) %>
+							contact.user.name
+					</td>
+					<td><%= contact.contact_body %></td>
+				</tr>
+			<% end %>
+		</tbody>
+	</table>
+</div>

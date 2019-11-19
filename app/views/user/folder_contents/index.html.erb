@@ -24,10 +24,15 @@
 					</div>
 
 					<div class= "post_info_2">
-						<div class= "move<%= i %>"><span class="glyphicon glyphicon glyphicon-arrow-left " aria-hidden="true"></span></div>
+						<div class= "move<%= i %> arrow-left"><span class="glyphicon glyphicon glyphicon-arrow-left " aria-hidden="true"></span></div>
 							<%= form_tag(user_user_folder_folder_content_path(current_user.id, folder_content.folder_id, folder_content.id), method: :patch) do %>
-								<div class= "folder_move_list folder_move_list<%= i %>"><%= collection_select :folder_content, :folder_id, current_user.folders, :id, :folder_name %>
-									<%= submit_tag '移動' %>
+								<div class= "folder_move_list folder_move_list<%= i %> clearfix">
+									<div class="folder_move">
+										<%= collection_select :folder_content, :folder_id, current_user.folders, :id, :folder_name %>
+									</div>
+									<div class="folder_move">
+										<%= submit_tag '移動' %>
+									</div>
 								</div>
 								<%= link_to user_user_folder_folder_content_path(current_user.id, folder_content.folder.id, folder_content.id), method: :delete, "data-confirm" => "本当に消しますか？" do %>
 									<span class= "glyphicon glyphicon glyphicon glyphicon-trash" aria-hidden="true"></span>

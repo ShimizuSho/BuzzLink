@@ -4,26 +4,33 @@
 		<%= render 'user/folders/template', folders: @folders %>
 	</div>
 	<div class="col-lg-9">
-		<%= attachment_image_tag @user, :profile_image, :fill, 180, 180, fallback: "no_image.jpg", size:'180x180' %>
-		<p><%= @user.name %></p>
-		<p>称号　<%= @user.degree %></p>
-		<h3>プロフィール</h3>
-		<%= link_to edit_user_user_path(@user.id) do %>
-			<span class="glyphicon glyphicon glyphicon-edit " aria-hidden="true"></span>
-		<% end %>
+		<div class="profile_info">
+			<div>
+				<%= attachment_image_tag @user, :profile_image, :fill, 180, 180, fallback: "no_image.jpg", size:'180x180' %>
+				<p><%= @user.name %></p>
+				<p class="degree">称号　<%= @user.degree %></p>
+			</div>
+			<div>
 
-		<% if @user.age == 0 %>
-			<p>年齢　非公開</p>
-		<% else %>
-			<p>年齢<%= @user.age %></p>
-		<% end %>
-		<p>性別　<%= @user.gender %></p>
-		<% if @user.birthday == nil %>
-			<p>誕生日　未設定</p>
-		<% else %>
-		　	<p>誕生日　<%= @user.birthday %></p>
-		<% end %>
-		<p>自己紹介　<%= @user.introduction %></p>
+				<h3 class="profile_title">プロフィール</h3>
+				<%= link_to edit_user_user_path(@user.id) do %>
+					<span class="glyphicon glyphicon glyphicon-edit " aria-hidden="true"></span>
+				<% end %>
+
+				<% if @user.age == 0 %>
+					<p>年齢　非公開</p>
+				<% else %>
+					<p>年齢<%= @user.age %></p>
+				<% end %>
+				<p>性別　<%= @user.gender %></p>
+				<% if @user.birthday == nil %>
+					<p>誕生日　未設定</p>
+				<% else %>
+				　	<p>誕生日　<%= @user.birthday %></p>
+				<% end %>
+				<p>自己紹介　<%= @user.introduction %></p>
+			</div>
+		</div>
 
 		<% if @user.id != current_user.id %>
 

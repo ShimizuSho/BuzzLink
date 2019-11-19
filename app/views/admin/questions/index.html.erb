@@ -1,0 +1,20 @@
+<h1>質問一覧</h1>
+<P><b><%= link_to "管理者としてログイン中　ログアウト", destroy_admin_session_path, method: :delete %></b>
+<div class="row clearfix">
+	<div class="col-lg-9">
+		<% @questions.each do |question| %>
+			<%= link_to user_user_path(question.user.id) do %>
+				<%= attachment_image_tag question.user, :profile_image, :fill, 180, 180, fallback: "no_image.jpg", size:'180x180' %>
+			<% end %>
+			<p>
+				<%= question.created_at.strftime('%Y/%m/%d') %>
+				<%= link_to user_user_path(question.user.id) do %>
+					<%= question.user.name %>
+				<% end %>
+			</p>
+			<%= link_to user_question_path(question.id) do %>
+				<p><%= question.question_title %></p>
+			<% end %>
+		<% end %>
+	</div>
+</div>

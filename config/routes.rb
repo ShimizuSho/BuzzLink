@@ -28,7 +28,7 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
-    get 'home/top'
+    root to: "home#top"
   	resources :users
   	resources :users, only: [:create, :deestroy]
   	resources :posts
@@ -37,7 +37,9 @@ Rails.application.routes.draw do
   	resources :questions
   	resources :contacts
   	resources :folders, only: [:create, :deestroy]
-  	resources :memos
+  	resources :users, only: [:show,:edit,:update]
+    resources :messages, only: [:create]
+    resources :rooms, only: [:create,:show]
   end
 
   devise_for :admins, controllers: {

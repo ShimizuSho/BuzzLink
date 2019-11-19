@@ -1,0 +1,42 @@
+<h1>マイページ</h1>
+<P><b><%= link_to "管理者としてログイン中　ログアウト", destroy_admin_session_path, method: :delete %></b>
+<div class="row clearfix">
+	<div class="col-lg-9 profile_info">
+		<div>
+			<%= attachment_image_tag @user, :profile_image, :fill, 180, 180, fallback: "no_image.jpg", size:'180x180' %>
+			<p>称号　<%= @user.degree %></p>
+		</div>
+		<div>
+			<p><%= @user.name %></p>
+			<h3>プロフィール</h3>
+
+			<% if @user.age == 0 %>
+				<p>年齢　非公開</p>
+			<% else %>
+				<p>年齢<%= @user.age %></p>
+			<% end %>
+			<p>性別　<%= @user.gender %></p>
+			<% if @user.birthday == nil %>
+				<p>誕生日　未設定</p>
+			<% else %>
+			　	<p>誕生日　<%= @user.birthday %></p>
+			<% end %>
+			<p>自己紹介　<%= @user.introduction %></p>
+		</div>
+
+		<% if @user.id != current_admin.id %>
+
+	  		<% if @isRoom == true %>
+		    <%= link_to "チャットへ", admin_room_path(@roomId), class:"btn btn-primary user-show-room" %>
+			<% else %>
+		    	<%= form_for @room, url: admin_rooms_path, method: :post do |f| %>
+		      		<%= fields_for @entry do |e| %>
+		        		<%= e.hidden_field :user_id, value: @user.id %>
+		      		<% end %>
+		      		<%= f.submit "チャットを始める", class:"btn btn-primary btn-lg user-show-chat"%>
+		    	<% end %>
+		  	<% end %>
+		<% end %>
+
+	</div>
+</div>
