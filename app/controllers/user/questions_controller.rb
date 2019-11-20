@@ -1,7 +1,7 @@
 class User::QuestionsController < ApplicationController
 
 	def index
-		@questions = Question.all
+		@questions = Question.page(params[:page]).per(5)
 		@folders = current_user.folders
 	end
 

@@ -1,11 +1,11 @@
 
 <h1>記事の詳細</h1>
 <div class="row clearfix">
-	<div class="col-lg-3">
+	<div class="col-lg-3 folder_template">
 		<%= render 'user/folders/template', folders: @folders %>
 	</div>
 	<div class="col-lg-9 clearfix">
-		<%= link_to user_user_path(@post.user.id), class: "frame<%= (@post.user.level)/5 %>" do %>
+		<%= link_to user_user_path(@post.user.id) do %>
 			<%= attachment_image_tag @user, :profile_image, :fill, 180, 180, fallback: "no_image.jpg", size:'180x180' %>
 		<% end %>
 		<h2><%= @post.post_title %></h2>

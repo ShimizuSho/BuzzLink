@@ -3,18 +3,16 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .post_info_box {
-  display: flex;
-  margin-bottom: 20px;
+  margin: 0 0 20px 50px;
 }
 
-
-
-.profile_image {
+.profile_image_box {
  margin-right: 20px;
 }
 
 .post_info_1 {
   flex-grow: 1;
+  margin-left: 40px;
 }
 
 

@@ -22,6 +22,16 @@ def update
 	@number = @folders.index(@folder) + 1
 end
 
+def destroy
+	@folder = Folder.find(params[:id])
+	@folder_contents = @folder.folder_contents
+	@folder_contents.destroy_all
+	@folder_contents = @folder.folder_contents.page(params[:page]).per(5)
+	@folders = current_user.folders
+	render 'user/folder_contents/index'
+
+end
+
 
 private
 	def folder_params

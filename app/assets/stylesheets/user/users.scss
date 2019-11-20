@@ -3,7 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .profile_info {
-	display: flex;
+	margin-left: 20px;
 }
 
 .profile_title {
@@ -13,9 +13,37 @@
 .degree {
 	display: inline-block;
 }
+.glyphicon-edit{
+	margin-left: 10px;
+}
 
-
-.frame1 {}
-.frame2 {}
-.frame3 {}
-.frame4 {}
+.frame1 {
+	 border : solid 10px #CCFFFF;
+}
+.frame2 {
+	background-color: #00FFFF;
+}
+.frame3 {
+	background-color: blue;
+}
+.frame4 {
+	background-color: #CCFF99;
+}
+.frame5 {
+	background-color: #00FF33;
+}
+.frame6 {
+	background-color: #007700;
+}
+.frame7 {
+	background-color: #FF6928;
+}
+.frame8 {
+	background-color: #FF0033;
+}
+.frame9 {
+	background-color: #990000;
+}
+.frame10 {
+	background-color: #800080;
+}

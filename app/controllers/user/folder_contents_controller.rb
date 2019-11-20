@@ -2,7 +2,7 @@ class User::FolderContentsController < ApplicationController
 
 	def index
 		@folder = Folder.find(params[:folder_id])
-		@folder_contents = @folder.folder_contents
+		@folder_contents = @folder.folder_contents.page(params[:page]).per(5)
 		@folders = current_user.folders
 	end
 

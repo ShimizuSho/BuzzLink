@@ -1,10 +1,9 @@
-
-<h1>POSTS index</h1>
 <div class="row clearfix">
-	<div class="col-lg-3">
+	<div class="col-lg-3 folder_template">
 		<%= render 'user/folders/template', folders: @folders %>
 	</div>
 	<div class="col-lg-9">
+		<h1>POSTS index</h1>
 		<% @posts.each do |post| %>
 			<div class= "post_info_box">
 				<div class= "profile_image">
@@ -27,10 +26,8 @@
 				</div>
 			</div>
 		<% end %>
+		<%= paginate @posts, class: "paginate" %>
 	</div>
 </div>
 
-<p><%= link_to '新規投稿', new_user_post_path %></p>
-<p><%= link_to 'お問い合わせ', new_user_contact_path %></p>
 <p><%= link_to '質問一覧', user_questions_path %></p>
-<p><%= link_to "ログアウト", destroy_user_session_path, method: "delete" %></p>

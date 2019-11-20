@@ -1,7 +1,7 @@
 class User::PostsController < ApplicationController
 
 	def index
-		@posts = Post.search(params[:search])
+		@posts = Post.page(params[:page]).per(5)
 		@folders = current_user.folders
 	end
 
@@ -13,8 +13,8 @@ class User::PostsController < ApplicationController
 		post = Post.new(post_params)
 		post.user_id = current_user.id
 		post.save
-		new_point = post.user.point + 10
-		@post.user.update(point: new_point)
+		new_point = post.user.point.to_i + 10
+		post.user.update(point: new_point)
 		redirect_to user_root_path
 	end
 
