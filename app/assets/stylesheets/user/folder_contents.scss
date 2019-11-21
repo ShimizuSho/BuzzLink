@@ -19,3 +19,24 @@
 .folder_move{
 	float: left;
 }
+
+.arrow-left {
+	margin-right: 3px;
+}
+.arrow-left span {
+	top: 0;
+}
+
+.arrow-left span:before {
+	font-size: 20px;
+}
+.post_info_2_form .glyphicon:before {
+	font-size: 20px;
+}
+.show_form form {
+	width: 200px;
+}
+.fav-count {
+	display: inline-block;
+	font-size: 20px;
+}

@@ -7,7 +7,11 @@
 }
 
 .profile_title {
-	display: inline-block;
+  	display: inline-block;
+  	padding: 0.5em;
+ 	color: #494949;
+  	background: #fffaf4;
+  	border-left: solid 5px #ffaf58;/*左線（実線 太さ 色）*/
 }
 
 .degree {
@@ -18,32 +22,105 @@
 }
 
 .frame1 {
-	 border : solid 10px #CCFFFF;
+	border : solid 10px #CCFFFF;
 }
 .frame2 {
-	background-color: #00FFFF;
+	border : solid 10px #00FFFF;
 }
 .frame3 {
-	background-color: blue;
+	border : solid 10px blue;
 }
 .frame4 {
-	background-color: #CCFF99;
+	border : solid 10px #CCFF99;
 }
 .frame5 {
-	background-color: #00FF33;
+	border : solid 10px #00FF33;
 }
 .frame6 {
-	background-color: #007700;
+	border : solid 10px #007700;
 }
 .frame7 {
-	background-color: #FF6928;
+	border : solid 10px #FF6928;
 }
 .frame8 {
-	background-color: #FF0033;
+	border : solid 10px #FF0033;
 }
 .frame9 {
-	background-color: #990000;
+	border : solid 10px #990000;
 }
 .frame10 {
-	background-color: #800080;
+	border : solid 10px #800080;
+}
+
+.ribbon6 {
+  display: inline-block;
+  position: relative;
+  height: 60px;
+  line-height: 60px;
+  text-align: center;
+  padding: 7px 0;
+  font-size: 18px;
+  background: #78d0f5;
+  color: #FFF;
+  box-sizing: border-box;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.25);
+}
+
+.ribbon6 h1 {
+  margin: 0;
+  padding: 0 30px;
+  border-top: dashed 2px rgba(255, 255, 255, 0.5);
+  border-bottom: dashed 2px rgba(255, 255, 255, 0.5);
+  line-height: 42px;
+}
+
+.ribbon6:before, .ribbon6:after {
+  position: absolute;
+  content: '';
+  width: 0px;
+  height: 0px;
+  z-index: 1;
+}
+
+.ribbon6:before {
+  top: -2px;
+  left: -2px;
+  border-width: 32px 0px 32px 15px;
+  border-color: transparent transparent transparent #fff;
+  border-style: solid;
+}
+
+.ribbon6:after {
+  top: -2px;
+  right: -2px;
+  border-width: 32px 15px 32px 0px;
+  border-color: transparent #fff transparent transparent;
+  border-style: solid;
+}
+
+.introduction_box {
+    position: relative;
+    margin: 2em 0;
+    padding: 0.5em 1em;
+    border: solid 3px #95ccff;
+    border-radius: 8px;
+}
+.introduction_box .box-title {
+    position: absolute;
+    display: inline-block;
+    top: -13px;
+    left: 10px;
+    padding: 0 9px;
+    line-height: 1;
+    font-size: 17px;
+    background: #FFF;
+    color: black;
+}
+.introduction_box p {
+    margin: 0;
+    padding: 5px;
+}
+
+.user_name {
+	border-bottom: double 5px #FFC778;
 }

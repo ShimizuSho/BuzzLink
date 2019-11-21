@@ -28,6 +28,7 @@ $(document).on('turbolinks:load', function(){
 	for (let i = 1; i <= posts.length; i += 1) {
 		$('.move' + i).on('click', function(){
 	    	$('.folder_move_list'+ i).toggleClass('show');
+	    	$('.post_info_2_form' + i).toggleClass('show_form');
 		});
 	};
 });

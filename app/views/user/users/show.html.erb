@@ -3,14 +3,27 @@
 		<%= render 'user/folders/template', folders: @folders %>
 	</div>
 	<div class="col-lg-9">
-		<h1>マイページ</h1>
+		<% if @user == current_user %>
+			<div class="ribbon6">
+	  			<h1>My Page!</h1>
+			</div>
+		<% else %>
+			<div class="ribbon6">
+	  			<h1>Welcome to My Page!</h1>
+			</div>
+		<% end %>
 		<div class="profile_info flex">
 			<div >
-				<div class="frame<%= @user.point.to_i/100 %>">
-					<%= attachment_image_tag @user, :profile_image, :fill, 250, 250, fallback: "no_image.jpg", size:'250x250' %>
+				<div class="frame<%= @user_level.to_i/10 %>">
+					<%= attachment_image_tag @user, :profile_image, :fill, 250, 250, fallback: "no_image.jpg", size:'250x250', class: "profile_img" %>
 				</div>
-				<p><%= @user.name %></p>
-				<p>レベル<%= @user.point.to_i/10 %></p>
+				<h3 class="user_name"><%= @user.name %> さん</h3>
+				<p>レベル<%= @user_level.to_i %></p>
+				<div class="progress">
+					<div class="progress-bar" role="progressbar" style= "width: <%= @user.point.to_i % 100 %>%" >
+						<%= @user.point.to_i % 100 %>
+					</div>
+				</div>
 				<p class="degree">称号　<%= @user.degree %></p>
 			</div>
 			<div class="profile_info">
@@ -30,20 +43,22 @@
 				<% else %>
 				　	<p>誕生日　<%= @user.birthday %></p>
 				<% end %>
-				<p>自己紹介　<%= @user.introduction %></p>
+					<div class="introduction_box">
+    					<span class="box-title">自己紹介</span>
+    					<p><%= @user.introduction %></p>
+					</div>
 			</div>
 		</div>
 
 		<% if @user.id != current_user.id %>
-
 	  		<% if @isRoom == true %>
-		    <%= link_to "チャットへ", user_user_room_path(current_user.id, @roomId), class:"btn btn-primary user-show-room" %>
+		    <%= link_to "DMを送る", user_user_room_path(current_user.id, @roomId), class:"btn btn-primary user-show-room" %>
 			<% else %>
 		    	<%= form_for @room, url: user_user_rooms_path(current_user.id), method: :post do |f| %>
 		      		<%= fields_for @entry do |e| %>
 		        		<%= e.hidden_field :user_id, value: @user.id %>
 		      		<% end %>
-		      		<%= f.submit "チャットを始める", class:"btn btn-primary btn-lg user-show-chat"%>
+		      		<%= f.submit "を始める", class:"btn btn-primary btn-lg user-show-chat"%>
 		    	<% end %>
 		  	<% end %>
 		<% end %>

@@ -22,7 +22,7 @@
   border-top : solid 1px #e0e0e0 ;
   border-bottom : solid 1px #717171 ;
   box-shadow : 0 2px 6px rgba(100, 100, 100, 0.3) ;
-  margin-top: 30px;
+  margin-top: 25px;
   background-color: #EEFFFF;
 }
 
@@ -35,10 +35,18 @@
 	margin: 10px;
 }
 
+.folder_name {
+	font-size: 17px;
+	margin: 8px;
+}
+
 .folder_name:hover {
 	background-color: #00f;
 	color: #fff;
-	margin: 5px 0 5px 0;
+}
+
+.folder_btn {
+	margin: 10px 0 0 20px;
 }
 
 

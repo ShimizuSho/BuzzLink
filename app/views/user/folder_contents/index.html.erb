@@ -7,45 +7,46 @@
 		<% i = 1 %>
 		<h1>フォルダーの内容</h1>
 		<% @folder_contents.each do |folder_content| %>
-			<div class= "post_info_box">
-				<div class= "profile_image_box">
-					<%= link_to user_user_path(folder_content.post.user.id) do %>
-						<%= attachment_image_tag folder_content.post.user, :profile_image, :fill, 140, 140, fallback: "no_image.jpg", size:'140x140' %>
+		<div class= "post_info_box">
+			<div class= "profile_image_box">
+				<%= link_to user_user_path(folder_content.post.user.id) do %>
+				<%= attachment_image_tag folder_content.post.user, :profile_image, :fill, 140, 140, fallback: "no_image.jpg", size:'140x140' %>
+				<% end %>
+			</div>
+			<div class= "post_info_1">
+				<%= link_to user_post_path(folder_content.post.id) do %>
+				<h3><%= folder_content.post.post_title %></h3>
+				<% end %>
+				<a><%= folder_content.post.link %></a>
+				<%= link_to user_user_path(folder_content.post.id) do %>
+				<h5><%= folder_content.post.user.name %></h5>
+				<% end %>
+			</div>
+
+			<div class= "post_info_2">
+				<div class= "move<%= i %> arrow-left"><span class="glyphicon glyphicon-arrow-left " aria-hidden="true"></span></div>
+				<div class="post_info_2_form post_info_2_form<%= i %>">
+					<%= form_tag(user_user_folder_folder_content_path(current_user.id, folder_content.folder_id, folder_content.id), method: :patch) do %>
+						<div class= "folder_move_list folder_move_list<%= i %> clearfix" style="float: left;">
+							<div class="clearfix">
+								<%= collection_select :folder_content, :folder_id, current_user.folders, :id, :folder_name, class: "folder-move" %>
+								<%= submit_tag '移動', class: "folder-move" %>
+							</div>
+						</div>
+
+						<%= link_to user_user_folder_folder_content_path(current_user.id, folder_content.folder.id, folder_content.id), method: :delete, "data-confirm" => "本当に消しますか？" do %>
+						<span class= "glyphicon glyphicon-trash" aria-hidden="true"></span>
+						<% end %>
+						<span class="glyphicon glyphicon-heart" aria-hidden="true" style="color: red;"></span><p class="fav-count"><%= folder_content.post.favorites.count %></p>
 					<% end %>
 				</div>
-					<div class= "post_info_1">
-						<%= link_to user_post_path(folder_content.post.id) do %>
-              				<h3><%= folder_content.post.post_title %></h3>
-            			<% end %>
-            			<a><%= folder_content.post.link %></a>
-            			<%= link_to user_user_path(folder_content.post.id) do %>
-              				<h5><%= folder_content.post.user.name %></h5>
-            			<% end %>
-					</div>
-
-					<div class= "post_info_2">
-						<div class= "move<%= i %> arrow-left"><span class="glyphicon glyphicon glyphicon-arrow-left " aria-hidden="true"></span></div>
-							<%= form_tag(user_user_folder_folder_content_path(current_user.id, folder_content.folder_id, folder_content.id), method: :patch) do %>
-								<div class= "folder_move_list folder_move_list<%= i %> clearfix">
-									<div class="folder_move">
-										<%= collection_select :folder_content, :folder_id, current_user.folders, :id, :folder_name %>
-									</div>
-									<div class="folder_move">
-										<%= submit_tag '移動' %>
-									</div>
-								</div>
-								<%= link_to user_user_folder_folder_content_path(current_user.id, folder_content.folder.id, folder_content.id), method: :delete, "data-confirm" => "本当に消しますか？" do %>
-									<span class= "glyphicon glyphicon glyphicon glyphicon-trash" aria-hidden="true"></span>
-								<% end %>
-								<span class="glyphicon glyphicon-heart" aria-hidden="true" style="color: red;"></span><%= folder_content.post.favorites.count %>
-							<% end %>
-					</div>
-					<% i += 1 %>
 			</div>
+		</div>
+		<% i += 1 %>
 		<% end %>
-		<%= paginate @folder_contents, class: "paginate" %>
 	</div>
 </div>
+<%= paginate @folder_contents, class: "paginate" %>
 <script type="text/javascript">
 	let posts = document.querySelectorAll('.post_info_1')
 	console.log(posts.length)
