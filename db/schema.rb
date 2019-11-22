@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_21_050159) do
+ActiveRecord::Schema.define(version: 2019_11_21_071434) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -38,9 +38,9 @@ ActiveRecord::Schema.define(version: 2019_11_21_050159) do
     t.integer "user_id"
     t.string "name"
     t.string "status"
+    t.text "contact_body"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.text "contact_body"
   end
 
   create_table "entries", force: :cascade do |t|
@@ -62,22 +62,22 @@ ActiveRecord::Schema.define(version: 2019_11_21_050159) do
   create_table "folder_contents", force: :cascade do |t|
     t.integer "post_id"
     t.integer "folder_id"
+    t.string "folder_contents_title"
+    t.text "memo"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.text "memo"
-    t.string "folder_contents_title"
   end
 
   create_table "folders", force: :cascade do |t|
     t.integer "user_id"
     t.string "folder_name"
+    t.integer "folder_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "memos", force: :cascade do |t|
-    t.integer "post_id"
-    t.string "memo_body"
+  create_table "followers", force: :cascade do |t|
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -99,7 +99,6 @@ ActiveRecord::Schema.define(version: 2019_11_21_050159) do
     t.string "post_body"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "folder_id"
   end
 
   create_table "question_comments", force: :cascade do |t|
@@ -112,10 +111,10 @@ ActiveRecord::Schema.define(version: 2019_11_21_050159) do
 
   create_table "questions", force: :cascade do |t|
     t.integer "user_id"
+    t.string "question_title"
     t.string "question_body"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "question_title"
   end
 
   create_table "relationships", force: :cascade do |t|
@@ -138,16 +137,17 @@ ActiveRecord::Schema.define(version: 2019_11_21_050159) do
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.string "gender", default: "未設定"
-    t.datetime "birthday"
     t.string "degree", default: "未設定"
-    t.integer "point"
+    t.text "introduction", default: "未設定"
+    t.integer "point", default: 0
+    t.string "age", default: "0"
+    t.datetime "birthday"
+    t.string "users"
+    t.string "profile_image_id"
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.text "profile_image_id"
-    t.integer "age", default: 0
-    t.text "introduction", default: "未設定"
-    t.integer "level"
+    t.integer "evolution", default: 0
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

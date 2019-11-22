@@ -19,6 +19,7 @@
 //= require_tree .
 
 $(document).on('turbolinks:load', function(){
+  	$('.evolution_profile_image').addClass('evolution_change');
 	for (let i = 1; i <= folders.length; i += 1) {
 		$('.folder_name_edit' + i).on('click', function(){
 	        $('.name' + i).toggleClass('hidden');
@@ -32,6 +33,7 @@ $(document).on('turbolinks:load', function(){
 		});
 	};
 });
+
 
 
 

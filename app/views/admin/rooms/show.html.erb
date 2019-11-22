@@ -1,3 +1,5 @@
+<h1>admin</h1>
+<P><b><%= link_to "管理者としてログイン中　ログアウト", destroy_admin_session_path, method: :delete %></b>
 <h4 class="rooms-title">DMルーム</h4>
 <% @entries.each do |e| %>
     <div class="user-name">

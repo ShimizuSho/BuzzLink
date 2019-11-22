@@ -25,6 +25,7 @@
 					<span class="glyphicon glyphicon-heart" aria-hidden="true" style="color: red;"></span><%= post.favorites.count %>
 				</div>
 			</div>
+			<%= link_to "記事削除", admin_post_path(post.id), method: :delete, "data-confirm" => "本当に消しますか？", class: "btn btn-sm btn-primary" %>
 		<% end %>
 	</div>
 </div>

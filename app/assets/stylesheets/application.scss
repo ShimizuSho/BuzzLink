@@ -120,11 +120,27 @@
   border-radius: 15px;    /*角を丸くする*/
 }
 
+.profile_img{
+  transition: 0.5s;
+}
+.profile_img:hover {
+  width: 20vw;
+  height: 20vw;
+}
 
-// .profile_img {
-//   transition: 3s;
-// }
-// .profile_img:hover {
-//   width: 80vw;
-//   height: 80vw;
-// }
+.evolution_profile_image {
+  transition: 8s;
+  width: 5vw;
+  height: 5vw;
+}
+.evolution_change {
+  height: 50vw;
+  width: 50vw;
+}
+.evolution_box{
+  width: 100%;
+}
+.evolution_profile_image {
+  margin: 0 auto;
+}
+

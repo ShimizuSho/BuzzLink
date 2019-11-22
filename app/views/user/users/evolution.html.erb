@@ -1,0 +1,7 @@
+<div class = "evolution_box">
+		<div class="evolution_profile_image_box">
+			<%= attachment_image_tag @user, :profile_image, :fill, 500, 500, fallback: "no_image.jpg", size:'500x500', class: "evolution_profile_image frame#{@user.evolution.to_i}"%>
+		</div>
+		<h1>進化おめでとう！！！</h1>
+		<%= link_to 'マイページに戻る', user_user_path(current_user.id), class: "btn btn-lg btn-primary evolution_btn" %>
+</div>

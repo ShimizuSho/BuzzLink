@@ -14,17 +14,23 @@
 		<% end %>
 		<div class="profile_info flex">
 			<div >
-				<div class="frame<%= @user_level.to_i/10 %>">
+				<div class="frame<%= @user.evolution.to_i %>">
 					<%= attachment_image_tag @user, :profile_image, :fill, 250, 250, fallback: "no_image.jpg", size:'250x250', class: "profile_img" %>
 				</div>
 				<h3 class="user_name"><%= @user.name %> さん</h3>
-				<p>レベル<%= @user_level.to_i %></p>
+				<p>レベル<%= @user_level %></p>
 				<div class="progress">
 					<div class="progress-bar" role="progressbar" style= "width: <%= @user.point.to_i % 100 %>%" >
 						<%= @user.point.to_i % 100 %>
 					</div>
 				</div>
 				<p class="degree">称号　<%= @user.degree %></p>
+				<%= @user.evolution %><br>
+				<%= @user.point/100 %>
+				<% if @user == current_user %>
+					<%= link_to '進化する！', user_evolution_path(@user.id), class: "btn btn-lg btn-primary evolution_btn" %>
+				<% end %>
+
 			</div>
 			<div class="profile_info">
 				<h3 class="profile_title">プロフィール</h3>
@@ -58,7 +64,7 @@
 		      		<%= fields_for @entry do |e| %>
 		        		<%= e.hidden_field :user_id, value: @user.id %>
 		      		<% end %>
-		      		<%= f.submit "を始める", class:"btn btn-primary btn-lg user-show-chat"%>
+		      		<%= f.submit "DMを始める", class:"btn btn-primary btn-lg user-show-chat"%>
 		    	<% end %>
 		  	<% end %>
 		<% end %>

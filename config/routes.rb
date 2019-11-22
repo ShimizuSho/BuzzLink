@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     get 'contacts/:user_id/contact_completed' => 'contacts#contact_completed', as: 'contact_completed'
     get 'folder_contents/folder_contents_new/:post_id' => 'folder_contents#new', as: 'folder_contents_new'
     post 'folder_contents/folder_contents_create/:post_id' => 'folder_contents#create', as: 'folder_contents_create'
+    get 'users/:user_id/evolution' => 'users#evolution', as: 'evolution'
     resources :users do
       resource :relationships, only: [:create, :destroy]
       get :follows, on: :member

@@ -4,6 +4,7 @@ class CreateContacts < ActiveRecord::Migration[5.2]
       t.integer :user_id
       t.string :name
       t.string :status
+      t.text :contact_body
 
       t.timestamps
     end
