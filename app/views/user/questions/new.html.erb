@@ -1,20 +1,13 @@
 <h1>質問の新規投稿</h1>
-
-<%= link_to user_user_path(current_user.id) do %>
-	<%= attachment_image_tag current_user, :profile_image, :fill, 180, 180, fallback: "no_image.jpg", size:'180x180' %>
-<% end %>
-<%= form_for @question, url: user_questions_path do |f| %>
-	<p> <%= current_user.name %>
-		<%= f.text_field :question_title %>
-	</p>
-	<p><%= f.text_area :question_body, size: "100x10", class: "form-control" %></p>
-	<p><%= f.submit %></p>
-<% end %>
-
-
-
-<p><%= link_to 'トップページ', user_root_path %></p>
-<p><%= link_to '新規投稿', new_user_post_path %></p>
-<p><%= link_to "ログアウト", destroy_user_session_path, method: "delete" %></p>
-
+<div class="post_info_box">
+	<%= form_for @question, url: user_questions_path do |f| %>
+		<h4>お名前</h4>
+		<h4><%= current_user.name %></h4>
+		<h4>タイトル</h4>
+		<h4><%= f.text_field :question_title, class:"form-control" %>
+		<h4>質問の内容</h4>
+		<h4><%= f.text_area :question_body, class:"form-control", size: "100x10" %></h4>
+		<h4><%= f.submit '質問する' %></h4>
+	<% end %>
+</div>
 

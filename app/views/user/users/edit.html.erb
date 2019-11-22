@@ -1,9 +1,20 @@
-<h1>マイページ編集</h1>
-<%= form_for @user, url: user_user_path(@user.id), method: :patch do |f| %>
-	<p>プロフィール画像<%= f.attachment_field :profile_image %></p>
-	<p>年齢<%= f.number_field :age, min:0, max:100 %></p>
-	<p>性別<%= f.radio_button :gender, "男性" %>男性 <%= f.radio_button :gender, "女性" %>女性</p>
-	<p>誕生日<%= f.date_select :birthday %></p>
-	<p>自己紹介<%= f.text_area :introduction %></p>
-	<%= f.submit '登録する' %>
-<% end %>
+<div class="row clearfix">
+	<div class="col-lg-8">
+		<h1>マイページ編集</h1>
+		<%= form_for @user, url: user_user_path(@user.id), method: :patch do |f| %>
+			<h4>プロフィール画像</h4>
+			<h4><%= f.attachment_field :profile_image %></h4>
+			<h4>年齢</h4>
+			<h4><%= f.number_field :age, min:0, max:100, class:"form-control" %></h4>
+			<h4>性別 <%= f.radio_button :gender, "男性" %> 男性 <%= f.radio_button :gender, "女性" %> 女性</h4>
+			<h4>誕生日 <%= f.date_select :birthday %></h4>
+			<h4>自己紹介</h4>
+			<h4><%= f.text_area :introduction, size: "10x10", class:"form-control" %></h4>
+			<%= f.submit '登録する' %>
+			
+		<% end %>
+	</div>
+	<div class="col-lg-4">
+	</div>
+</div>
+

@@ -3,16 +3,22 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .post_info_box {
-  margin: 0 0 20px 50px;
+  	margin: 10px 0 10px 0;
+	padding: 0.5em 1em;
+	margin: 2em 0;
+	color: #5d627b;
+	background: white;
+	border-top: solid 5px #808080;
+	box-shadow: 0 3px 5px rgba(0, 0, 0, 0.22);
 }
 
 .profile_image_box {
- margin-right: 20px;
+ 	margin-right: 20px;
 }
 
 .post_info_1 {
-  flex-grow: 1;
-  margin-left: 40px;
+  	flex-grow: 1;
+  	margin-left: 40px;
 }
 
 

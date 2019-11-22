@@ -13,6 +13,7 @@ class User::QuestionsController < ApplicationController
 		@question = Question.find(params[:id])
 		@comment = Comment.new
 		@comments = Comment.all
+		@folders = current_user.folders
 	end
 
 	def create

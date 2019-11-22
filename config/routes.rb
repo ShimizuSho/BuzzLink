@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  get 'degrees/new'
+  get 'degrees/create'
+  get 'degrees/edit'
   namespace :user do
   	root to: "posts#index"
     get 'folders/folders_create' => 'folders#new', as: 'folders_new'

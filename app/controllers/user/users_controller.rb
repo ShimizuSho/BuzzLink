@@ -4,7 +4,7 @@ class User::UsersController < ApplicationController
 		@user = User.find(params[:id])
 		@folders = current_user.folders
 		@favorite_posts = @user.favorite_posts
-		@user_level = (@user.point / 10).to_i
+		@user_level = (@user.point / 100).to_i
 		@currentUserEntry=Entry.where(user_id: current_user.id)
     	@userEntry=Entry.where(user_id: @user.id)
 	    if @user.id != current_user.id
@@ -48,7 +48,7 @@ class User::UsersController < ApplicationController
 
   	def evolution
     	@user = User.find(params[:user_id])
-  		new_evolution = @user.point/100
+  		new_evolution = @user.point/1000
   		@user.update(evolution: new_evolution)
   	end
 
