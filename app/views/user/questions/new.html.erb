@@ -1,8 +1,6 @@
 <h1>質問の新規投稿</h1>
 <div class="post_info_box">
 	<%= form_for @question, url: user_questions_path do |f| %>
-		<h4>お名前</h4>
-		<h4><%= current_user.name %></h4>
 		<h4>タイトル</h4>
 		<h4><%= f.text_field :question_title, class:"form-control" %>
 		<h4>質問の内容</h4>

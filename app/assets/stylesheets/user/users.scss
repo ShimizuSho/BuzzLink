@@ -99,14 +99,14 @@
   border-style: solid;
 }
 
-.introduction_box {
+.text_box {
     position: relative;
     margin: 2em 0;
     padding: 0.5em 1em;
     border: solid 3px #95ccff;
     border-radius: 8px;
 }
-.introduction_box .box-title {
+.text_box .box-title {
     position: absolute;
     display: inline-block;
     top: -13px;
@@ -117,7 +117,7 @@
     background: #FFF;
     color: black;
 }
-.introduction_box p {
+.text_box p {
     margin: 0;
     padding: 5px;
 }

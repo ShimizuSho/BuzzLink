@@ -26,7 +26,7 @@
 						<%= @user.point.to_i % 100 %>
 					</div>
 				</div>
-				<h4 class="degree">称号　<%= @user.degree %></h4>
+				<h4 class="degree">称号 <%= Degree.find(@degree_name_id).degree_name %></h4>
 				<% if @user.evolution < @user.point / 1000 && @user == current_user %>
 					<%= link_to '進化する！', user_evolution_path(@user.id), class: "btn btn-lg btn-primary evolution_btn" %>
 				<% end %>
@@ -54,10 +54,6 @@
 			    <% end %>
 			<% end %>
 
-
-
-
-
 			</div>
 			<div class="profile_info">
 				<h3 class="profile_title">プロフィール</h3>
@@ -76,7 +72,7 @@
 				<% else %>
 				　	<h4>誕生日　<%= @user.birthday %></h4>
 				<% end %>
-					<div class="introduction_box">
+					<div class="text_box">
     					<span class="box-title">自己紹介</span>
     					<p><%= @user.introduction %></p>
 					</div>

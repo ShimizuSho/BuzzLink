@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_21_071434) do
+ActiveRecord::Schema.define(version: 2019_11_22_102957) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -39,6 +39,19 @@ ActiveRecord::Schema.define(version: 2019_11_21_071434) do
     t.string "name"
     t.string "status"
     t.text "contact_body"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "degree_managements", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "degree_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "degrees", force: :cascade do |t|
+    t.string "degree_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -137,7 +150,6 @@ ActiveRecord::Schema.define(version: 2019_11_21_071434) do
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.string "gender", default: "未設定"
-    t.string "degree", default: "未設定"
     t.text "introduction", default: "未設定"
     t.integer "point", default: 0
     t.string "age", default: "0"

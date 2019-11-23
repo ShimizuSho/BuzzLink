@@ -6,12 +6,20 @@ end
 
 def new
 	20.times do |i|
-	i += 1
-	@folder = Folder.new
-	@folder.user_id = current_user.id
-	@folder.folder_name = "フォルダー#{i}"
-	@folder.save
+		i += 1
+		@folder = Folder.new
+		@folder.user_id = current_user.id
+		@folder.folder_name = "フォルダー#{i}"
+		@folder.save
   	end
+  	@degree_management = DegreeManagement.new
+	@degree_management.user_id = current_user.id
+	@degree_management.degree_id = 1
+	@degree_management.save
+	@degree_management = DegreeManagement.new
+	@degree_management.user_id = current_user.id
+	@degree_management.degree_id = 2
+	@degree_management.save
     redirect_to user_root_path
 end
 

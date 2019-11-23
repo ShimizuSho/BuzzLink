@@ -16,8 +16,9 @@ class User < ApplicationRecord
   has_many :folders, dependent: :destroy
   has_many :messages, dependent: :destroy
   has_many :entries, dependent: :destroy
-  has_many :degrees, through: :degree_management
-  has_many :degree_management
+  has_many :degree_managements, dependent: :destroy
+  has_many :degrees, through: :degree_managements
+
 
   #フォローする側のUserから見て、フォローされる側のUserを(中間テーブルを介して)集める。なので親はfollowing_id(フォローする側)
   has_many :active_relationships, class_name: "Relationship", foreign_key: :following_id

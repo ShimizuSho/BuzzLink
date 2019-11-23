@@ -33,7 +33,6 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
       # t.datetime :locked_at
 
       t.string :gender, default: "未設定"
-      t.string :degree, default: "未設定"
       t.text :introduction, default: "未設定"
       t.integer :point, default: 0
       t.string :age, default: 0
