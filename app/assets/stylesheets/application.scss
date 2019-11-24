@@ -35,6 +35,14 @@
   display : none;
 }
 
+.title {
+  padding: 0.4em 0.5em;/*文字の上下 左右の余白*/
+  color: #494949;/*文字色*/
+  background: #CCFFFF;/*背景色*/
+  border-left: solid 5px #7db4e6;/*左線*/
+  border-bottom: solid 3px #d7d7d7;/*下線*/
+}
+
 .folder_move_list {
   display: none;
 }
@@ -120,23 +128,45 @@
   transition: 0.5s;
 }
 .profile_img:hover {
-  width: 20vw;
-  height: 20vw;
+  width: 23vw;
+  height: 23vw;
+}
+
+.evolution_profile_image_box {
+  text-align: center;
 }
 
 .evolution_profile_image {
-  transition: 8s;
-  width: 5vw;
-  height: 5vw;
-}
-.evolution_change {
-  height: 50vw;
-  width: 50vw;
+  height: 45vw;
+  width: 45vw;
 }
 .evolution_box{
   width: 100%;
+  background-color: black;
 }
-.evolution_profile_image {
+
+.evolution_box2 {
   margin: 0 auto;
 }
+
+
+.evolution_profile_image {
+  animation: evolution 5s ease-in 0s 1 alternate forwards running;
+}
+
+@keyframes evolution {
+  0% {
+    transform: scale(0.1);
+  }
+
+  50% {
+    transform: scale(0.5) rotate(-720deg);
+  }
+
+
+  100% {
+    transform: scale(1) rotate(0deg);
+  }
+}
+
 
