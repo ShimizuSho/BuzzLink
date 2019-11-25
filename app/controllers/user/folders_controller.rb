@@ -9,7 +9,7 @@ def new
 		i += 1
 		@folder = Folder.new
 		@folder.user_id = current_user.id
-		@folder.folder_name = "フォルダー#{i}"
+		@folder.folder_name = "folder#{i}"
 		@folder.save
   	end
   	@degree_management = DegreeManagement.new

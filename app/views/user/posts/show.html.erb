@@ -1,12 +1,12 @@
 <div class = "container">
-	<div class="row clearfix">
+	<div class="row">
 		<div class="col-lg-3 folder_template">
 			<%= render 'user/folders/template', folders: @folders %>
 		</div>
 		<div class="col-lg-1">
 		</div>
 		<div class="col-lg-8 clearfix">
-		<h1 class="title">記事の詳細</h1>
+		<h1 class="page_title">記事の詳細</h1>
 			<%= link_to user_user_path(@post.user.id) do %>
 				<%= attachment_image_tag @user, :profile_image, :fill, 180, 180, fallback: "no_image.jpg", size:'180x180' %>
 			<% end %>
@@ -32,15 +32,10 @@
 		  	<% else %>
 			    <p><span class="glyphicon glyphicon-heart" aria-hidden="true" style="color: red;"></span><%= post.favorites.count %></p>
 			<% end %>
-
-			<%= link_to 'ブックマーク', user_folder_contents_new_path(@post.id), class: 'bookmark btn' %>
-
+				<button type="button" class="btn btn-warning btn-lg" data-toggle="modal" data-target="#bookmarkModal">ブックマーク</button>
+				<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#commentModal">コメント</button>
 			<% if @post.user == current_user %>
 				<%= link_to '記事削除', user_post_path(@post.id), method: :delete %>
-			<% end %>
-			<%= form_for [@post, @post_comment], url: user_post_comments_path(@post.id) do |f| %>
-				<%= f.text_area :comment_body, class:"form-control", size: "10x5" %>
-				<%= f.submit %>
 			<% end %>
 
 			<% @post_comments.each do |post_comment| %>
@@ -58,13 +53,45 @@
 		</div>
 	</div>
 </div>
-	<p><%= link_to '記事編集', edit_user_post_path %></p>
-	<p><%= link_to 'トップページ', user_root_path %></p>
-	<p><%= link_to '新規投稿', new_user_post_path %></p>
-	<p><%= link_to 'お問い合わせ', new_user_contact_path %></p>
-	<p><%= link_to '質問一覧', user_questions_path %></p>
-	<p><%= link_to '新規質問', new_user_question_path %></p>
-	<p><%= link_to "ログアウト", destroy_user_session_path, method: "delete" %></p>
 
+<div class="modal fade" id="bookmarkModal" tabindex="-1">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"><span>×</span></button>
+				<h3 class="modal-header">ブックマーク登録</h3>
+			</div>
+			<%= form_for @folder_content, url: user_folder_contents_create_path(@post.id), method: :post do |f| %>
+				<div class="modal-body">
+					<h4>タイトル　<%= f.text_field :folder_contents_title, class:"form-control" %></h4>
+					<h4><%= f.collection_select :folder_id, current_user.folders, :id, :folder_name, class:"form-control" %></h4>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">閉じる</button>
+					<%= f.submit '登録する', class: "btn btn-primary" %>
+				</div>
+			<% end %>
+		</div>
+	</div>
+</div>
 
+<div class="modal fade" id="commentModal" tabindex="-1">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"><span>×</span></button>
+				<h4 class="modal-title">コメント</h4>
+			</div>
+			<%= form_for [@post, @post_comment], url: user_post_comments_path(@post.id) do |f| %>
+				<div class="modal-body">
+					<%= f.text_area :comment_body, class:"form-control", size: "10x5" %>
+				</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-sm btn-default" data-dismiss="modal">閉じる</button>
+				<%= f.submit '送信', class: "btn btn-sm btn-primary" %>
+			<% end %>
+			</div>
+		</div>
+	</div>
+</div>
 

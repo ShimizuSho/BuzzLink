@@ -6,15 +6,15 @@
 		<div class="col-lg-1">
 		</div>
 		<div class="col-lg-8">
-			<h1>POSTS index</h1>
+			<h1 class="page_title">Posts</h1>
 			<% @posts.each do |post| %>
-				<div class= "post_info_box">
+				<div class= "info_box">
 					<div class= "profile_image">
 						<%= link_to user_user_path(post.user.id) do %>
 							<%= attachment_image_tag post.user, :profile_image, :fill, 140, 140, fallback: "no_image.jpg", size:'140x140' %>
 						<% end %>
 					</div>
-					<div class= "post_info_1">
+					<div class= "info_1">
 						<%= link_to user_post_path(post.id) do %>
 							<h3><%= post.post_title %></h3>
 						<% end %>

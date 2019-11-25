@@ -1,16 +1,16 @@
 <div class = "container">
-		<h1>記事の編集</h1>
-		<div class="post_info_box">
-			<%= form_for @post, url: user_posts_path, method: :post do |f| %>
-				<h4>タイトル</h4>
-				<h4><%= f.text_field :post_title, class: "form-control" %></h4>
-				<h4>URL</h4>
-				<h4><%= f.text_field :link, class:"form-control" %></h4>
-				<h4>記事の内容</h4>
-				<h4><%= f.text_area :post_body, size: "100x10", class: "form-control" %></h4>
-				<h4><%= f.submit '投稿する' %></h4>
-			<% end %>
-		</div>
+	<h1>記事の編集</h1>
+	<div class="info_box">
+		<%= form_for @post, url: user_posts_path, method: :post do |f| %>
+			<h4>タイトル</h4>
+			<h4><%= f.text_field :post_title, class: "form-control" %></h4>
+			<h4>URL</h4>
+			<h4><%= f.text_field :link, class:"form-control" %></h4>
+			<h4>記事の内容</h4>
+			<h4><%= f.text_area :post_body, size: "100x10", class: "form-control" %></h4>
+			<h4><%= f.submit '投稿する' %></h4>
+		<% end %>
+	</div>
 </div>
 
 		<p><%= link_to '記事詳細', user_post_path(@post.id) %></p>

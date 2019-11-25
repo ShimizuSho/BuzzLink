@@ -7,11 +7,9 @@
 }
 
 .profile_title {
-  	display: inline-block;
-  	padding: 0.5em;
- 	color: #494949;
-  	background: #fffaf4;
-  	border-left: solid 5px #ffaf58;/*左線（実線 太さ 色）*/
+  	margin-top: 0;
+    display: inline-block;
+    border-bottom: solid 3px orange;
 }
 
 .degree {
@@ -21,35 +19,72 @@
 	margin-left: 10px;
 }
 
+.text_box {
+    position: relative;
+    margin: 2em 0;
+    padding: 0.5em 1em;
+    border: solid 3px orange;
+    border-radius: 8px;
+    width: 100%
+}
+.text_box .box-title {
+    position: absolute;
+    display: inline-block;
+    top: -13px;
+    left: 10px;
+    padding: 0 9px;
+    line-height: 1;
+    font-size: 17px;
+    background: black;
+}
+.text_box p {
+    margin: 0;
+    padding: 5px;
+}
+
+.user_name {
+	border-bottom: double 6px orange;
+  text-align: center;
+}
+
+.progress{
+  margin-bottom: 0 !important;
+}
+
+.degree {
+  margin: 10px 0 10px 10px ;
+  border-bottom: solid 5px #99CCFF;
+}
+
 .frame1 {
-	border : solid 10px #CCFFFF;
+  border : solid 10px #CCFFFF;
 }
 .frame2 {
-	border : solid 10px #00FFFF;
+  border : solid 10px #00FFFF;
 }
 .frame3 {
-	border : solid 10px blue;
+  border : solid 10px blue;
 }
 .frame4 {
-	border : solid 10px #CCFF99;
+  border : solid 10px #CCFF99;
 }
 .frame5 {
-	border : solid 10px #00FF33;
+  border : solid 10px #00FF33;
 }
 .frame6 {
-	border : solid 10px #007700;
+  border : solid 10px #007700;
 }
 .frame7 {
-	border : solid 10px #FF6928;
+  border : solid 10px #FF6928;
 }
 .frame8 {
-	border : solid 10px #FF0033;
+  border : solid 10px #FF0033;
 }
 .frame9 {
-	border : solid 10px #990000;
+  border : solid 10px #990000;
 }
 .frame10 {
-	border : solid 10px #800080;
+  border : solid 10px #800080;
 }
 
 .ribbon6 {
@@ -59,7 +94,7 @@
   line-height: 60px;
   text-align: center;
   padding: 7px 0;
-  margin: 28px 0 20px 18px;
+  margin: 82px 0 20px 18px;
   font-size: 18px;
   background: #78d0f5;
   color: #FFF;
@@ -87,7 +122,7 @@
   top: -2px;
   left: -2px;
   border-width: 32px 0px 32px 15px;
-  border-color: transparent transparent transparent #fff;
+  border-color: transparent transparent transparent black;
   border-style: solid;
 }
 
@@ -95,33 +130,6 @@
   top: -2px;
   right: -2px;
   border-width: 32px 15px 32px 0px;
-  border-color: transparent #fff transparent transparent;
+  border-color: transparent black transparent transparent;
   border-style: solid;
-}
-
-.text_box {
-    position: relative;
-    margin: 2em 0;
-    padding: 0.5em 1em;
-    border: solid 3px #95ccff;
-    border-radius: 8px;
-}
-.text_box .box-title {
-    position: absolute;
-    display: inline-block;
-    top: -13px;
-    left: 10px;
-    padding: 0 9px;
-    line-height: 1;
-    font-size: 17px;
-    background: #FFF;
-    color: black;
-}
-.text_box p {
-    margin: 0;
-    padding: 5px;
-}
-
-.user_name {
-	border-bottom: double 5px #FFC778;
 }

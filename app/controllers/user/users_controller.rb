@@ -2,7 +2,8 @@ class User::UsersController < ApplicationController
 
 	def show
 		@user = User.find(params[:id])
-		# @a = @user.degree_managements.degrees.degree_name
+		@degrees = Degree.all.limit((@user.evolution * 2) + 2)
+		degree_management = @user.degree_management
 		@folders = current_user.folders
 		@favorite_posts = @user.favorite_posts
 		@user_level = (@user.point / 100).to_i
@@ -26,9 +27,6 @@ class User::UsersController < ApplicationController
 	end
 
 	def edit
-		@user = User.find(params[:id])
-		@degrees = Degree.all.limit((@user.evolution * 2) + 2)
-		degree_management = @user.degree_management
 	end
 
 	def update

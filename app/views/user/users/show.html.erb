@@ -1,5 +1,5 @@
 <div class = "container">
-	<div class="row clearfix">
+	<div class="row">
 		<div class="col-lg-3 folder_template">
 			<%= render 'user/folders/template', folders: @folders %>
 		</div>
@@ -27,9 +27,12 @@
 							<%= @user.point.to_i % 100 %>
 						</div>
 					</div>
-					<h4 class="degree">称号 <%= @user.degree_management.degree.degree_name %></h4>
+					<div class="flex">
+						<h4>称号</h4>
+						<h3 class="degree"><%= @user.degree_management.degree.degree_name %></h>
+					</div>
 					<% if current_user %>
-						<%= link_to '進化する！', user_evolution_path(@user.id), class: "btn btn-lg btn-primary evolution_btn" %>
+						<p><%= link_to '進化する！', user_evolution_path(@user.id), class: "btn btn-lg btn-danger evolution_btn" %></p>
 					<% end %>
 
 				<% if @user.id != current_user.id %>
@@ -58,10 +61,10 @@
 				</div>
 				<div class="profile_info">
 					<h3 class="profile_title">プロフィール</h3>
-					<%= link_to edit_user_user_path(@user.id) do %>
-						<span class="glyphicon glyphicon glyphicon-edit" aria-hidden="true" style="font-size:30px;"></span>
-					<% end %>
 
+					<a data-toggle="modal" data-target="#userModal">
+						<span class="glyphicon glyphicon glyphicon-edit" aria-hidden="true" style="font-size:30px;"></span>
+					</a>
 					<% if @user.age == 0 %>
 						<h4>年齢　非公開</h4>>
 					<% else %>
@@ -83,11 +86,34 @@
 	</div>
 </div>
 
-	<p><%= link_to '記事編集', edit_user_post_path %></p>
-	<p><%= link_to 'トップページ', user_root_path %></p>
-	<p><%= link_to '新規投稿', new_user_post_path %></p>
-	<p><%= link_to 'お問い合わせ', new_user_contact_path %></p>
+<div class="modal fade" id="userModal" tabindex="-1">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"><span>×</span></button>
+				<h3 class="modal-title">マイページ編集</h3>
+			</div>
+				<%= form_for @user, url: user_user_path(@user.id), method: :patch do |f| %>
+					<div class="modal-body">
+						<h4>プロフィール画像</h4>
+						<h4><%= f.attachment_field :profile_image %></h4>
+						<h4>年齢</h4>
+						<h4><%= f.number_field :age, min:0, max:100, class:"form-control" %></h4>
+						<h4>性別 <%= f.radio_button :gender, "男性" %> 男性 <%= f.radio_button :gender, "女性" %> 女性</h4>
+						<h4>誕生日 <%= f.date_select :birthday %></h4>
+						<h4>自己紹介</h4>
+						<h4><%= f.text_area :introduction, size: "10x10", class:"form-control" %></h4>
+						<h4>称号</h4>
+						<h4><%= f.collection_select :id, @degrees, :id, :degree_name, selected: @user.degree_management.degree.degree_name, class: "folder-move" %></h4>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default btn-sm" data-dismiss="modal">閉じる</button>
+						<%= f.submit '登録する', class: "button" "btn btn-sm btn-primary" %>
+					</div>
+				<% end %>
+		</div>
+	</div>
+</div>
+
 	<p><%= link_to '質問一覧', user_questions_path %></p>
-	<p><%= link_to '新規質問', new_user_question_path %></p>
-	<p><%= link_to "ログアウト", destroy_user_session_path, method: "delete" %></p>
 

@@ -23,6 +23,7 @@ class User::PostsController < ApplicationController
 		@post_comment = Comment.new
 		@post_comments = Comment.all
 		@folders = current_user.folders
+		@folder_content = FolderContent.new
 	end
 
 	def edit

@@ -9,13 +9,13 @@
 			<% i = 1 %>
 			<h1>フォルダーの内容</h1>
 			<% @folder_contents.each do |folder_content| %>
-			<div class= "post_info_box">
+			<div class= "info_box">
 				<div class= "profile_image_box">
 					<%= link_to user_user_path(folder_content.post.user.id) do %>
 						<%= attachment_image_tag folder_content.post.user, :profile_image, :fill, 140, 140, fallback: "no_image.jpg", size:'140x140' %>
 					<% end %>
 				</div>
-				<div class= "post_info_1">
+				<div class= "info_1">
 					<%= link_to user_post_path(folder_content.post.id) do %>
 					<h3><%= folder_content.post.post_title %></h3>
 					<% end %>
