@@ -6,16 +6,20 @@ class Post < ApplicationRecord
 	belongs_to :user
 	belongs_to :folder, optional: true
 
-	def favorited_by?(user)
-        favorites.where(user_id: user.id).exists?
-    end
+  validates :post_title, presence: true, length: { maximum: 30 }
+  validates :link, presence: true, length: { maximum: 100 }
+  validates :post_body, presence: true, length: { maximum: 300 }
 
-    def self.search(search)
-    	if search
-      		Post.where(['post_title LIKE ?', "%#{search}%"])
-    	else
-      		Post.all
-    	end
+	def favorited_by?(user)
+    favorites.where(user_id: user.id).exists?
+  end
+
+  def self.search(search)
+  	if search
+    		Post.where(['post_title LIKE ?', "%#{search}%"])
+  	else
+    		Post.all
   	end
+  end
 
 end

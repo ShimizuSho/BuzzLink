@@ -1,4 +1,5 @@
 class User::QuestionsController < ApplicationController
+	before_action :authenticate_user!
 
 	def index
 		@questions = Question.page(params[:page]).per(5)
@@ -11,8 +12,8 @@ class User::QuestionsController < ApplicationController
 
 	def show
 		@question = Question.find(params[:id])
-		@comment = Comment.new
-		@comments = Comment.all
+		@question_comment = QuestionComment.new
+		@question_comments = QuestionComment.all
 		@folders = current_user.folders
 	end
 

@@ -14,50 +14,49 @@
     <% if request.path_info.include?('user') %>
       <div class="user-header">
         <%= link_to 'BuzzLink絆', user_root_path, :style=>"color:#ffff28; font-size: 50px; text-decoration: none; position: absolute; top: 20px; left: 20px; font-family: cursive; " %>
-      <nav>
-        <% if user_signed_in? %>
-          <ul class="nav-list">
-            <li class="nav-list-item">
-              <%= link_to "マイページ", user_user_path(current_user.id), :style=>"color:white;" %>
-            </li>
-            <li class="nav-list-item">
-              <%= link_to "ログアウト", destroy_user_session_path, method: :delete, :style=>"color:white;" %>
-            </li>
-            <li class="nav-list-item">
-                 <%= link_to "お問い合わせ",  new_user_contact_path, :style=>"color:white;" %>
-            </li>
-         </ul>
-         <%= form_tag user_root_path, :method => 'get' do %>
-            <p class= "header-search">
-              <%= text_field_tag :search, params[:search] %>
-              <%= submit_tag "Search", :name => nil %>
-            </p>
-          <% end %>
-     </div>
-
-    <% else %>
-
-          <ul class="nav-list">
-            <li class="nav-list-item">
-              <%= link_to "ログイン", new_user_session_path, :style=>"color:#fff; position: relative; bottom: 10px; " %>
-            </li>
-            <li class="nav-list-item">
-              <%= link_to "新規会員登録", new_user_registration_path, :style=>"color:#fff; position: relative; bottom: 10px; " %>
-               </li>
-            <li class="nav-list-item">
-              <%= link_to "お問い合わせ", new_user_contact_path, :style=>"color:#fff; position: relative; bottom: 10px; " %>
-            </li>
-          </ul>
-
+        <nav>
+          <% if user_signed_in? %>
+            <ul class="nav-list">
+              <li class="nav-list-item">
+                <%= link_to "My page", user_user_path(current_user.id), :style=>"color:white;" %>
+              </li>
+              <li class="nav-list-item">
+                <%= link_to "Log out", destroy_user_session_path, method: :delete, :style=>"color:white;" %>
+              </li>
+              <li class="nav-list-item">
+                <%= link_to "contact",  new_user_contact_path, :style=>"color:white;" %>
+              </li>
+            </ul>
             <%= form_tag user_root_path, :method => 'get' do %>
               <p class= "header-search">
-                  <%= text_field_tag :search, params[:search] %>
-                  <%= submit_tag "Search", :name => nil %>
+                <%= text_field_tag :search, params[:search] %>
+                <%= submit_tag "Search", :name => nil %>
               </p>
             <% end %>
+        </nav>
 
-      <% end %>
-      </nav>
+          <% else %>
+            <nav>
+              <ul class="nav-list">
+                <li class="nav-list-item">
+                  <%= link_to "Log in", new_user_session_path, :style=>"color:#fff; position: relative; bottom: 10px; " %>
+                </li>
+                <li class="nav-list-item">
+                  <%= link_to "Sign up", new_user_registration_path, :style=>"color:#fff; position: relative; bottom: 10px; " %>
+                   </li>
+                <li class="nav-list-item">
+                  <%= link_to "お問い合わせ", new_user_contact_path, :style=>"color:#fff; position: relative; bottom: 10px; " %>
+                </li>
+              </ul>
+
+              <%= form_tag user_root_path, :method => 'get' do %>
+                <p class= "header-search">
+                    <%= text_field_tag :search, params[:search] %>
+                    <%= submit_tag "Search", :name => nil %>
+                </p>
+              <% end %>
+            </nav>
+          <% end %>
       </div>
     <% end %>
   </header>

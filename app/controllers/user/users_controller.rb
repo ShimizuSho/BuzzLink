@@ -1,4 +1,5 @@
 class User::UsersController < ApplicationController
+	before_action :authenticate_user!
 
 	def show
 		@user = User.find(params[:id])
@@ -39,14 +40,14 @@ class User::UsersController < ApplicationController
 	end
 
 	def follows
-    	user = User.find(params[:id])
-    	@users = user.followings.page(params[:page]).per(5)
+    	@user = User.find(params[:id])
+    	@users = @user.followings.page(params[:page]).per(5)
     	@folders = current_user.folders
   	end
 
   	def followers
-    	user = User.find(params[:id])
-    	@users = user.followers.page(params[:page]).per(5)
+    	@user = User.find(params[:id])
+    	@users = @user.followers.page(params[:page]).per(5)
     	@folders = current_user.folders
   	end
 
@@ -54,15 +55,6 @@ class User::UsersController < ApplicationController
     	@user = User.find(params[:user_id])
   		new_evolution = @user.point/1000
   		@user.update(evolution: new_evolution)
-
-  		# e = (@user.evolution * 2) + 1
-  		# 2.times do |i|
-	  		# @degree_management = DegreeManagement.new
-	  		# @degree_management.user_id = @user.id
-	  		# @degree_management.degree_id = e
-	  		# e += 1
-			# @degree_management.save
-		# end
   	end
 
 

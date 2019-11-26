@@ -21,9 +21,15 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+header {
+  width: 100%;
+}
+
 body {
   background-color: black;
   color: #EEEEEE;
+  a:hover { text-decoration: none;}
 }
 
 .clearfix::after {
@@ -39,8 +45,24 @@ body {
   display : none;
 }
 
+.modal-header {
+  color: #333333;
+}
+
+.modal-body {
+  color: #333333;
+}
+
+.modal-fotter {
+  color: #333333;
+}
+
+.modal-title {
+  color: #333333;
+}
+
+
 .page_title {
-  color: orange;
   margin-bottom: 0;
 }
 
@@ -77,6 +99,7 @@ body {
   position: absolute;
   bottom: 10px;
   right: 30px;
+  color: black;
 }
 
 .admin-nav-list-item {
@@ -123,6 +146,19 @@ body {
   border-radius: 15px;
 }
 
+.get_gegree {
+  color: orange;
+}
+
+.follow_profile_image {
+  transition: 0.5s;
+}
+
+.follow_profile_image:hover {
+  width: 12vw;
+  height: 12vw;
+}
+
 .profile_img{
   transition: 0.5s;
 }
@@ -140,9 +176,6 @@ body {
   text-align: center;
   color: white;
   margin-top: 0;
-}
-.get_gegree {
-  color: orange;
 }
 
 .evolution_profile_image {

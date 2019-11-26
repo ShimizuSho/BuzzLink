@@ -1,3 +1,13 @@
+<% if @user.errors.any? %>
+  	<div id="error_explanation" class="alert alert-danger">
+    	<ul>
+      		<% @user.errors.full_messages.each do |message| %>
+        		<li><%= message %></li>
+      		<% end %>
+    	</ul>
+  	</div>
+<% end %>
+
 <div class = "container">
 	<div class="row">
 		<div class="col-lg-3 folder_template">
@@ -37,7 +47,7 @@
 
 				<% if @user.id != current_user.id %>
 			  		<% if @isRoom == true %>
-				    	<%= link_to "DMを送る", user_user_room_path(current_user.id, @roomId), class:"btn btn-primary user-show-room" %>
+				    	<%= link_to "DMを送る", user_user_room_path(current_user.id, @roomId), class:"btn btn-primary btn-lg user-show-room" %>
 					<% else %>
 				    	<%= form_for @room, url: user_user_rooms_path(current_user.id), method: :post do |f| %>
 				      		<%= fields_for @entry do |e| %>
@@ -48,15 +58,15 @@
 				  	<% end %>
 				<% end %>
 
-				<p><%=link_to "フォロー", follows_user_user_path(@user.id) %></p>
-				<p><%=link_to "フォロワー", followers_user_user_path(@user.id) %></p>
 				<% if @user != current_user %>
 				    <% if @user.followed_by?(current_user) %>
-				        <p><%=link_to "フォロー済み", user_user_relationships_path(@user.id), method: :delete %></p>
+				        <h4><%=link_to "フォロー済み", user_user_relationships_path(@user.id), method: :delete %></h4>
 				    <% else %>
-				        <p><%=link_to "フォローする", user_user_relationships_path(@user.id), method: :post %></p>
+				        <h4><%=link_to "フォローする", user_user_relationships_path(@user.id), method: :post %></h4>
 				    <% end %>
 				<% end %>
+				<h4><%=link_to "フォロー一覧", follows_user_user_path(@user.id) %></h4>
+				<h4><%=link_to "フォロワー一覧", followers_user_user_path(@user.id) %></h4>
 
 				</div>
 				<div class="profile_info">
@@ -76,10 +86,10 @@
 					<% else %>
 					　	<h4>誕生日　<%= @user.birthday %></h4>
 					<% end %>
-						<div class="text_box">
-	    					<span class="box-title">自己紹介</span>
-	    					<p><%= @user.introduction %></p>
-						</div>
+					<div class="text_box col-lg-2">
+    					<span class="box-title">自己紹介</span>
+    					<p><%= @user.introduction %></p>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -104,7 +114,7 @@
 						<h4>自己紹介</h4>
 						<h4><%= f.text_area :introduction, size: "10x10", class:"form-control" %></h4>
 						<h4>称号</h4>
-						<h4><%= f.collection_select :id, @degrees, :id, :degree_name, selected: @user.degree_management.degree.degree_name, class: "folder-move" %></h4>
+						<h4><%= f.collection_select :id, @degrees, :id, :degree_name, selected: @user.degree_management.degree.degree_name, :selected => @user.degree_management.id.to_i, class: "folder-move" %></h4>
 					</div>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-default btn-sm" data-dismiss="modal">閉じる</button>
