@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_25_115545) do
+ActiveRecord::Schema.define(version: 2019_11_27_090000) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -34,7 +34,6 @@ ActiveRecord::Schema.define(version: 2019_11_25_115545) do
   end
 
   create_table "contacts", force: :cascade do |t|
-    t.integer "user_id"
     t.string "name"
     t.string "status"
     t.text "contact_body"
@@ -151,8 +150,8 @@ ActiveRecord::Schema.define(version: 2019_11_25_115545) do
     t.string "gender", default: "未設定"
     t.text "introduction", default: "未設定"
     t.integer "point", default: 0
-    t.string "age", default: "0"
-    t.datetime "birthday"
+    t.integer "age", default: 0
+    t.date "birthday"
     t.string "users"
     t.string "profile_image_id"
     t.string "name"

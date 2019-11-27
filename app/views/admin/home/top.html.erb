@@ -1,11 +1,13 @@
-<h1>admin</h1>
-<P><b><%= link_to "管理者としてログイン中　ログアウト", destroy_admin_session_path, method: :delete %></b>
-<div class= "row">
-	<div class="col-lg-2"></div>
-	<div class="col-lg-8">
-		<h1><%=link_to "投稿記事一覧", admin_posts_path, class: "btn btn-default btn-lg btn-block" %></h1>
-		<h1><%=link_to "質問一覧", admin_questions_path, class: "btn btn-default btn-lg btn-block" %></h1>
-		<h1><%=link_to "お問い合わせ一覧", admin_contacts_path, class: "btn btn-default btn-lg btn-block" %></h1>
+<div class = "container">
+	<div class= "row">
+		<div class="col-lg-2"></div>
+		<div class="col-lg-8">
+			<h1>admin</h1>
+			<h3><%= link_to "管理者としてログイン中　ログアウト", destroy_admin_session_path, method: :delete %></h3>
+			<h3><%= link_to "トップページへ", admin_root_path %></h3>
+			<h1><%=link_to "投稿記事一覧", admin_posts_path, class: "btn btn-default btn-lg btn-block" %></h1>
+			<h1><%=link_to "質問一覧", admin_questions_path, class: "btn btn-default btn-lg btn-block" %></h1>
+			<h1><%=link_to "お問い合わせ一覧", admin_contacts_path, class: "btn btn-default btn-lg btn-block" %></h1>
+		</div>
+		<div class="col-lg-2"></div>
 	</div>
-	<div class="col-lg-2"></div>
-</div>

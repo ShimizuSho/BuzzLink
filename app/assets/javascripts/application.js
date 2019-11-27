@@ -18,8 +18,6 @@
 //= require turbolinks
 //= require_tree .
 
-
-console.log("--------test----------")
 $(document).on('turbolinks:load', function(){
 	for (let i = 1; i <= folders.length; i += 1) {
 		$('.folder_name_edit' + i).on('click', function(){

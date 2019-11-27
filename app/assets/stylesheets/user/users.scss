@@ -59,9 +59,17 @@
   margin-bottom: 0 !important;
 }
 
+.user_introduction {
+  overflow-wrap: break-word;
+}
+
 .degree {
   margin: 10px 0 10px 10px ;
-  border-bottom: solid 5px #99CCFF;
+  border-bottom: solid 5px #4682B4;
+}
+
+.evolution_btn {
+  margin-left: 5px;
 }
 
 .frame1 {

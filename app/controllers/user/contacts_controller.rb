@@ -13,7 +13,7 @@ class User::ContactsController < ApplicationController
 
 private
 	def contact_params
-		params.require(:contact).permit(:name, :email, :contact_body)
+		params.require(:contact).permit(:name, :contact_body)
 	end
 
 

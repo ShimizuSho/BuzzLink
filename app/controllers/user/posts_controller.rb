@@ -2,7 +2,7 @@ class User::PostsController < ApplicationController
 	before_action :authenticate_user!
 
 	def index
-		@posts = Post.page(params[:page]).per(5)
+		@posts = Post.page(params[:page]).per(5).reverse_order
 		@folders = current_user.folders
 	end
 

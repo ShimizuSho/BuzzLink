@@ -1,22 +1,43 @@
-<h1>お問い合わせ一覧</h1>
-<div class="row">
-	<table class="table table-striped">
-		<thead>
-			<tr>
-				<th>お名前</th>
-				<th>内容</th>
-			</tr>
-		</thead>
-		<tbody>
-			<% @contacts.each do |contact| %>
-				<tr>
-					<td>
-						<%= link_to user_user_path(contact.user.id) %>
-							contact.user.name
-					</td>
-					<td><%= contact.contact_body %></td>
-				</tr>
-			<% end %>
-		</tbody>
-	</table>
+<div class = "container">
+	<div class="row">
+		<h3><%= link_to "管理者としてログイン中　ログアウト", destroy_admin_session_path, method: :delete %></h3>
+		<h3><%= link_to "トップページへ", admin_root_path %></h3>
+		<h1 class="profile_image">お問い合わせ一覧</h1>
+		<% @contacts.each do |contact| %>
+			<div class= "info_box">
+				<div class= "profile_image">
+					<%= link_to admin_user_path(contact.user.id) do %>
+						<%= attachment_image_tag question.user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg", class:"radius", size:'100x100' %>
+					<% end %>
+				</div>
+				<div class= "info_1">
+					<%= question.created_at.strftime('%Y/%m/%d') %>
+					<%= link_to admin_user_path(question.user.id) do %>
+						<%= contact.user.name %>
+					<% end %>
+					<p><%= contact.contact_body %></p>
+					<h1><%= link_to '削除', admin_question_path(question.user.id), method: :delete %></h1>
+				</div>
+				<div class="dm_btn_box flex">
+						<div>
+							<% if @user.id != current_admin.id %>
+						  		<% if @isRoom == true %>
+							    	<%= link_to "DMを送る", admin_rooms_path(current_admin.id, @roomId), class:"btn btn-primary btn-lg user-show-room" %>
+								<% else %>
+							    	<%= form_for @room, url: admin_rooms_path(current_admin.id), method: :post do |f| %>
+							      		<%= fields_for @entry do |e| %>
+							        		<%= e.hidden_field :user_id, value: @user.id %>
+							    		<% end %>
+							      	<%= f.submit "DMを始める", class:"btn btn-primary btn-lg user-show-chat"%>
+							    	<% end %>
+							  	<% end %>
+							<% end %>
+						</div>
+						<div>
+						</div>
+					</div>
+			</div>
+		<% end %>
+		<%= paginate @contacts, class: "paginate" %>
+	</div>
 </div>

@@ -1,5 +1,5 @@
 <div class = "container">
-	<div class="row clearfix">
+	<div class="row">
 		<div class="col-lg-3 folder_template">
 			<%= render 'user/folders/template', folders: @folders %>
 		</div>
@@ -18,7 +18,7 @@
 				<div class= "info_1">
 					<div class="flex">
 						<%= link_to user_post_path(folder_content.post.id) do %>
-							<h3><%= folder_content.folder_contents_title %></h3>
+							<h3 class="folder_contents_title"><%= folder_content.folder_contents_title.truncate(40, omission: '~~~') %></h3>
 						<% end %>
 					</div>
 					<a><%= folder_content.post.link %></a>
@@ -34,11 +34,12 @@
 							<%= form_tag(user_user_folder_folder_content_path(current_user.id, folder_content.folder_id, folder_content.id), method: :patch) do %>
 								<div class= "folder_move_list folder_move_list<%= i %> clearfix" style="float: left;">
 									<%= collection_select :folder_content, :folder_id, current_user.folders, :id, :folder_name, class: "folder-move" %>
+									<%= submit_tag '移動', class: "folder-move" %>
 								</div>
 						</div>
 						<div class="icon_box">
 								<div>
-									<%= submit_tag '移動', class: "folder-move" %>
+
 								</div>
 
 									<div>
@@ -46,16 +47,37 @@
 											<span class= "glyphicon glyphicon-trash" aria-hidden="true"></span>
 										<% end %>
 									</div>
+
 									<div>
-										<a data-toggle="modal" data-target="#folder_contentsModal">
+
+										<a data-toggle="modal" data-target="#folder_contentsModal<%= i %>" id="#folder_contentsModal<%= i %>" class=''>
 											<span class= "glyphicon glyphicon glyphicon glyphicon-pencil" aria-hidden="true"></span>
 										</a>
 									</div>
-							</div>
 							<div>
 								<span class="glyphicon glyphicon-heart" aria-hidden="true" style="color: red;"></span><p class="fav-count"><%= folder_content.post.favorites.count %></p>
 							</div>
 						</div>
+						<% end %>
+					</div>
+				</div>
+			</div>
+			<div class="modal fade" id="folder_contentsModal<%= i %>" tabindex="-1">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal"><span>×</span></button>
+							<h4 class="modal-title">タイトル</h4>
+						</div>
+						<%= form_for folder_content, url: user_folder_contents_update_path(folder_content.id), method: :patch do |f| %>
+							<div class="modal-body">
+								<h4><%= f.text_field :folder_contents_title, value: folder_content.folder_contents_title, class:"form-control" %></h4>
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-default" data-dismiss="modal">閉じる</button>
+								<%= f.hidden_field :folder_content, :value => folder_content.id %>
+								<%= f.submit '登録する', class: "btn  btn-sm btn-primary" %>
+							</div>
 						<% end %>
 					</div>
 				</div>
@@ -67,24 +89,6 @@
 </div>
 
 
-<!-- モーダル・ダイアログ -->
-<div class="modal fade" id="folder_contentsModal" tabindex="-1">
-	<div class="modal-dialog">
-		<div class="modal-content">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal"><span>×</span></button>
-				<h4 class="modal-title">タイトル</h4>
-			</div>
-			<div class="modal-body">
-				本文
-			</div>
-			<div class="modal-footer">
-				<button type="button" class="btn btn-default" data-dismiss="modal">閉じる</button>
-				<button type="button" class="btn btn-primary">ボタン</button>
-			</div>
-		</div>
-	</div>
-</div>
 	<%= paginate @folder_contents, class: "paginate" %>
 	<script type="text/javascript">
 		let posts = document.querySelectorAll('.post_info_2')

@@ -1,19 +1,19 @@
 class Admin::PostsController < ApplicationController
 
 	def index
-		@posts = Post.search(params[:search])
+		@posts = Post.search(params[:search]).page(params[:page]).per(30).reverse_order
 	end
 
 	def show
 		@post = Post.find(params[:id])
 		@post_comment = Comment.new
-		@post_comments = Comment.all
+		@post_comments = @post.comments.page(params[:page]).per(50).reverse_order
 	end
 
 	def destroy
 		@post = Post.find(params[:id])
 		@post.destroy
-		redirect_to user_root_path
+		redirect_to admin_posts_path
 	end
 
 	private

@@ -13,7 +13,6 @@ class User < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :favorite_posts, through: :favorites, source: :post
   has_many :questions, dependent: :destroy
-  has_many :contacts, dependent: :destroy
   has_many :folders, dependent: :destroy
   has_many :messages, dependent: :destroy
   has_many :entries, dependent: :destroy
@@ -31,7 +30,6 @@ class User < ApplicationRecord
     # 今自分(引数のuser)がフォローしようとしているユーザー(レシーバー)がフォローされているユーザー(つまりpassive)の中から、引数に渡されたユーザー(自分)がいるかどうかを調べる
     passive_relationships.find_by(following_id: user.id).present?
   end
-  validates :name, presence: true, length: { maximum: 10 }
   validates :age, presence: true
   validates :introduction, presence: true, length: { maximum: 150 }
 

@@ -39,7 +39,7 @@
 				<button type="button" class="btn btn-warning btn-lg" data-toggle="modal" data-target="#bookmarkModal">ブックマーク</button>
 				<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#commentModal">コメント</button>
 				<% if @post.user == current_user %>
-					<%= link_to '記事削除', user_post_path(@post.id), method: :delete %>
+					<h4><%= link_to '記事削除', user_post_path(@post.id), method: :delete %></h4>
 				<% end %>
 
 			<% @post_comments.each do |post_comment| %>

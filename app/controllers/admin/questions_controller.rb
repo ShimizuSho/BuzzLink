@@ -1,11 +1,7 @@
 class Admin::QuestionsController < ApplicationController
 
 	def index
-		@questions = Question.all
-	end
-
-	def new
-		@question = Question.new
+		@questions = Question.page(params[:page]).per(30).reverse_order
 	end
 
 	def show
@@ -14,21 +10,9 @@ class Admin::QuestionsController < ApplicationController
 		@comments = Comment.all
 	end
 
-	def create
-		@question = Question.new(question_params)
-		@question.user_id = current_user.id
-		@question.save
-		redirect_to user_questions_path
-	end
-
 	def destroy
 		@question = Question.find(params[:id])
 		@question.delete
-		redirect_to user_questions_path
-	end
-
-private
-	def question_params
-		params.require(:question).permit(:question_title, :question_body)
+		redirect_to admin_questions_path
 	end
 end

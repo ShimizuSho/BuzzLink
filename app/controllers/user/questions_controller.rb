@@ -2,7 +2,7 @@ class User::QuestionsController < ApplicationController
 	before_action :authenticate_user!
 
 	def index
-		@questions = Question.page(params[:page]).per(5)
+		@questions = Question.page(params[:page]).per(5).reverse_order
 		@folders = current_user.folders
 	end
 
@@ -13,7 +13,7 @@ class User::QuestionsController < ApplicationController
 	def show
 		@question = Question.find(params[:id])
 		@question_comment = QuestionComment.new
-		@question_comments = QuestionComment.all
+		@question_comments = QuestionComment.all.reverse_order
 		@folders = current_user.folders
 	end
 
