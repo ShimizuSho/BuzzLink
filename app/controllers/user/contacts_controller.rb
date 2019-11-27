@@ -4,11 +4,14 @@ class User::ContactsController < ApplicationController
 	def new
 		@contact = Contact.new
 	end
-
 	def create
 		@contact = Contact.new(contact_params)
-		@contact.save
-		redirect_to user_contact_completed_path(current_user.id)
+		if @contact.save
+			redirect_to user_contact_completed_path(current_user.id)
+		else
+	     	@contact = Contact.new
+	      	render 'user/contacts/new'
+      	end
 	end
 
 private

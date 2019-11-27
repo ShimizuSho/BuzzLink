@@ -11,12 +11,16 @@ class User::PostsController < ApplicationController
 	end
 
 	def create
-		post = Post.new(post_params)
-		post.user_id = current_user.id
-		post.save
-		new_point = post.user.point.to_i + 10
-		post.user.update(point: new_point)
-		redirect_to user_root_path
+		@post = Post.new(post_params)
+		@post.user_id = current_user.id
+		if  @post.save
+			new_point = @post.user.point.to_i + 50
+			@post.user.update(point: new_point)
+			flash[:notice] = "絆ポイントを50ポイント獲得しました！"
+			redirect_to user_root_path
+		else
+			render 'user/posts/new'
+		end
 	end
 
 	def show

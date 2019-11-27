@@ -13,15 +13,21 @@ class User::QuestionsController < ApplicationController
 	def show
 		@question = Question.find(params[:id])
 		@question_comment = QuestionComment.new
-		@question_comments = QuestionComment.all.reverse_order
+		@question_comments = @question.question_comments.reverse_order
 		@folders = current_user.folders
 	end
 
 	def create
 		@question = Question.new(question_params)
-		@question.user_id = current_user.id
-		@question.save
-		redirect_to user_questions_path
+			@question.user_id = current_user.id
+			if  @question.save
+			new_point = @question.user.point.to_i + 10
+			@question.user.update(point: new_point)
+			flash[:notice] = "絆ポイントを10ポイント獲得しました！"
+			redirect_to user_questions_path
+		else
+			render 'user/questions/new'
+		end
 	end
 
 	def destroy

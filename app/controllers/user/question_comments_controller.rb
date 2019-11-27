@@ -9,6 +9,13 @@ class User::QuestionCommentsController < ApplicationController
 		redirect_to user_question_path(@question.id)
 	end
 
+	def destroy
+
+		@question_comment = QuestionComment.find(params[:id])
+		@question_comment.destroy
+		redirect_to user_questions_path
+	end
+
 
 
 private

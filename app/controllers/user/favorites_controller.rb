@@ -6,6 +6,7 @@ class User::FavoritesController < ApplicationController
         favorite.save
         new_point = current_user.point.to_i + 10
         current_user.update(point: new_point)
+        flash[:notice] = "絆ポイントを10ポイント獲得しました！"
         post = Post.find(params[:post_id])
         new_point = post.user.point.to_i + 10
         post.user.update(point: new_point)

@@ -6,7 +6,11 @@ class User::CommentsController < ApplicationController
 		@post_comment = current_user.comments.new(post_comment_params)
 		@post_comment.post_id = @post.id
 		@post_comment.save
-		redirect_to user_post_path(@post.id)
+		@post_comment = Comment.new
+		@post_comments = Comment.all
+		@folders = current_user.folders
+		@folder_content = FolderContent.new
+		render 'user/posts/show'
 	end
 
 	def destroy

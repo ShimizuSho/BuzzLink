@@ -6,6 +6,9 @@
 		<div class="col-lg-1">
 		</div>
 		<div class="col-lg-8">
+			<% if flash[:notice] %>
+  				<h3 class="get_point"><%= flash[:notice] %></h3>
+			<% end %>
 			<h1 class="profile_image">Questions</h1>
 			<% @questions.each do |question| %>
 				<div class= "info_box">
