@@ -149,7 +149,7 @@ ActiveRecord::Schema.define(version: 2019_11_27_090000) do
     t.datetime "remember_created_at"
     t.string "gender", default: "未設定"
     t.text "introduction", default: "未設定"
-    t.integer "point", default: 0
+    t.integer "point", default: 100
     t.integer "age", default: 0
     t.date "birthday"
     t.string "users"

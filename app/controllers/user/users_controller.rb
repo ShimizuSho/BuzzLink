@@ -42,13 +42,14 @@ class User::UsersController < ApplicationController
 
 	def follows
     	@user = User.find(params[:id])
-    	@users = @user.followings.page(params[:page]).per(5)
+    	@users = @user.followings.page(params[:page]).per(10)
     	@folders = current_user.folders
   	end
 
   	def followers
     	@user = User.find(params[:id])
-    	@users = @user.followers.page(params[:page]).per(5)
+    	@users = @user.followers.page(params[:page]).per(10)
+    	p @users
     	@folders = current_user.folders
   	end
 

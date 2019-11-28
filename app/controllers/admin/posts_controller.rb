@@ -10,6 +10,12 @@ class Admin::PostsController < ApplicationController
 		@post_comments = @post.comments.page(params[:page]).per(50).reverse_order
 	end
 
+	def update
+		@post = User.find(params[:id])
+		@post.update(post_params)
+		redirect_to user_user_path(@user.id)
+	end
+
 	def destroy
 		@post = Post.find(params[:id])
 		@post.destroy

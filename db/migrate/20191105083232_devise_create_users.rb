@@ -34,7 +34,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
 
       t.string :gender, default: "未設定"
       t.text :introduction, default: "未設定"
-      t.integer :point, default: 0
+      t.integer :point, default: 100
       t.string :age, default: 0
       t.integer :birthday
       t.string :users, :profile_image_id

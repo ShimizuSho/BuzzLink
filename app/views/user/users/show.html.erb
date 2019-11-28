@@ -57,7 +57,7 @@
 							<% end %>
 						</div>
 						<div>
-							<% if @user == current_user %>
+							<% if (@user.point/1000) > @user.evolution && @user == current_user %>
 								<p class="evolution_btn"><%= link_to '進化する！', user_evolution_path(@user.id), class: "btn btn-lg btn-danger evolution_btn" %></p>
 							<% end %>
 						</div>
