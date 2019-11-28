@@ -33,5 +33,5 @@ production:
   collation: utf8mb4_general_ci
   host: rds-mysql-server.cyplncjyc05k.ap-northeast-1.rds.amazonaws.com
   username: root
-  password: JanneDaArc912495
+  password: JanneDaArc
 
