@@ -36,9 +36,8 @@ class User::QuestionsController < ApplicationController
 		redirect_to user_questions_path
 	end
 
-private
-	def question_params
-		params.require(:question).permit(:question_title, :question_body)
-	end
-
+	private
+		def question_params
+			params.require(:question).permit(:question_title, :question_body)
+		end
 end

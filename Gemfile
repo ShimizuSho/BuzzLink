@@ -71,3 +71,8 @@ gem 'jquery-rails'
 gem "bootstrap_form"
 gem "pry-rails"
 gem 'rinku'
+
+group :production do
+  gem 'mysql2'
+end
+

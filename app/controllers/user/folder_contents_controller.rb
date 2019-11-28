@@ -48,10 +48,8 @@ class User::FolderContentsController < ApplicationController
 		render 'user/folder_contents/index'
 	end
 
-private
-	def folder_contents_params
-		params.require(:folder_content).permit(:folder_id, :folder_contents_title)
-	end
-
-
+	private
+		def folder_contents_params
+			params.require(:folder_content).permit(:folder_id, :folder_contents_title)
+		end
 end

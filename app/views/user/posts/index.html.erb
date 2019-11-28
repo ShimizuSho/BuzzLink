@@ -21,7 +21,7 @@
 						<%= link_to user_post_path(post.id) do %>
 							<h4><%= post.post_title.truncate(53, omission: '~~~') %></h4>
 						<% end %>
-						<a><%= post.link %></a>
+						<a href="<%= post.link %>"><%= post.link %></a>
 						<%= link_to user_user_path(post.user.id) do %>
 							<h5><%= post.user.name %></h5>
 						<% end %>

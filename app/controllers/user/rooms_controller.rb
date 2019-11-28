@@ -18,5 +18,4 @@ class User::RoomsController < ApplicationController
             redirect_to user_user_path(current_user.id)
         end
     end
-
 end

@@ -21,7 +21,7 @@
 							<h3 class="folder_contents_title"><%= folder_content.folder_contents_title.truncate(40, omission: '~~~') %></h3>
 						<% end %>
 					</div>
-					<a><%= folder_content.post.link %></a>
+					<a href="<%= folder_content.post.link %>"><%= folder_content.post.link %></a>
 					<%= link_to user_user_path(folder_content.post.id) do %>
 						<h5><%= folder_content.post.user.name %></h5>
 					<% end %>

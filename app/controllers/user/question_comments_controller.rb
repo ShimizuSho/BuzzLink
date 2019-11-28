@@ -10,16 +10,13 @@ class User::QuestionCommentsController < ApplicationController
 	end
 
 	def destroy
-
 		@question_comment = QuestionComment.find(params[:id])
 		@question_comment.destroy
 		redirect_to user_questions_path
 	end
 
-
-
-private
-	def question_comment_params
-		params.require(:question_comment).permit(:comment_body)
-	end
+	private
+		def question_comment_params
+			params.require(:question_comment).permit(:comment_body)
+		end
 end

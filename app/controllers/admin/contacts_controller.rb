@@ -9,5 +9,4 @@ class Admin::ContactsController < ApplicationController
 		@contacts.delete
 		redirect_to admin_contacts_path
 	end
-
 end

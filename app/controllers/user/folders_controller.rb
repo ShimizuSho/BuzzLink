@@ -41,10 +41,8 @@ class User::FoldersController < ApplicationController
 
 	end
 
-
 	private
 		def folder_params
 			params.require(:folder).permit(:folder_name)
 		end
-
 end

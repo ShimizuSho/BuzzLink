@@ -20,19 +20,9 @@ class User::CommentsController < ApplicationController
 		redirect_to user_post_path(@post.id)
 	end
 
-
-
-
-
-
-
-private
-	def post_comment_params
-		params.require(:comment).permit(:comment_body)
-	end
-
-
-
-
+	private
+		def post_comment_params
+			params.require(:comment).permit(:comment_body)
+		end
 end
 

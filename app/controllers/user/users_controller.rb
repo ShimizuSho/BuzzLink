@@ -60,11 +60,10 @@ class User::UsersController < ApplicationController
   	end
 
 
-private
-	def user_params
-		params.require(:user).permit(:profile_image, :age, :gender, :birthday, :introduction)
-	end
-
+	private
+		def user_params
+			params.require(:user).permit(:profile_image, :age, :gender, :birthday, :introduction)
+		end
 end
 
 

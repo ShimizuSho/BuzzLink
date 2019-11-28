@@ -47,15 +47,10 @@ class User::PostsController < ApplicationController
 		redirect_to user_root_path
 	end
 
-
-
 	private
 	def post_params
 		params.require(:post).permit(:post_title, :link, :post_body)
 	end
-
-
-
 end
 
 

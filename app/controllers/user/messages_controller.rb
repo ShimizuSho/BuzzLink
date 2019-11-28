@@ -9,5 +9,4 @@ class User::MessagesController < ApplicationController
 	    end
 	      	redirect_to user_user_room_path(current_user.id, @message.room.id)
   	end
-
 end

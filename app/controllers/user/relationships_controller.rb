@@ -14,6 +14,5 @@ class User::RelationshipsController < ApplicationController
         follow.destroy
         redirect_back(fallback_location: user_root_path)
     end
-
 end
 
