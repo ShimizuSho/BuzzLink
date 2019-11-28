@@ -30,7 +30,6 @@ class User < ApplicationRecord
     # 今自分(引数のuser)がフォローしようとしているユーザー(レシーバー)がフォローされているユーザー(つまりpassive)の中から、引数に渡されたユーザー(自分)がいるかどうかを調べる
     passive_relationships.find_by(following_id: user.id).present?
   end
-  validates :age, presence: true
-  validates :introduction, presence: true, length: { maximum: 150 }
+  validates :introduction, length: { maximum: 150 }
 
 end
