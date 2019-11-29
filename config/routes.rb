@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-
+  root 'controller#new_user_session'
   namespace :user do
   	root to: "posts#index"
     get 'folders/folders_create' => 'folders#new', as: 'folders_new'

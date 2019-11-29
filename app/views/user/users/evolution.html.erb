@@ -4,7 +4,7 @@
 			<%= attachment_image_tag @user, :profile_image, :fill, 500, 500, fallback: "no_image.jpg", size:'500x500', class: "evolution_profile_image frame#{@user.evolution.to_i}"%>
 		</div>
 		<h1 class="evolution_info">進化おめでとう！！！</h1>
-		<h1 class="evolution_info">称号 <span class="get_gegree"><%= Degree.find((@user.evolution * 2) + 3).degree_name %>・<%= Degree.find((@user.evolution * 2) + 4).degree_name %></span> を獲得しました！
+		<h1 class="evolution_info">称号 <span class="get_gegree"><%= Degree.find((@user.evolution * 2) + 1).degree_name %>・<%= Degree.find((@user.evolution * 2) + 2).degree_name %></span> を獲得しました！
 		</h1>
 		<h1><%= link_to 'マイページに戻る', user_user_path(current_user.id), class: "btn btn-lg default evolution_btn" %></h1>
 	</div>
