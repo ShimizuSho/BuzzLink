@@ -28,7 +28,7 @@
 			<div class="profile_info flex">
 				<div>
 					<div>
-						<%= attachment_image_tag @user, :profile_image, :fill, 300, 300, fallback: "no_image.jpg", size:'300x300', class: "profile_img frame#{@user.evolution.to_i}" %>
+						<%= attachment_image_tag @user, :profile_image, :fill, 300, 300, fallback: "no_image.jpg", class: "profile_img frame#{@user.evolution.to_i}", size:'300x300' %>
 					</div>
 					<h3 class="user_name"><%= @user.name %> さん</h3>
 					<h3>LEVEL <%= @user_level %></h3>
@@ -71,7 +71,7 @@
 					<% end %>
 					<h4><%=link_to "フォロー一覧", follows_user_user_path(@user.id), class: "white_boder" %></h4>
 					<h4><%=link_to "フォロワー一覧", followers_user_user_path(@user.id) %></h4>
-					<h4><%=link_to "投稿一覧", user_root_path %></h4>
+					<h4><%=link_to "投稿一覧", user_posts_path %></h4>
 					<h4><%=link_to "質問一覧", user_questions_path %></h4>
 					<h4><%= link_to '退会', destroy_user_session_path, method: :delete, "data-confirm" => "本当に退会しますか？"%></h4>
 				</div>
@@ -87,11 +87,6 @@
 						<h4>年齢 <%= @user.age %></h4>
 					<% end %>
 					<h4>性別　<%= @user.gender %></h4>
-					<% if @user.birthday == 0 %>
-						<h4>誕生日　未設定</h4>
-					<% else %>
-					　	<h4>誕生日　<%= @user.birthday %></h4>
-					<% end %>
 					<div class="text_box col-lg-8">
     					<span class="box-title">自己紹介</span>
 						<div class="box2">
@@ -118,7 +113,6 @@
 						<h4>年齢</h4>
 						<h4><%= f.number_field :age, min:0, max:100, class:"form-control" %></h4>
 						<h4>性別 <%= f.radio_button :gender, "男性" %> 男性 <%= f.radio_button :gender, "女性" %> 女性</h4>
-						<h4>誕生日 <%= f.date_select :birthday %></h4>
 						<h4>自己紹介</h4>
 						<h4><%= f.text_area :introduction, size: "10x10", class:"form-control" %></h4>
 						<h4>称号</h4>

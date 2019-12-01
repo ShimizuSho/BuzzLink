@@ -7,7 +7,7 @@ class User::CommentsController < ApplicationController
 		@post_comment.post_id = @post.id
 		@post_comment.save
 		@post_comment = Comment.new
-		@post_comments = Comment.all
+		@post_comments = @post.comments
 		@folders = current_user.folders
 		@folder_content = FolderContent.new
 		render 'user/posts/show'

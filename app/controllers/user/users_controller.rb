@@ -49,7 +49,6 @@ class User::UsersController < ApplicationController
   	def followers
     	@user = User.find(params[:id])
     	@users = @user.followers.page(params[:page]).per(10)
-    	p @users
     	@folders = current_user.folders
   	end
 

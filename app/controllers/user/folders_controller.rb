@@ -21,7 +21,7 @@ class User::FoldersController < ApplicationController
 		@degree_management.user_id = current_user.id
 		@degree_management.degree_id = 2
 		@degree_management.save
-	    redirect_to user_root_path
+	    redirect_to user_posts_path
 	end
 
 	def update

@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
-  root 'controller#new_user_session'
+
+  	root to: "user/posts#index"
   namespace :user do
-  	root to: "posts#index"
     get 'folders/folders_create' => 'folders#new', as: 'folders_new'
     get 'contacts/:user_id/contact_completed' => 'contacts#contact_completed', as: 'contact_completed'
     get 'folder_contents/folder_contents_new/:post_id' => 'folder_contents#new', as: 'folder_contents_new'
@@ -21,7 +21,7 @@ Rails.application.routes.draw do
     resources :questions do
       resources :question_comments, only: [:new, :create, :edit, :update, :destroy]
     end
-  	resources :posts, only: [:new, :create, :show, :edit, :update, :destroy] do
+  	resources :posts, only: [:new, :index, :create, :show, :edit, :update, :destroy] do
   	 resources :comments, only: [:new, :create, :edit, :update, :destroy]
      resources :favorites, only: [:create, :destroy]
   	end
