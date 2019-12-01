@@ -108,23 +108,23 @@
 				<button type="button" class="close" data-dismiss="modal"><span>×</span></button>
 				<h3 class="modal-title">マイページ編集</h3>
 			</div>
-				<%= form_for @user, url: user_user_path(@user.id), method: :patch do |f| %>
-					<div class="modal-body">
-						<h4>プロフィール画像</h4>
-						<h4><%= f.attachment_field :profile_image %></h4>
-						<h4>年齢</h4>
-						<h4><%= f.number_field :age, min:0, max:100, class:"form-control" %></h4>
-						<h4>性別 <%= f.radio_button :gender, "男性" %> 男性 <%= f.radio_button :gender, "女性" %> 女性</h4>
-						<h4>自己紹介</h4>
-						<h4><%= f.text_area :introduction, size: "10x10", class:"form-control" %></h4>
-						<h4>称号</h4>
-						<h4><%= f.collection_select :id, @degrees, :id, :degree_name, selected: @user.degree_management.degree.degree_name, :selected => @user.degree_management.id.to_i, class: "folder-move" %></h4>
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-default btn-sm" data-dismiss="modal">閉じる</button>
-						<%= f.submit '登録する', class: "button" "btn btn-sm btn-primary" %>
-					</div>
-				<% end %>
+			<%= form_for @user, url: user_user_path(@user.id), method: :patch do |f| %>
+				<div class="modal-body">
+					<h4>プロフィール画像</h4>
+					<h4><%= f.attachment_field :profile_image %></h4>
+					<h4>年齢</h4>
+					<h4><%= f.number_field :age, min:0, max:100, class:"form-control" %></h4>
+					<h4>性別 <%= f.radio_button :gender, "男性" %> 男性 <%= f.radio_button :gender, "女性" %> 女性</h4>
+					<h4>自己紹介</h4>
+					<h4><%= f.text_area :introduction, size: "10x10", class:"form-control" %></h4>
+					<h4>称号</h4>
+					<h4><%= f.collection_select :id, @degrees, :id, :degree_name, selected: @user.degree_management.degree.degree_name, :selected => @user.degree_management.id.to_i, class: "folder-move" %></h4>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default btn-sm" data-dismiss="modal">閉じる</button>
+					<%= f.submit '登録する', class: "button" "btn btn-sm btn-primary" %>
+				</div>
+			<% end %>
 		</div>
 	</div>
 </div>
