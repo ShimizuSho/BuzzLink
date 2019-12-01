@@ -69,11 +69,11 @@
 					        <h4><%=link_to "フォローする", user_user_relationships_path(@user.id), method: :post %></h4>
 					    <% end %>
 					<% end %>
-					<h4><%=link_to "フォロー一覧", follows_user_user_path(@user.id), class: "white_boder" %></h4>
-					<h4><%=link_to "フォロワー一覧", followers_user_user_path(@user.id) %></h4>
-					<h4><%=link_to "投稿一覧", user_posts_path %></h4>
-					<h4><%=link_to "質問一覧", user_questions_path %></h4>
-					<h4><%= link_to '退会', destroy_user_session_path, method: :delete, "data-confirm" => "本当に退会しますか？"%></h4>
+					<h3><%=link_to "フォロー一覧", follows_user_user_path(@user.id), class: "white_boder" %></h3>
+					<h3><%=link_to "フォロワー一覧", followers_user_user_path(@user.id) %></h3>
+					<h3><%=link_to "投稿一覧", user_posts_path %></h3>
+					<h3><%=link_to "質問一覧", user_questions_path %></h3>
+					<h3><%= link_to '退会', destroy_user_session_path, method: :delete, "data-confirm" => "本当に退会しますか？"%></h3>
 				</div>
 				<div class="profile_info">
 					<h3 class="profile_title">プロフィール</h3>

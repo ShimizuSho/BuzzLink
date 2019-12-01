@@ -3,7 +3,7 @@ class User::FolderContentsController < ApplicationController
 
 	def index
 		@folder = Folder.find(params[:folder_id])
-		@folder_contents = @folder.folder_contents.page(params[:page]).per(5).reverse_order
+		@folder_contents = @folder.folder_contents.page(params[:page]).per(20).reverse_order
 		@folders = current_user.folders
 	end
 
@@ -28,7 +28,7 @@ class User::FolderContentsController < ApplicationController
 		@folder_content = FolderContent.find(params[:id])
 		@folder_content.folder_id = @folder.id
 		@folder_content.save
-		@folder_contents = @folder.folder_contents.page(params[:page]).per(5)
+		@folder_contents = @folder.folder_contents.page(params[:page]).per(10)
 		@folders = current_user.folders
 		redirect_back(fallback_location: user_root_path)
 	end
@@ -43,7 +43,7 @@ class User::FolderContentsController < ApplicationController
 		@folder_content = FolderContent.find(params[:id])
 		@folder_content.destroy
 		@folder = Folder.find(params[:folder_id])
-		@folder_contents = @folder.folder_contents.page(params[:page]).per(5)
+		@folder_contents = @folder.folder_contents.page(params[:page]).per(10).reverse_order
 		@folders = current_user.folders
 		render 'user/folder_contents/index'
 	end
