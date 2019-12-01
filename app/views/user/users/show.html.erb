@@ -78,16 +78,18 @@
 				<div class="profile_info">
 					<h3 class="profile_title">プロフィール</h3>
 
-					<a data-toggle="modal" data-target="#userModal">
-						<span class="glyphicon glyphicon glyphicon-edit" aria-hidden="true" style="font-size:30px;"></span>
-					</a>
+					<% if @user == current_user %>
+						<a data-toggle="modal" data-target="#userModal">
+							<span class="glyphicon glyphicon glyphicon-edit" aria-hidden="true" style="font-size:30px;"></span>
+						</a>
+					<% end %>
 					<% if @user.age == 0 %>
 						<h4>年齢　非公開</h4>
 					<% else %>
 						<h4>年齢 <%= @user.age %></h4>
 					<% end %>
 					<h4>性別　<%= @user.gender %></h4>
-					<div class="text_box col-lg-8">
+					<div class="text_box col-lg-9">
     					<span class="box-title">自己紹介</span>
 						<div class="box2">
 							<p class="user_introduction"><%= @user.introduction %></p>
