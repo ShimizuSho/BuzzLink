@@ -7,7 +7,7 @@ class Admin::QuestionsController < ApplicationController
 	def show
 		@question = Question.find(params[:id])
 		@comment = Comment.new
-		@comments = @question.comments
+		@question_comments = @question.question_comments.reverse_order
 	end
 
 	def destroy

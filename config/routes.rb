@@ -21,7 +21,7 @@ Rails.application.routes.draw do
     resources :questions, only: [:index, :new, :create, :show, :update, :destroy] do
       resources :question_comments, only: [:create, :edit, :update, :destroy]
     end
-  	resources :posts, only: [:new, :index, :create, :show, :edit, :update, :destroy] do
+  	resources :posts, only: [:index, :new, :create, :show, :update, :destroy] do
   	 resources :comments, only: [:create, :edit, :update, :destroy]
      resources :favorites, only: [:create, :destroy]
   	end
@@ -31,15 +31,12 @@ Rails.application.routes.draw do
 
   namespace :admin do
     root to: "home#top"
-  	resources :users
-  	resources :users, only: [:create, :deestroy]
-  	resources :posts
-  	resources :comments
+  	resources :users, only: [:index, :show]
+  	resources :posts, only: [:index, :show, :destroy]
   	resources :favorites, only: [:create, :deestroy]
-  	resources :questions
+  	resources :questions, only: [:index, :show, :destroy]
   	resources :contacts, only: [:index, :destroy]
   	resources :folders, only: [:create, :deestroy]
-  	resources :users, only: [:show,:edit,:update]
     resources :messages, only: [:create]
     resources :rooms, only: [:create,:show]
   end

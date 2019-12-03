@@ -19,7 +19,7 @@
 						<%= link_to admin_user_path(question.user.id) do %>
 							<%= question.user.name %>
 						<% end %>
-						<%= link_to admin_question_path(question.user.id) do %>
+						<%= link_to admin_question_path(question.id) do %>
 							<h4><%= question.question_title.truncate(34, omission: '~~~') %></h4>
 						<% end %>
 						<p class="question_body"><%= question.question_body.truncate(87, omission: '~~~') %></p>

@@ -32,7 +32,7 @@
 					<div class="comment_name">
 						<h4><%= question_comment.created_at.strftime('%Y/%m/%d') %></h4>
 						<%= link_to user_user_path(question_comment.user.id) do %>
-							<h4><%= current_user.name %></h4>
+							<h4><%= question_comment.user.name %></h4>
 						<% end %>
 					</div>
 					<div class="comment_body">
