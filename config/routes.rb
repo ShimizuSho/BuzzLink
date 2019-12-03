@@ -37,7 +37,7 @@ Rails.application.routes.draw do
   	resources :comments
   	resources :favorites, only: [:create, :deestroy]
   	resources :questions
-  	resources :contacts, only: [:index, :deestroy]
+  	resources :contacts, only: [:index, :destroy]
   	resources :folders, only: [:create, :deestroy]
   	resources :users, only: [:show,:edit,:update]
     resources :messages, only: [:create]
