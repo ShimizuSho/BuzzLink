@@ -52,8 +52,8 @@
 			<% end %>
 				<button type="button" class="btn btn-warning btn-lg" data-toggle="modal" data-target="#bookmarkModal">ブックマーク</button>
 				<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#commentModal">コメント</button>
-				<button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#edit_postModal">編集する</button>
 				<% if @post.user == current_user %>
+					<button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#edit_postModal">編集する</button>
 					<h4><%= link_to '記事削除', user_post_path(@post.id), method: :delete %></h4>
 				<% end %>
 

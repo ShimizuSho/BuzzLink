@@ -13,7 +13,7 @@
   <header>
     <% unless current_admin %>
       <div class="user-header">
-        <%= link_to 'BuzzLink絆', user_posts_path, :style=>"color:#ffff28; font-size: 50px; text-decoration: none; position: absolute; top: 20px; left: 20px; font-family: cursive; " %>
+        <%= link_to 'BuzzLink絆', user_posts_path, class: "header_logo", :style=>"color:#ffff28; font-size: 50px; text-decoration: none; position: absolute; top: 20px; left: 20px; font-family: cursive;" %>
         <nav>
           <% if user_signed_in? %>
             <ul class="nav-list">

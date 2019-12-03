@@ -18,11 +18,11 @@ Rails.application.routes.draw do
         resources :folder_contents, only: [:index, :new, :update, :destroy]
       end
     end
-    resources :questions do
-      resources :question_comments, only: [:new, :create, :edit, :update, :destroy]
+    resources :questions, only: [:index, :new, :create, :show, :update, :destroy] do
+      resources :question_comments, only: [:create, :edit, :update, :destroy]
     end
   	resources :posts, only: [:new, :index, :create, :show, :edit, :update, :destroy] do
-  	 resources :comments, only: [:new, :create, :edit, :update, :destroy]
+  	 resources :comments, only: [:create, :edit, :update, :destroy]
      resources :favorites, only: [:create, :destroy]
   	end
   	resources :contacts
@@ -37,7 +37,7 @@ Rails.application.routes.draw do
   	resources :comments
   	resources :favorites, only: [:create, :deestroy]
   	resources :questions
-  	resources :contacts
+  	resources :contacts, only: [:index, :deestroy]
   	resources :folders, only: [:create, :deestroy]
   	resources :users, only: [:show,:edit,:update]
     resources :messages, only: [:create]

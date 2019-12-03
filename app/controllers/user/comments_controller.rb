@@ -2,15 +2,11 @@ class User::CommentsController < ApplicationController
 	before_action :authenticate_user!
 
 	def create
-		@post = Post.find(params[:post_id])
-		@post_comment = current_user.comments.new(post_comment_params)
-		@post_comment.post_id = @post.id
-		@post_comment.save
-		@post_comment = Comment.new
-		@post_comments = @post.comments.page(params[:page]).per(20).reverse_order
-		@folders = current_user.folders
-		@folder_content = FolderContent.new
-		render 'user/posts/show'
+		post = Post.find(params[:post_id])
+		post_comment = current_user.comments.new(post_comment_params)
+		post_comment.post_id = post.id
+		post_comment.save
+		redirect_to user_post_path(post.id)
 	end
 
 	def destroy
