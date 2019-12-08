@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   	root to: "user/posts#index"
   namespace :user do
     get 'folders/folders_create' => 'folders#new', as: 'folders_new'
+    get 'users/about' => 'users#about', as: 'about'
     get 'contacts/:user_id/contact_completed' => 'contacts#contact_completed', as: 'contact_completed'
     get 'folder_contents/folder_contents_new/:post_id' => 'folder_contents#new', as: 'folder_contents_new'
     post 'folder_contents/folder_contents_create/:post_id' => 'folder_contents#create', as: 'folder_contents_create'

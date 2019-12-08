@@ -21,10 +21,13 @@
                 <%= link_to "My page", user_user_path(current_user.id), :style=>"color:white;" %>
               </li>
               <li class="nav-list-item">
-                <%= link_to "Log out", destroy_user_session_path, method: :delete, :style=>"color:white;" %>
+                <%= link_to "Questions",  user_questions_path, :style=>"color:white;" %>
               </li>
               <li class="nav-list-item">
-                <%= link_to "contact",  new_user_contact_path, :style=>"color:white;" %>
+                <%= link_to "About", user_about_path, :style=>"color:white;" %>
+              </li>
+              <li class="nav-list-item">
+                <%= link_to "Log out", destroy_user_session_path, method: :delete, :style=>"color:white;" %>
               </li>
             </ul>
             <%= form_tag user_posts_path, :method => 'get' do %>

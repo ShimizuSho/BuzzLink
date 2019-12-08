@@ -221,5 +221,15 @@ body {
   }
 }
 
+.about_box {
+  margin-top: 50px;
+}
+
+.about_title {
+  position: relative; /* ボックスの位置を指定する */
+  padding: .25em 0 .25em .5em; /* ボックス内側余白を指定する(上:右:下:左) */
+  border-left: 6px solid orange;
+}
+
 
 
