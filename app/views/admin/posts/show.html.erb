@@ -10,7 +10,7 @@
 			<div class="flex">
 				<div class="profile_image_box">
 					<%= link_to admin_user_path(@post.user.id) do %>
-						<%= attachment_image_tag @user, :profile_image, :fill, 180, 180, fallback: "no_image.jpg", size:'180x180' %>
+						<%= attachment_image_tag @post.user, :profile_image, :fill, 140, 140, fallback: "no_image.jpg", size:'140x140' %>
 					<% end %>
 				</div>
 				<div class= "user_show_info">

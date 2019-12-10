@@ -1,26 +1,33 @@
 
 <div class = "container">
 	<div class="row">
-		<h3><%= link_to "管理者としてログイン中　ログアウト", destroy_admin_session_path, method: :delete %></h3>
-		<h3><%= link_to "トップページへ", admin_root_path %></h3>
-		<h1 class="profile_image">質問一覧</h1>
-		<% @questions.each do |question| %>
-			<div class= "info_box">
-				<div class= "profile_image">
-					<%= link_to admin_user_path(question.user.id) do %>
-						<%= attachment_image_tag question.user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg", class:"radius", size:'100x100' %>
-					<% end %>
+		<div class="col-lg-1">
+		</div>
+		<div class="col-lg-8">
+			<h3><%= link_to "管理者としてログイン中　ログアウト", destroy_admin_session_path, method: :delete %></h3>
+			<h3><%= link_to "トップページへ", admin_root_path %></h3>
+			<h1 class="profile_image">質問一覧</h1>
+			<% @questions.each do |question| %>
+				<div class= "info_box">
+					<div class= "profile_image">
+						<%= link_to admin_user_path(question.user.id) do %>
+							<%= attachment_image_tag question.user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg", size:'100x100' %>
+						<% end %>
+					</div>
+					<div class= "info_1">
+						<%= question.created_at.strftime('%Y/%m/%d') %>
+						<%= link_to admin_user_path(question.user.id) do %>
+							<%= question.user.name %>
+						<% end %>
+						<%= link_to admin_question_path(question.id) do %>
+							<h4><%= question.question_title.truncate(34, omission: '~~~') %></h4>
+						<% end %>
+						<p class="question_body"><%= question.question_body.truncate(87, omission: '~~~') %></p>
+						<h3><%= link_to '削除', admin_question_path(question.id), method: :delete %></h3>
+					</div>
 				</div>
-				<div class= "info_1">
-					<%= question.created_at.strftime('%Y/%m/%d') %>
-					<%= link_to admin_user_path(question.user.id) do %>
-						<%= question.user.name %>
-					<% end %>
-					<p><%= question.question_body %></p>
-					<h3><%= link_to '削除', admin_question_path(question.id), method: :delete %></h3>
-				</div>
-			</div>
-		<% end %>
-		<%= paginate @questions, class: "paginate" %>
+			<% end %>
+			<%= paginate @questions, class: "paginate" %>
+		</div>
 	</div>
 </div>

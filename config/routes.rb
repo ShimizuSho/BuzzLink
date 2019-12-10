@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   	root to: "user/posts#index"
   namespace :user do
     get 'folders/folders_create' => 'folders#new', as: 'folders_new'
+    get 'users/about' => 'users#about', as: 'about'
     get 'contacts/:user_id/contact_completed' => 'contacts#contact_completed', as: 'contact_completed'
     get 'folder_contents/folder_contents_new/:post_id' => 'folder_contents#new', as: 'folder_contents_new'
     post 'folder_contents/folder_contents_create/:post_id' => 'folder_contents#create', as: 'folder_contents_create'
@@ -18,11 +19,11 @@ Rails.application.routes.draw do
         resources :folder_contents, only: [:index, :new, :update, :destroy]
       end
     end
-    resources :questions do
-      resources :question_comments, only: [:new, :create, :edit, :update, :destroy]
+    resources :questions, only: [:index, :new, :create, :show, :update, :destroy] do
+      resources :question_comments, only: [:create, :edit, :update, :destroy]
     end
-  	resources :posts, only: [:new, :index, :create, :show, :edit, :update, :destroy] do
-  	 resources :comments, only: [:new, :create, :edit, :update, :destroy]
+  	resources :posts, only: [:index, :new, :create, :show, :update, :destroy] do
+  	 resources :comments, only: [:create, :edit, :update, :destroy]
      resources :favorites, only: [:create, :destroy]
   	end
   	resources :contacts
@@ -31,15 +32,12 @@ Rails.application.routes.draw do
 
   namespace :admin do
     root to: "home#top"
-  	resources :users
-  	resources :users, only: [:create, :deestroy]
-  	resources :posts
-  	resources :comments
+  	resources :users, only: [:index, :show]
+  	resources :posts, only: [:index, :show, :destroy]
   	resources :favorites, only: [:create, :deestroy]
-  	resources :questions
-  	resources :contacts
+  	resources :questions, only: [:index, :show, :destroy]
+  	resources :contacts, only: [:index, :destroy]
   	resources :folders, only: [:create, :deestroy]
-  	resources :users, only: [:show,:edit,:update]
     resources :messages, only: [:create]
     resources :rooms, only: [:create,:show]
   end

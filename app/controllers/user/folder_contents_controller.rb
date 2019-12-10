@@ -30,7 +30,7 @@ class User::FolderContentsController < ApplicationController
 		@folder_content.save
 		@folder_contents = @folder.folder_contents.page(params[:page]).per(10)
 		@folders = current_user.folders
-		redirect_back(fallback_location: user_root_path)
+		redirect_back(fallback_location: root_path)
 	end
 
 	def folder_contents_update

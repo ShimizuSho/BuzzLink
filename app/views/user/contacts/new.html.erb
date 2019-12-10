@@ -16,6 +16,8 @@
 			<%= form_for @contact, url: user_contacts_path, method: :post do |f| %>
 				<h4>お名前</h4>
 				<h4><%= f.text_field :name, class:"form-control" %></h4>
+				<h4>メールアドレス</h4>
+				<h4><%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %></h4>
 				<h4>お問い合わせ内容</h4>
 				<h4><%= f.text_area :contact_body, class:"form-control", size: "100x10" %></h4>
 				<h4><%= f.submit '投稿する' %></h4>

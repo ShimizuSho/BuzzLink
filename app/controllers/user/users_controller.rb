@@ -58,6 +58,9 @@ class User::UsersController < ApplicationController
   		@user.update(evolution: new_evolution)
   	end
 
+  	def about
+  	end
+
 
 	private
 		def user_params

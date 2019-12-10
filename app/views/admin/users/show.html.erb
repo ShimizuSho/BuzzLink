@@ -6,7 +6,11 @@
 		<div class="col-lg-8">
 			<h3><%= link_to "管理者としてログイン中　ログアウト", destroy_admin_session_path, method: :delete %></h3>
 			<h3><%= link_to "トップページへ", admin_root_path %></h3>
-			<h1>記事の詳細</h1>
+
+			<div class="ribbon6">
+		  		<h1>Welcome to My Page!</h1>
+			</div>
+
 			<div class="profile_info flex">
 				<div>
 					<div>
@@ -23,32 +27,16 @@
 						<h4>称号</h4>
 						<h3 class="degree"><%= @user.degree_management.degree.degree_name %></h>
 					</div>
-					<div class="dm_btn_box flex">
-						<div>
-							<% if @user.id != current_admin.id %>
-						  		<% if @isRoom == true %>
-							    	<%= link_to "DMを送る", admin_rooms_path(current_admin.id, @roomId), class:"btn btn-primary btn-lg user-show-room" %>
-								<% else %>
-							    	<%= form_for @room, url: admin_rooms_path(current_admin.id), method: :post do |f| %>
-							      		<%= fields_for @entry do |e| %>
-							        		<%= e.hidden_field :user_id, value: @user.id %>
-							    		<% end %>
-							      	<%= f.submit "DMを始める", class:"btn btn-primary btn-lg user-show-chat"%>
-							    	<% end %>
-							  	<% end %>
-							<% end %>
-						</div>
-						<div>
-						</div>
-					</div>
-					<h4><%=link_to "投稿一覧", admin_posts_path %></h4>
-					<h4><%=link_to "質問一覧", admin_questions_path %></h4>
+
+					<h3><%=link_to "投稿一覧", admin_posts_path %></h3>
+					<h3><%=link_to "質問一覧", admin_questions_path %></h3>
 				</div>
+
 				<div class="profile_info">
 					<h3 class="profile_title">プロフィール</h3>
 					</a>
 					<% if @user.age == 0 %>
-						<h4>年齢　非公開</h4>>
+						<h4>年齢　非公開</h4>
 					<% else %>
 						<h4>年齢 <%= @user.age %></h4>
 					<% end %>
@@ -58,7 +46,7 @@
 					<% else %>
 					　	<h4>誕生日　<%= @user.birthday %></h4>
 					<% end %>
-					<div class="text_box col-lg-8">
+					<div class="text_box col-lg-9">
     					<span class="box-title">自己紹介</span>
 						<div class="box2">
 							<p class="user_introduction"><%= @user.introduction %></p>

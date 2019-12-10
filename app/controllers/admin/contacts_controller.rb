@@ -1,7 +1,7 @@
 class Admin::ContactsController < ApplicationController
 
 	def index
-		@contacts = Contact.page(params[:page]).per(30).reverse_order
+		@contacts = Contact.page(params[:page]).per(5).reverse_order
 	end
 
 	def destroy
