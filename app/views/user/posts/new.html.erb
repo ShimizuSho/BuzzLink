@@ -1,16 +1,16 @@
-<% if @post.errors.any? %>
-	<div id="error_explanation">
-		<h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
-		<ul>
-			<% @post.errors.full_messages.each do |message| %>
-			 <il><%= message %></il>
-			 <% end %>
-		</ul>
-	</div>
-<% end %>
 
 <div class = "container">
 	<div class="row">
+		<% if @post.errors.any? %>
+			<div id="error_explanation">
+				<h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
+				<ul>
+					<% @post.errors.full_messages.each do |message| %>
+			 			<il><%= message %></il>
+			 		<% end %>
+				</ul>
+			</div>
+		<% end %>
 		<h1>New Post</h1>
 		<div class="info_box">
 			<%= form_for @post, url: user_posts_path, method: :post do |f| %>

@@ -30,6 +30,7 @@ body {
   background-color: black;
   color: #EEEEEE;
   a:hover { text-decoration: none;}
+  font-family: 'Exo', sans-serif;
 }
 
 .clearfix::after {
@@ -89,10 +90,11 @@ body {
   background-size: cover;
   position: relative;
 }
-
+.header_logo {
+  text-shadow: 1px 0px 0px #005500, 0px 1px 0px #005500, -1px 0px 0px #005500, 0px -1px 0px #005500;
+}
 .header_logo:hover {
-  background-color: orange;
-  color: black;
+  color: red !important;
 }
 
 .nav-list{
@@ -101,13 +103,18 @@ body {
     top: 20px;
 }
 
-.nav-list-item{
+.nav-list-item {
     font-size: 14px;
     font-weight: bold;
     float: left;
     text-align: right;
     list-style: none;
     padding-left: 15px;
+    text-shadow: 1px 0px 0px #005500, 0px 1px 0px #005500, -1px 0px 0px #005500, 0px -1px 0px #005500;
+}
+
+.nav-list-item:hover {
+  color: red !important
 }
 
 .header-search {

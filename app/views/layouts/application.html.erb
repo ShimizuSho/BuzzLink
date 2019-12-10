@@ -27,7 +27,7 @@
                 <%= link_to "About", user_about_path, :style=>"color:white;" %>
               </li>
               <li class="nav-list-item">
-                <%= link_to "Log out", destroy_user_session_path, method: :delete, :style=>"color:white;" %>
+                <%= link_to "Log out", destroy_user_session_path, method: :delete, :style=>"color:white;", :hover=>"color: red;" %>
               </li>
             </ul>
             <%= form_tag user_posts_path, :method => 'get' do %>

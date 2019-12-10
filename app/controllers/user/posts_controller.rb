@@ -31,14 +31,17 @@ class User::PostsController < ApplicationController
 		@folder_content = FolderContent.new
 	end
 
-	def edit
-		@post = Post.find(params[:id])
-	end
-
 	def update
 		@post = Post.find(params[:id])
-		@post.update(post_params)
-		redirect_to user_post_path(@post.id)
+		if  @post.update(post_params)
+			redirect_to user_post_path(@post.id)
+		else
+			@post_comment = Comment.new
+			@post_comments = @post.comments.page(params[:page]).per(20).reverse_order
+			@folders = current_user.folders
+			@folder_content = FolderContent.new
+			render 'user/posts/show'
+		end
 	end
 
 	def destroy

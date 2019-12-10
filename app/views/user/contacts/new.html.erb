@@ -1,16 +1,17 @@
-<% if @contact.errors.any? %>
-	<div id="error_explanation">
-		<h2><%= pluralize(@contact.errors.count, "error") %> prohibited this post from being saved:</h2>
-		<ul>
-			<% @contact.errors.full_messages.each do |message| %>
-			 <il><%= message %></il>
-			 <% end %>
-		</ul>
-	</div>
-<% end %>
 
 <div class = "container">
 	<div class="row">
+		<% if @contact.errors.any? %>
+			<div id="error_explanation">
+				<h2><%= pluralize(@contact.errors.count, "error") %> prohibited this post from being saved:</h2>
+				<ul>
+					<% @contact.errors.full_messages.each do |message| %>
+			 			<il><%= message %></il>
+			 		<% end %>
+				</ul>
+			</div>
+		<% end %>
+
 		<h1>New Contact</h1>
 		<div class="info_box">
 			<%= form_for @contact, url: user_contacts_path, method: :post do |f| %>
