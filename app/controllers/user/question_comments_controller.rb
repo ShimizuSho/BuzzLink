@@ -3,7 +3,7 @@ class User::QuestionCommentsController < ApplicationController
 
 	def create
 		@question = Question.find(params[:question_id])
-		@question_comment = @question.user.question_comments.new(question_comment_params)
+		@question_comment = current_user.question_comments.new(question_comment_params)
 		@question_comment.question_id = @question.id
 		@question_comment.save
 		redirect_to user_question_path(@question.id)
@@ -12,7 +12,7 @@ class User::QuestionCommentsController < ApplicationController
 	def destroy
 		@question_comment = QuestionComment.find(params[:id])
 		@question_comment.destroy
-		redirect_to user_questions_path
+		redirect_back(fallback_location: root_path)
 	end
 
 	private

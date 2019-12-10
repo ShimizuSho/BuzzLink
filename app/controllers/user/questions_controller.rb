@@ -2,7 +2,7 @@ class User::QuestionsController < ApplicationController
 	before_action :authenticate_user!
 
 	def index
-		@questions = Question.page(params[:page]).per(5).reverse_order
+		@questions = Question.page(params[:page]).per(50).reverse_order
 		@folders = current_user.folders
 	end
 

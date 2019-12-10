@@ -51,7 +51,7 @@
 							      		<%= fields_for @entry do |e| %>
 							        		<%= e.hidden_field :user_id, value: @user.id %>
 							    		<% end %>
-							      	<%= f.submit "DMを始める", class:"btn btn-primary btn-lg user-show-chat"%>
+							      	<%= f.submit "DMを始める", class:"fuwauki_btn_red user-show-chat"%>
 							    	<% end %>
 							  	<% end %>
 							<% end %>
@@ -71,8 +71,10 @@
 					<% end %>
 					<h3><%=link_to "フォロー一覧", follows_user_user_path(@user.id), class: "white_boder" %></h3>
 					<h3><%=link_to "フォロワー一覧", followers_user_user_path(@user.id) %></h3>
-                	<h3><%= link_to "お問い合わせ",  new_user_contact_path %></h3>
-					<h3><%= link_to '退会', user_registration_path, method: :delete, "data-confirm" => "本当に退会しますか？"%></h3>
+					<% if @user == current_user %>
+	                	<h3><%= link_to "お問い合わせ",  new_user_contact_path %></h3>
+						<h3><%= link_to '退会', user_registration_path, method: :delete, "data-confirm" => "本当に退会しますか？"%></h3>
+					<% end %>
 				</div>
 				<div class="profile_info">
 					<h3 class="profile_title">プロフィール</h3>

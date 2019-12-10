@@ -1,13 +1,3 @@
-<% if @post.errors.any? %>
-	<div id="error_explanation">
-		<h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
-		<ul>
-			<% post.errors.full_messages.each do |message| %>
-			 <il><%= message %></il>
-			 <% end %>
-		</ul>
-	</div>
-<% end %>
 
 <div class = "container">
 	<div class="row">
@@ -17,6 +7,16 @@
 		<div class="col-lg-1">
 		</div>
 		<div class="col-lg-8">
+			<% if @post.errors.any? %>
+				<div id="error_explanation">
+					<h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
+					<ul>
+						<% @post.errors.full_messages.each do |message| %>
+						 <il><%= message %></il>
+						 <% end %>
+					</ul>
+				</div>
+			<% end %>
 			<% if flash[:notice] %>
   				<h3 class="get_point"><%= flash[:notice] %></h3>
 			<% end %>

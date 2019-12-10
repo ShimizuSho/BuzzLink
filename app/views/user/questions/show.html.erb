@@ -38,7 +38,7 @@
 					<div class="comment_body">
 						<h4><%= question_comment.comment_body %></h4>
 						<% if question_comment.user == current_user %>
-							<h4><%= link_to '削除', user_question_question_comment_path(question_comment.id), method: :delete %></h4>
+							<h4><%= link_to '削除',  user_question_question_comment_path(question_comment.question_id, question_comment.id), method: :delete %></h4>
 						<% end %>
 					</div>
 				</div>
