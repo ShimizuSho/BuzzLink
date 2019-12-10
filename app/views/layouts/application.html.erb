@@ -11,9 +11,9 @@
 
   <body>
   <header>
-    <% if request.path_info.include?('user') %>
+    <% unless current_admin %>
       <div class="user-header">
-        <%= link_to 'BuzzLink絆', user_root_path, :style=>"color:#ffff28; font-size: 50px; text-decoration: none; position: absolute; top: 20px; left: 20px; font-family: cursive; " %>
+        <%= link_to 'BuzzLink絆', user_posts_path, :style=>"color:#ffff28; font-size: 50px; text-decoration: none; position: absolute; top: 20px; left: 20px; font-family: cursive; " %>
         <nav>
           <% if user_signed_in? %>
             <ul class="nav-list">
@@ -27,7 +27,7 @@
                 <%= link_to "contact",  new_user_contact_path, :style=>"color:white;" %>
               </li>
             </ul>
-            <%= form_tag user_root_path, :method => 'get' do %>
+            <%= form_tag user_posts_path, :method => 'get' do %>
               <p class= "header-search">
                 <%= text_field_tag :search, params[:search] %>
                 <%= submit_tag "Search", :name => nil %>
@@ -48,7 +48,7 @@
                 </li>
               </ul>
 
-              <%= form_tag user_root_path, :method => 'get' do %>
+              <%= form_tag user_posts_path, :method => 'get' do %>
                 <p class= "header-search">
                     <%= text_field_tag :search, params[:search] %>
                     <%= submit_tag "Search", :name => nil %>

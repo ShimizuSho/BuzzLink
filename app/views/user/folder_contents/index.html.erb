@@ -12,7 +12,7 @@
 			<div class= "info_box">
 				<div class= "profile_image_box">
 					<%= link_to user_user_path(folder_content.post.user.id) do %>
-						<%= attachment_image_tag folder_content.post.user, :profile_image, :fill, 140, 140, fallback: "no_image.jpg", size:'140x140' %>
+						<%= attachment_image_tag folder_content.post.user, :profile_image, :fill, 130, 130, fallback: "no_image.jpg", class: "radius", size:'130x130' %>
 					<% end %>
 				</div>
 				<div class= "info_1">
@@ -84,12 +84,11 @@
 			</div>
 			<% i += 1 %>
 			<% end %>
+			<%= paginate @folder_contents, class: "paginate" %>
 		</div>
 	</div>
 </div>
 
-
-	<%= paginate @folder_contents, class: "paginate" %>
-	<script type="text/javascript">
-		let posts = document.querySelectorAll('.post_info_2')
-	</script>
+<script type="text/javascript">
+	let posts = document.querySelectorAll('.post_info_2')
+</script>

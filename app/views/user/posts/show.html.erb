@@ -73,6 +73,7 @@
 					</div>
 				</div>
 			<% end %>
+		<%= paginate @post_comments, class: "paginate" %>
 		</div>
 	</div>
 </div>
@@ -125,22 +126,20 @@
 				<button type="button" class="close" data-dismiss="modal"><span>×</span></button>
 				<h3 class="modal-title">マイページ編集</h3>
 			</div>
-				<%= form_for @post, url: user_post_path(@post.id), method: :patch do |f| %>
-					<div class="modal-body">
-						<h4>タイトル</h4>
-						<h4><%= f.text_field :post_title, class:"form-control" %></h4>
-						<h4>URL</h4>
-						<h4><%= f.text_field :link, class:"form-control" %></h4>
-						<h4>記事の内容</h4>
-						<h4><%= f.text_area :post_body, class:"form-control", size: "100x10" %></h4>
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-default btn-sm" data-dismiss="modal">閉じる</button>
-						<%= f.submit '登録する', class: "button" "btn btn-sm btn-primary" %>
-					</div>
-				<% end %>
+			<%= form_for @post, url: user_post_path(@post.id), method: :patch do |f| %>
+				<div class="modal-body">
+					<h4>タイトル</h4>
+					<h4><%= f.text_field :post_title, class:"form-control" %></h4>
+					<h4>URL</h4>
+					<h4><%= f.text_field :link, class:"form-control" %></h4>
+					<h4>記事の内容</h4>
+					<h4><%= f.text_area :post_body, class:"form-control", size: "100x10" %></h4>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default btn-sm" data-dismiss="modal">閉じる</button>
+					<%= f.submit '登録する', class: "button" "btn btn-sm btn-primary" %>
+				</div>
+			<% end %>
 		</div>
 	</div>
 </div>
-
-

@@ -21,7 +21,7 @@ class User::FoldersController < ApplicationController
 		@degree_management.user_id = current_user.id
 		@degree_management.degree_id = 2
 		@degree_management.save
-	    redirect_to user_root_path
+	    redirect_to user_posts_path
 	end
 
 	def update
@@ -35,7 +35,7 @@ class User::FoldersController < ApplicationController
 		@folder = Folder.find(params[:id])
 		@folder_contents = @folder.folder_contents
 		@folder_contents.destroy_all
-		@folder_contents = @folder.folder_contents.page(params[:page]).per(5)
+		@folder_contents = @folder.folder_contents.page(params[:page]).per(10).reverse_order
 		@folders = current_user.folders
 		render 'user/folder_contents/index'
 

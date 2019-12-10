@@ -2,7 +2,7 @@ class User::PostsController < ApplicationController
 	before_action :authenticate_user!
 
 	def index
-		@posts = Post.search(params[:search]).page(params[:page]).per(5).reverse_order
+		@posts = Post.search(params[:search]).page(params[:page]).per(20).reverse_order
 		@folders = current_user.folders
 	end
 
@@ -17,7 +17,7 @@ class User::PostsController < ApplicationController
 			new_point = @post.user.point.to_i + 50
 			@post.user.update(point: new_point)
 			flash[:notice] = "絆ポイントを50ポイント獲得しました！"
-			redirect_to user_root_path
+			redirect_to user_posts_path
 		else
 			render 'user/posts/new'
 		end
@@ -26,7 +26,7 @@ class User::PostsController < ApplicationController
 	def show
 		@post = Post.find(params[:id])
 		@post_comment = Comment.new
-		@post_comments = Comment.all
+		@post_comments = @post.comments.page(params[:page]).per(20).reverse_order
 		@folders = current_user.folders
 		@folder_content = FolderContent.new
 	end

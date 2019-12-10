@@ -28,7 +28,7 @@
 			<div class="profile_info flex">
 				<div>
 					<div>
-						<%= attachment_image_tag @user, :profile_image, :fill, 300, 300, fallback: "no_image.jpg", size:'300x300', class: "profile_img frame#{@user.evolution.to_i}" %>
+						<%= attachment_image_tag @user, :profile_image, :fill, 300, 300, fallback: "no_image.jpg", class: "profile_img frame#{@user.evolution.to_i}", size:'300x300' %>
 					</div>
 					<h3 class="user_name"><%= @user.name %> さん</h3>
 					<h3>LEVEL <%= @user_level %></h3>
@@ -69,30 +69,27 @@
 					        <h4><%=link_to "フォローする", user_user_relationships_path(@user.id), method: :post %></h4>
 					    <% end %>
 					<% end %>
-					<h4><%=link_to "フォロー一覧", follows_user_user_path(@user.id), class: "white_boder" %></h4>
-					<h4><%=link_to "フォロワー一覧", followers_user_user_path(@user.id) %></h4>
-					<h4><%=link_to "投稿一覧", user_root_path %></h4>
-					<h4><%=link_to "質問一覧", user_questions_path %></h4>
-					<h4><%= link_to '退会', destroy_user_session_path, method: :delete, "data-confirm" => "本当に退会しますか？"%></h4>
+					<h3><%=link_to "フォロー一覧", follows_user_user_path(@user.id), class: "white_boder" %></h3>
+					<h3><%=link_to "フォロワー一覧", followers_user_user_path(@user.id) %></h3>
+					<h3><%=link_to "投稿一覧", user_posts_path %></h3>
+					<h3><%=link_to "質問一覧", user_questions_path %></h3>
+					<h3><%= link_to '退会', destroy_user_session_path, method: :delete, "data-confirm" => "本当に退会しますか？"%></h3>
 				</div>
 				<div class="profile_info">
 					<h3 class="profile_title">プロフィール</h3>
 
-					<a data-toggle="modal" data-target="#userModal">
-						<span class="glyphicon glyphicon glyphicon-edit" aria-hidden="true" style="font-size:30px;"></span>
-					</a>
+					<% if @user == current_user %>
+						<a data-toggle="modal" data-target="#userModal">
+							<span class="glyphicon glyphicon glyphicon-edit" aria-hidden="true" style="font-size:30px;"></span>
+						</a>
+					<% end %>
 					<% if @user.age == 0 %>
 						<h4>年齢　非公開</h4>
 					<% else %>
 						<h4>年齢 <%= @user.age %></h4>
 					<% end %>
 					<h4>性別　<%= @user.gender %></h4>
-					<% if @user.birthday == 0 %>
-						<h4>誕生日　未設定</h4>
-					<% else %>
-					　	<h4>誕生日　<%= @user.birthday %></h4>
-					<% end %>
-					<div class="text_box col-lg-8">
+					<div class="text_box col-lg-9">
     					<span class="box-title">自己紹介</span>
 						<div class="box2">
 							<p class="user_introduction"><%= @user.introduction %></p>
@@ -111,24 +108,23 @@
 				<button type="button" class="close" data-dismiss="modal"><span>×</span></button>
 				<h3 class="modal-title">マイページ編集</h3>
 			</div>
-				<%= form_for @user, url: user_user_path(@user.id), method: :patch do |f| %>
-					<div class="modal-body">
-						<h4>プロフィール画像</h4>
-						<h4><%= f.attachment_field :profile_image %></h4>
-						<h4>年齢</h4>
-						<h4><%= f.number_field :age, min:0, max:100, class:"form-control" %></h4>
-						<h4>性別 <%= f.radio_button :gender, "男性" %> 男性 <%= f.radio_button :gender, "女性" %> 女性</h4>
-						<h4>誕生日 <%= f.date_select :birthday %></h4>
-						<h4>自己紹介</h4>
-						<h4><%= f.text_area :introduction, size: "10x10", class:"form-control" %></h4>
-						<h4>称号</h4>
-						<h4><%= f.collection_select :id, @degrees, :id, :degree_name, selected: @user.degree_management.degree.degree_name, :selected => @user.degree_management.id.to_i, class: "folder-move" %></h4>
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-default btn-sm" data-dismiss="modal">閉じる</button>
-						<%= f.submit '登録する', class: "button" "btn btn-sm btn-primary" %>
-					</div>
-				<% end %>
+			<%= form_for @user, url: user_user_path(@user.id), method: :patch do |f| %>
+				<div class="modal-body">
+					<h4>プロフィール画像</h4>
+					<h4><%= f.attachment_field :profile_image %></h4>
+					<h4>年齢</h4>
+					<h4><%= f.number_field :age, min:0, max:100, class:"form-control" %></h4>
+					<h4>性別 <%= f.radio_button :gender, "男性" %> 男性 <%= f.radio_button :gender, "女性" %> 女性</h4>
+					<h4>自己紹介</h4>
+					<h4><%= f.text_area :introduction, size: "10x10", class:"form-control" %></h4>
+					<h4>称号</h4>
+					<h4><%= f.collection_select :id, @degrees, :id, :degree_name, selected: @user.degree_management.degree.degree_name, :selected => @user.degree_management.id.to_i, class: "folder-move" %></h4>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default btn-sm" data-dismiss="modal">閉じる</button>
+					<%= f.submit '登録する', class: "button" "btn btn-sm btn-primary" %>
+				</div>
+			<% end %>
 		</div>
 	</div>
 </div>

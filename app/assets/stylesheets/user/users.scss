@@ -12,10 +12,6 @@
     border-bottom: solid 3px orange;
 }
 
-.degree {
-	display: inline-block;
-}
-
 .glyphicon-edit{
 	margin-left: 10px;
 }
@@ -66,7 +62,8 @@
 
 .degree {
   margin: 10px 0 10px 10px ;
-  border-bottom: solid 5px #4682B4;
+  border-bottom: solid 5px orange;
+  font-size: 28px;
 }
 
 .evolution_btn {
