@@ -43,7 +43,7 @@
 								</div>
 
 									<div>
-										<%= link_to user_user_folder_folder_content_path(current_user.id, folder_content.folder.id, folder_content.id), method: :delete, "data-confirm" => "本当に消しますか？" do %>
+										<%= link_to user_user_folder_folder_content_path(current_user.id, folder_content.folder.id, folder_content.id), method: :delete, "data-confirm" => "本当に削除しますか？" do %>
 											<span class= "glyphicon glyphicon-trash" aria-hidden="true"></span>
 										<% end %>
 									</div>

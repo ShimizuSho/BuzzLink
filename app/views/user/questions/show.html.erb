@@ -27,7 +27,7 @@
 			</div>
 			<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#question_commentModal">コメントする</button>
 			<% if @question.user == current_user %>
-				<%= link_to '質問削除', user_question_path(@question.id), method: :delete, class: "btn btn-lg btn-danger" %>
+				<%= link_to '質問削除', user_question_path(@question.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-lg btn-danger" %>
 			<% end %>
 			<% @question_comments.each do |question_comment| %>
 				<div class="comment_info_box flex">

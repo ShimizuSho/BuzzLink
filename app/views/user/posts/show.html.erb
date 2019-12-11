@@ -56,7 +56,7 @@
 				<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#commentModal">コメント</button>
 				<% if @post.user == current_user %>
 					<button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#edit_postModal">編集する</button>
-					<%= link_to user_post_path(@post.id), method: :delete do %>
+					<%= link_to user_post_path(@post.id), method: :delete, "data-confirm" => "本当に削除しますか？" do %>
 						<button type="button" class="btn btn-danger btn-lg">記事削除</button>
 					<% end %>
 				<% end %>

@@ -21,7 +21,7 @@
 			<a class= "folder_name_edit<%= i %>">
 				<span class= "glyphicon glyphicon glyphicon glyphicon-pencil" aria-hidden="true"></span>
 			</a>
-			<%= link_to user_user_folder_path(folder.user.id, folder.id), method: :delete, "data-confirm" => "フォルダ内のお気に入りが全て削除されます！本当に消しますか？" do %>
+			<%= link_to user_user_folder_path(folder.user.id, folder.id), method: :delete, "data-confirm" => "フォルダ内のお気に入りが全て削除されます！本当に削除しますか？" do %>
 				<span class= "glyphicon glyphicon glyphicon glyphicon-trash" aria-hidden="true"></span>
 			<% end %>
 		</div>
