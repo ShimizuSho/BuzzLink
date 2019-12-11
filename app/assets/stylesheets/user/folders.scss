@@ -38,6 +38,10 @@
 .folder_name:hover {
 	background-color: #FF9900;
 	color: #fff;
+    cursor: pointer;
+    text-decoration: none;
+    transform: translateY(-4px);
+    font-size: 22px;
 }
 
 .folder_btn {
@@ -47,11 +51,12 @@
 .post_btn {
   	display: inline-block;
 	width: 100px;
-	padding: 0.8em;
+	padding: 10px 5px 10px 5px;
 	text-align: center;
 	text-decoration: none;
 	color: #fff;
-	font-size: 15px;
+	font-size: 18px;
+	text-shadow: 0.5px 0px 0px #005500, 0px 0.5px 0px #005500, -0.5px 0px 0px #005500, 0px -0.5px 0px #005500;
 	background:#0C88CA;
 	border-bottom:4px solid #005691;
 	border-radius: 4px;
@@ -71,11 +76,12 @@
 .question_btn {
   	display: inline-block;
 	width: 100px;
-	padding: 0.8em;
+	padding: 10px 5px 10px 5px;
 	text-align: center;
 	text-decoration: none;
 	color: #fff;
-	font-size: 15px;
+	font-size: 18px;
+	text-shadow: 0.5px 0px 0px #005500, 0px 0.5px 0px #005500, -0.5px 0px 0px #005500, 0px -0.5px 0px #005500;
 	background: #40C659;;
 	border-bottom: 4px solid #006633;
 	border-radius: 4px;

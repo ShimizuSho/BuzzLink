@@ -1,12 +1,3 @@
-<% if @user.errors.any? %>
-  	<div id="error_explanation" class="alert alert-danger">
-    	<ul>
-      		<% @user.errors.full_messages.each do |message| %>
-        		<li><%= message %></li>
-      		<% end %>
-    	</ul>
-  	</div>
-<% end %>
 
 <div class = "container">
 	<div class="row">
@@ -16,6 +7,16 @@
 		<div class="col-lg-1">
 		</div>
 		<div class="col-lg-8">
+			<% if @user.errors.any? %>
+			  	<div id="error_explanation" class="alert alert-danger">
+			    	<ul>
+			      		<% @user.errors.full_messages.each do |message| %>
+			        		<li><%= message %></li>
+			      		<% end %>
+			    	</ul>
+			  	</div>
+			<% end %>
+
 			<% if @user == current_user %>
 				<div class="ribbon6">
 		  			<h1>My Page!</h1>
@@ -51,7 +52,7 @@
 							      		<%= fields_for @entry do |e| %>
 							        		<%= e.hidden_field :user_id, value: @user.id %>
 							    		<% end %>
-							      	<%= f.submit "DMを始める", class:"fuwauki_btn_red user-show-chat"%>
+							      	<%= f.submit "DMを始める", class:"fbtn btn-primary btn-lg user-show-chat"%>
 							    	<% end %>
 							  	<% end %>
 							<% end %>
@@ -81,7 +82,7 @@
 
 					<% if @user == current_user %>
 						<a data-toggle="modal" data-target="#userModal">
-							<span class="glyphicon glyphicon glyphicon-edit" aria-hidden="true" style="font-size:30px;"></span>
+							<span class="glyphicon glyphicon-edit" aria-hidden="true" style="font-size:30px;"></span>
 						</a>
 					<% end %>
 					<% if @user.age == 0 %>

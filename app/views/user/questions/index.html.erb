@@ -13,8 +13,8 @@
 			<% @questions.each do |question| %>
 				<div class= "info_box">
 					<div class= "profile_image">
-						<%= link_to user_user_path(question.user.id) do %>
-							<%= attachment_image_tag question.user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg", class:"radius", size:'100x100' %>
+						<%= link_to user_question_path(question.id) do %>
+							<%= attachment_image_tag question.user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg", class:"radius img_shadow", size:'100x100' %>
 						<% end %>
 					</div>
 					<div class= "info_1">

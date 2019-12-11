@@ -14,6 +14,15 @@
 
 .glyphicon-edit{
 	margin-left: 10px;
+  color: #32CD32;
+  -webkit-tap-highlight-color: transparent;
+  transition: .2s ease-out;
+}
+
+.glyphicon-edit:hover {
+  color: #009900;
+  cursor: pointer;
+  transform: translateY(-4px);
 }
 
 .follow_info {
@@ -112,6 +121,7 @@
   font-size: 18px;
   background: #78d0f5;
   color: #FFF;
+  text-shadow: 0.5px 0px 0px #005500, 0px 0.5px 0px #005500, -0.5px 0px 0px #005500, 0px -0.5px 0px #005500;
   box-sizing: border-box;
   box-shadow: 0 2px 2px rgba(0, 0, 0, 0.25);
 }

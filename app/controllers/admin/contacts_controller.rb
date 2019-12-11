@@ -5,8 +5,8 @@ class Admin::ContactsController < ApplicationController
 	end
 
 	def destroy
-		@contact = Contacts.find(params[:id])
-		@contacts.delete
+		@contact = Contact.find(params[:id])
+		@contact.delete
 		redirect_to admin_contacts_path
 	end
 end

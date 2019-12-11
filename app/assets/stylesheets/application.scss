@@ -94,7 +94,7 @@ body {
   text-shadow: 1px 0px 0px #005500, 0px 1px 0px #005500, -1px 0px 0px #005500, 0px -1px 0px #005500;
 }
 .header_logo:hover {
-  color: red !important;
+  color: #00BFFF !important;
 }
 
 .nav-list{
@@ -239,14 +239,23 @@ body {
 }
 
 .btn-lg {
+  margin: 10px 5px 0 0;
+  box-shadow: 3px 3px 3px #555555;
   -webkit-tap-highlight-color: transparent;
   transition: .2s ease-out;
+  text-shadow: 0.5px 0px 0px #005500, 0px 0.5px 0px #005500, -0.5px 0px 0px #005500, 0px -0.5px 0px #005500;
 }
 
 .btn-lg:hover {
    cursor: pointer;
-   text-decoration: none;
    transform: translateY(-4px);
+}
+
+.img_shadow {
+  box-shadow: 0px 0px 20px -5px rgba(0, 0, 0, 0.8);
+}
+.img_radius {
+  border-radius: 5px;
 }
 
 

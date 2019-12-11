@@ -33,7 +33,7 @@
 					</div>
 					<div class="comment_body">
 						<h4><%= question_comment.comment_body %></h4>
-						<h4><%= link_to '削除', admin_question_question_comment_path(question_comment.id), method: :delete %></h4>
+						<h4><%= link_to '削除', admin_question_question_comment_path(question_comment.question.id, question_comment.id), method: :delete %></h4>
 					</div>
 				</div>
 			<% end %>

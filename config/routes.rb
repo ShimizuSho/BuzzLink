@@ -35,7 +35,9 @@ Rails.application.routes.draw do
   	resources :users, only: [:index, :show]
   	resources :posts, only: [:index, :show, :destroy]
   	resources :favorites, only: [:create, :deestroy]
-  	resources :questions, only: [:index, :show, :destroy]
+  	resources :questions, only: [:index, :show, :destroy] do
+      resources :question_comments, only: [:destroy]
+    end
   	resources :contacts, only: [:index, :destroy]
   	resources :folders, only: [:create, :deestroy]
     resources :messages, only: [:create]
