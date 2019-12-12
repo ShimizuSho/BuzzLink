@@ -34,7 +34,7 @@
 					<h3 class="user_name"><%= @user.name %> さん</h3>
 					<h3>LEVEL <%= @user_level %></h3>
 					<div class="progress">
-						<div class="progress-bar" role="progressbar" style= "width: <%= @user.point.to_i % 100 %>%" >
+						<div class="progress-bar progress-bar-info progress-bar-striped active" role="progressbar" style= "width: <%= @user.point.to_i % 100 %>%" >
 							<%= @user.point.to_i % 100 %>
 						</div>
 					</div>
