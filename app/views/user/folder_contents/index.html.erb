@@ -18,7 +18,7 @@
 				<div class= "info_1">
 					<div class="flex">
 						<%= link_to user_post_path(folder_content.post.id) do %>
-							<h3 class="folder_contents_title"><%= folder_content.folder_contents_title.truncate(40, omission: '~~~') %></h3>
+							<h4 class="folder_contents_title"><%= folder_content.folder_contents_title.truncate(28, omission: '~~~') %></h4>
 						<% end %>
 					</div>
 					<a href="<%= folder_content.post.link %>"><%= folder_content.post.link %></a>
@@ -39,23 +39,24 @@
 						</div>
 						<div class="icon_box">
 								<div>
-
+									<%= link_to user_user_folder_folder_content_path(current_user.id, folder_content.folder.id, folder_content.id), method: :delete, "data-confirm" => "本当に削除しますか？" do %>
+										<span class= "glyphicon glyphicon-trash" aria-hidden="true"></span>
+									<% end %>
 								</div>
 
-									<div>
-										<%= link_to user_user_folder_folder_content_path(current_user.id, folder_content.folder.id, folder_content.id), method: :delete, "data-confirm" => "本当に削除しますか？" do %>
-											<span class= "glyphicon glyphicon-trash" aria-hidden="true"></span>
-										<% end %>
-									</div>
+								<div>
 
-									<div>
-
-										<a data-toggle="modal" data-target="#folder_contentsModal<%= i %>" id="#folder_contentsModal<%= i %>" class=''>
-											<span class= "glyphicon glyphicon glyphicon glyphicon-pencil" aria-hidden="true"></span>
-										</a>
-									</div>
-							<div>
-								<span class="glyphicon glyphicon-heart" aria-hidden="true" style="color: red;"></span><p class="fav-count"><%= folder_content.post.favorites.count %></p>
+									<a data-toggle="modal" data-target="#folder_contentsModal<%= i %>" id="#folder_contentsModal<%= i %>" class=''>
+										<span class= "glyphicon glyphicon glyphicon glyphicon-pencil" aria-hidden="true"></span>
+									</a>
+								</div>
+							<div class= "flex">
+								<div>
+									<span class="glyphicon glyphicon-heart" aria-hidden="true" style="color: red;"></span>
+								</div>
+								<div>
+									<p class="fav-count"><%= folder_content.post.favorites.count %></p>
+								</div>
 							</div>
 						</div>
 						<% end %>
