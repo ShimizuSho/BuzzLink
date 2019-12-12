@@ -64,7 +64,7 @@
 			<% @post_comments.each do |post_comment| %>
 				<div class="comment_info_box flex">
 					<div class="comment_name">
-						<h4><%= post_comment.created_at.strftime('%Y-%m-%d %H:%M') %></h4>
+						<h4><%= post_comment.created_at.strftime('%Y-%m-%d') %></h4>
 						<%= link_to user_user_path(post_comment.user.id) do %>
 							<h4><%= post_comment.user.name %></h4>
 						<% end %>
