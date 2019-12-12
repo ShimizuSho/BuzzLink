@@ -11,7 +11,7 @@
 			<% @folder_contents.each do |folder_content| %>
 			<div class= "info_box">
 				<div class= "profile_image_box">
-					<%= link_to user_user_path(folder_content.post.user.id) do %>
+					<%= link_to user_post_path(folder_content.post.id) do %>
 						<%= attachment_image_tag folder_content.post.user, :profile_image, :fill, 130, 130, fallback: "no_image.jpg", class: "radius img_shadow", size:'130x130' %>
 					<% end %>
 				</div>
@@ -22,7 +22,7 @@
 						<% end %>
 					</div>
 					<a href="<%= folder_content.post.link %>"><%= folder_content.post.link.truncate(47, omission: '~~~') %></a>
-					<%= link_to user_user_path(folder_content.post.id) do %>
+					<%= link_to user_user_path(folder_content.post.user.id) do %>
 						<h5><%= folder_content.post.user.name %></h5>
 					<% end %>
 				</div>
