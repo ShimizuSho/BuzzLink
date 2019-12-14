@@ -94,7 +94,7 @@
 					<div class="text_box col-lg-9">
     					<span class="box-title">自己紹介</span>
 						<div class="box2">
-							<p class="user_introduction"><%= safe_join(@user.introduction.split("\n"),tag(:br)) %></p>
+							<p class="user_introduction"><%= simple_format(@user.introduction) %></p>
 						</div>
 					</div>
 				</div>
