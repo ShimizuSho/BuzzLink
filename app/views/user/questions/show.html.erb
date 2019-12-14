@@ -23,7 +23,7 @@
 			</div>
 			<div class="text_box col-lg-12">
 				<span class="box-title">質問の内容</span>
-				<h4><%= @question.question_body %></h4>
+				<h4><%= safe_join(@question.question_body.split("\n"),tag(:br)) %></h4>
 			</div>
 			<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#question_commentModal">コメントする</button>
 			<% if @question.user == current_user %>
@@ -38,7 +38,7 @@
 						<% end %>
 					</div>
 					<div class="comment_body">
-						<h4><%= question_comment.comment_body %></h4>
+						<h4><%= safe_join(question_comment.comment_body.split("\n"),tag(:br)) %></h4>
 						<% if question_comment.user == current_user %>
 							<h4><%= link_to '削除',  user_question_question_comment_path(question_comment.question_id, question_comment.id), method: :delete %></h4>
 						<% end %>

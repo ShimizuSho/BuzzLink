@@ -37,7 +37,7 @@
 			</div>
 				<div class="text_box col-lg-12">
 					<span class="box-title">記事の内容</span>
-					<h4><%= @post.post_body %></h4>
+					<h4><%= safe_join(@post.post_body.split("\n"),tag(:br)) %></h4>
 				</div>
 			<% if user_signed_in? %>
 			    <% if @post.favorited_by?(current_user) %>
@@ -70,7 +70,7 @@
 						<% end %>
 					</div>
 					<div class="comment_body">
-							<h4><%= post_comment.comment_body %></h4>
+							<h4><%= safe_join(post_comment.comment_body.split("\n"),tag(:br))  %></h4>
 						<% if post_comment.user == current_user %>
 							<h4><%= link_to '削除', user_post_comment_path(@post, post_comment.id), method: :delete %></h4>
 						<% end %>

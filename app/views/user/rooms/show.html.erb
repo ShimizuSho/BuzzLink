@@ -28,7 +28,7 @@
                                     <%= m.created_at.strftime("%Y-%m-%d %H:%M")%>
                                     <%= m.user.name %>
                                     <div class="mycomment">
-                                        <p><%= m.content %></p>
+                                        <p><%= safe_join(m.content.split("\n"),tag(:br)) %></p>
                                     </div>
                                 </div>
                             </div>
