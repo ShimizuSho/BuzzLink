@@ -8,7 +8,7 @@ class Post < ApplicationRecord
 
   validates :post_title, presence: true, length: { maximum: 50 }
   validates :link, presence: true, length: { maximum: 110 }
-  validates :post_body, presence: true, length: { maximum: 1000 }
+  validates :post_body, presence: true, length: { maximum: 3000 }
 
 	def favorited_by?(user)
     favorites.where(user_id: user.id).exists?
