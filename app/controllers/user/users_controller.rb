@@ -3,11 +3,11 @@ class User::UsersController < ApplicationController
 
 	def show
 		@user = User.find(params[:id])
-		@degrees = Degree.all.limit((@user.evolution * 2) + 2)
+		@degrees = Degree.all.limit((@user.evolution * 2) + 2) #<!-- limitで上から指定した数だけ称号を取得 -->
 		degree_management = @user.degree_management
 		@folders = current_user.folders
 		@favorite_posts = @user.favorite_posts
-		@user_level = (@user.point / 100).to_i
+		@user_level = (@user.point / 100).to_i #<!-- 100ポイント獲得で1レベルアップ -->
 
 		@currentUserEntry=Entry.where(user_id: current_user.id)
     	@userEntry=Entry.where(user_id: @user.id)
@@ -35,7 +35,7 @@ class User::UsersController < ApplicationController
 		@user = User.find(params[:id])
 		@user.update(user_params)
 		degree_management = @user.degree_management
-		degree_management.degree_id = params[:user][:id]
+		degree_management.degree_id = params[:user][:id] #<!-- f.collection_selectで選択された称号のid -->
 		degree_management.save
 		redirect_to user_user_path(@user.id)
 	end
@@ -54,7 +54,7 @@ class User::UsersController < ApplicationController
 
   	def evolution
     	@user = User.find(params[:user_id])
-  		new_evolution = @user.point/1000
+  		new_evolution = @user.point/1000 #<!-- 1000ポイント獲得ごとに進化 -->
   		@user.update(evolution: new_evolution)
   	end
 

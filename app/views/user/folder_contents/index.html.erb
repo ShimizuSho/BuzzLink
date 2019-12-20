@@ -6,7 +6,7 @@
 		<div class="col-lg-1">
 		</div>
 		<div class="col-lg-8">
-			<% i = 1 %>
+			<% i = 1 %> <!-- ブックマークした記事の移動と編集の際にどの記事か識別できるように初期値を設定 -->
 			<h1><%= @folder.folder_name %></h1>
 			<% @folder_contents.each do |folder_content| %>
 			<div class= "info_box">
@@ -36,16 +36,15 @@
 									<%= collection_select :folder_content, :folder_id, current_user.folders, :id, :folder_name, class: "folder-move" %>
 									<%= submit_tag '移動', class: "folder-move" %>
 								</div>
+							<% end %>
 						</div>
 						<div class="icon_box">
+							<div>
+								<%= link_to user_user_folder_folder_content_path(current_user.id, folder_content.folder.id, folder_content.id), method: :delete, "data-confirm" => "本当に削除しますか？" do %>
+									<span class= "glyphicon glyphicon-trash" aria-hidden="true"></span>
+								<% end %>
+							</div>
 								<div>
-									<%= link_to user_user_folder_folder_content_path(current_user.id, folder_content.folder.id, folder_content.id), method: :delete, "data-confirm" => "本当に削除しますか？" do %>
-										<span class= "glyphicon glyphicon-trash" aria-hidden="true"></span>
-									<% end %>
-								</div>
-
-								<div>
-
 									<a data-toggle="modal" data-target="#folder_contentsModal<%= i %>" id="#folder_contentsModal<%= i %>" class=''>
 										<span class= "glyphicon glyphicon glyphicon glyphicon-pencil" aria-hidden="true"></span>
 									</a>
@@ -59,10 +58,10 @@
 								</div>
 							</div>
 						</div>
-						<% end %>
 					</div>
 				</div>
 			</div>
+			<!-- ブックマーク記事のタイトル編集のモーダルの記述 -->
 			<div class="modal fade" id="folder_contentsModal<%= i %>" tabindex="-1">
 				<div class="modal-dialog">
 					<div class="modal-content">
@@ -83,13 +82,13 @@
 					</div>
 				</div>
 			</div>
-			<% i += 1 %>
+			<% i += 1 %> <!-- eachの中に記述することで、ブックマークした記事を識別する為の番号を振り分ける -->
 			<% end %>
 			<%= paginate @folder_contents, class: "paginate" %>
 		</div>
 	</div>
 </div>
-
+<!-- フォルダー内のブックマーク記事の数を取得 -->
 <script type="text/javascript">
 	let posts = document.querySelectorAll('.post_info_2')
 </script>

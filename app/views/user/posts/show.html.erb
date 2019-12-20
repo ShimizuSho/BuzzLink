@@ -17,6 +17,7 @@
 					</ul>
 				</div>
 			<% end %>
+
 			<% if flash[:notice] %>
   				<h3 class="get_point"><%= flash[:notice] %></h3>
 			<% end %>
@@ -37,7 +38,7 @@
 			</div>
 				<div class="text_box col-lg-12">
 					<span class="box-title">記事の内容</span>
-					<h4><%= safe_join(@post.post_body.split("\n"),tag(:br)) %></h4>
+					<h4><%= safe_join(@post.post_body.split("\n"),tag(:br)) %></h4> <!-- 文章の段落と改行を反映 -->
 				</div>
 			<% if user_signed_in? %>
 			    <% if @post.favorited_by?(current_user) %>
@@ -81,7 +82,7 @@
 		</div>
 	</div>
 </div>
-
+<!-- ブックマークのモーダルの記述 -->
 <div class="modal fade" id="bookmarkModal" tabindex="-1">
 	<div class="modal-dialog">
 		<div class="modal-content">
@@ -102,7 +103,7 @@
 		</div>
 	</div>
 </div>
-
+<!-- 記事のコメントのモーダルの記述 -->
 <div class="modal fade" id="commentModal" tabindex="-1">
 	<div class="modal-dialog">
 		<div class="modal-content">
@@ -122,7 +123,7 @@
 		</div>
 	</div>
 </div>
-
+<!-- 記事の編集のモーダルの記述 -->
 <div class="modal fade" id="edit_postModal" tabindex="-1">
 	<div class="modal-dialog">
 		<div class="modal-content">

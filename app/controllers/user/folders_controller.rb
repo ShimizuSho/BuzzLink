@@ -12,6 +12,7 @@ class User::FoldersController < ApplicationController
 			@folder.user_id = current_user.id
 			@folder.folder_name = "folder#{i}"
 			@folder.save
+			#<!-- ユーザー毎にフォルダーを20作成 -->
 	  	end
 	  	@degree_management = DegreeManagement.new
 		@degree_management.user_id = current_user.id

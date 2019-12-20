@@ -28,10 +28,12 @@ class User::FolderContentsController < ApplicationController
 		@folder_content = FolderContent.find(params[:id])
 		@folder_content.folder_id = @folder.id
 		@folder_content.save
+		#<!-- ブックマークした記事を別のフォルダーに移動させる記述　@folder = Folder.find(params[:id])と記述すると現在のフォルダーのidを取得してしまった為、上記のように記述 -->
 		@folder_contents = @folder.folder_contents.page(params[:page]).per(10)
 		@folders = current_user.folders
 		redirect_back(fallback_location: root_path)
 	end
+
 
 	def folder_contents_update
 		folder_content = FolderContent.find(params[:id])

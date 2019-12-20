@@ -29,13 +29,13 @@
 			<div class="profile_info flex">
 				<div>
 					<div>
-						<%= attachment_image_tag @user, :profile_image, :fill, 300, 300, fallback: "no_image.jpg", class: "profile_img frame#{@user.evolution.to_i}", size:'300x300' %>
+						<%= attachment_image_tag @user, :profile_image, :fill, 300, 300, fallback: "no_image.jpg", class: "profile_img frame#{@user.evolution.to_i}", size:'300x300' %> <!-- ユーザーの進化状態に応じて枠の色が変化 -->
 					</div>
 					<h3 class="user_name"><%= @user.name %> さん</h3>
 					<h3>LEVEL <%= @user_level %></h3>
 					<div class="progress">
-						<div class="progress-bar progress-bar-info progress-bar-striped active" role="progressbar" style= "width: <%= @user.point.to_i % 100 %>%" >
-							<%= @user.point.to_i % 100 %>
+						<div class="progress-bar progress-bar-info progress-bar-striped active" role="progressbar" style= "width: <%= @user.point.to_i % 100 %>%" > <!-- 経験値のメーター -->
+							<%= @user.point.to_i % 100 %> <!-- 経験値のメーター内の数値 -->
 						</div>
 					</div>
 					<div class="flex">
@@ -94,7 +94,7 @@
 					<div class="text_box col-lg-9">
     					<span class="box-title">自己紹介</span>
 						<div class="box2">
-							<p class="user_introduction"><%= simple_format(@user.introduction) %></p>
+							<p class="user_introduction"><%= simple_format(@user.introduction) %></p> <!-- 文章の改行を反映 -->
 						</div>
 					</div>
 				</div>
@@ -102,7 +102,7 @@
 		</div>
 	</div>
 </div>
-
+<!-- マイページ編集のモーダルの記述 -->
 <div class="modal fade" id="userModal" tabindex="-1">
 	<div class="modal-dialog">
 		<div class="modal-content">

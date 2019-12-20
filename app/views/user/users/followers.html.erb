@@ -13,7 +13,7 @@
 			    <div class="follows_info_box flex">
 			        <div>
 				        <%= link_to user_user_path(user.id) do %>
-							<%= attachment_image_tag user, :profile_image, :fill, 150, 150, fallback: "no_image.jpg", class: "follow_profile_image frame#{user.evolution.to_i} radius", size:'150x150' %>
+							<%= attachment_image_tag user, :profile_image, :fill, 150, 150, fallback: "no_image.jpg", class: "follow_profile_image frame#{user.evolution.to_i} radius", size:'150x150' %> <!-- ユーザーの進化状態に応じて枠の色が変化 -->
 						<% end %>
 					</div>
 					<div class="follow_info">
@@ -21,7 +21,7 @@
 							<h2 class="follow_name"><%= user.name %></h2>
 						<% end %>
 						<h4>称号　<%= user.degree_management.degree.degree_name %></h4>
-						<h4>LEVEL <%= (user.point / 100).to_i %></h4>
+						<h4>LEVEL <%= (user.point / 100).to_i %></h4> <!-- 100ポイント獲得で1レベルアップ -->
 						<% if current_user != user %>
 							<% if user.followed_by?(current_user) %>
 					            <h4><%=link_to "フォローをやめる", user_user_relationships_path(user.id), method: :delete %></h4>
