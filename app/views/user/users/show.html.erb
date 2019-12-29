@@ -46,13 +46,13 @@
 						<div>
 							<% if @user.id != current_user.id %>
 						  		<% if @isRoom == true %>
-							    	<%= link_to "DMを送る", user_user_room_path(current_user.id, @roomId), class:"btn btn-primary btn-lg user-show-room" %>
+							    	<%= link_to "DMを送る", user_user_room_path(current_user.id, @roomId), class:"btn btn-warning btn-lg user-show-room" %>
 								<% else %>
 							    	<%= form_for @room, url: user_user_rooms_path(current_user.id), method: :post do |f| %>
 							      		<%= fields_for @entry do |e| %>
 							        		<%= e.hidden_field :user_id, value: @user.id %>
 							    		<% end %>
-							      	<%= f.submit "DMを始める", class:"fbtn btn-primary btn-lg user-show-chat"%>
+							      	<%= f.submit "DMを始める", class:"fbtn btn-warning btn-lg user-show-chat"%>
 							    	<% end %>
 							  	<% end %>
 							<% end %>
@@ -65,9 +65,9 @@
 					</div>
 					<% if @user != current_user %>
 					    <% if @user.followed_by?(current_user) %>
-					        <h3><%=link_to "フォロー済み", user_user_relationships_path(@user.id), method: :delete %></h3>
+					        <h3><%=link_to "フォロー済み", user_user_relationships_path(@user.id), method: :delete, class:"btn btn-success btn-lg" %></h3>
 					    <% else %>
-					        <h3><%=link_to "フォローする", user_user_relationships_path(@user.id), method: :post %></h3>
+					        <h3><%=link_to "フォローする", user_user_relationships_path(@user.id), method: :post, class:"btn btn-success btn-lg" %></h3>
 					    <% end %>
 					<% end %>
 					<h3><%=link_to "フォロー一覧", follows_user_user_path(@user.id), class:"btn btn-primary btn-lg" %></h3>
